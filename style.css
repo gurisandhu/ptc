@@ -1,0 +1,14 @@
+			/*****************
+			Theme Name: Woodbury
+			Theme URI: http://www.woodburyfs.com.au/
+			Description: Woodbury Wordpress Theme
+			Version: 1
+			Author: Guri Sandhu @ Sailor Studio
+			Author URI: http://www.sailorstudio.com.au
+			*****************/
+
+
+/*
+To EDIT the style sheet please use theme.scss file in root directory. Also needs to run Gulp to compress the style sheet to 'theme.css' file.
+*/
+@import 'compressed/theme.css';

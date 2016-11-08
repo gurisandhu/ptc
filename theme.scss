@@ -1,0 +1,404 @@
+//This file includes mixins, resets etc.
+@import 'editor';
+
+// fonts family
+$open: 'Open Sans', sans-serif;
+$meri: 'Merriweather', serif;
+
+
+// colors
+$blue: #001764;
+$dark-blue: #04284e;
+$sky: #00c0f3;
+$light-grey: #8d9194;
+$grey: #706f6f;
+$dark-grey: #363636;
+$border: #cccccc;
+
+// body font size, color, font family
+body{
+	color: $dark-grey;
+	font-family: $open;
+	&:before{
+		content: "";
+		display: block;
+		width: 100%;
+	}
+	@include fixed-header-height(88px);
+}
+
+//container: max width
+.container{
+	max-width: 1140+30px;
+}
+
+// anchor: color, hover
+a{
+	color: $dark-grey;
+	text-decoration: none;
+	&:hover{
+		text-decoration: underline;
+	}
+}
+
+
+@include body-smooth($dark-blue, transparent);
+
+header{	
+	padding-top: 15px;
+	padding-bottom: 15px;
+	position: fixed;
+	top: 0;
+	background-color: #FFF;
+	z-index: 9;
+	@include transition(.3);
+	-webkit-box-shadow: 0px 0px 5px rgba(0,0,0,0.3);
+	        box-shadow: 0px 0px 5px rgba(0,0,0,0.3);
+}
+.logo{
+	width: 166px;
+	float: left;
+	img{
+		float: left;
+	}
+}
+nav{
+	ul{
+		list-style: none;
+	}
+	a{
+		font-weight: 700;
+		color: $dark-blue;
+	}
+}
+.header-transition{
+	@include transition(.5);
+}
+.desktop-menu{
+	width: 1140-166px;
+	float: left;
+	> nav{
+		padding-top: 20px;
+		max-width: 775px;
+		padding-right: 25px;
+			> ul{
+				float: right;
+				width: auto;
+				margin: 0;
+				padding: 0;
+				> .menu-item-has-children{
+					> .sub-menu{
+						padding-top: 20px;
+						&:before{
+							content: "\f0de";
+							font-family: FontAwesome;
+							position: absolute;
+							color: $dark-blue;
+							left: 15px;
+							font-size: 40px;
+							top: 5px;
+						}
+					}
+				}
+				> li{
+					float: left;
+					width: auto;
+					padding-right: 15px;
+					&:last-child{
+						padding-right: 0;
+					}
+					&.current-menu-item, &.current-menu-ancestor{
+						> a{
+							
+						}
+					}
+					a{
+						position: relative;
+						&:after{
+							display: inline-block;
+							content: "";
+							height: 2px;
+							width: 0;
+							position: relative;
+							bottom: 8px;
+							background-color: $sky;
+							@include transition(.3);
+						}
+						&:hover{
+							&:after{
+								width: 70%;
+							}
+						}
+					}
+				}
+			}
+	}
+	a{
+		display: block;
+		@include transition(.2);
+		font-size: 14px;
+		text-transform: uppercase;
+		text-align: center;
+		width: 100%;
+		font-weight: 700;
+		cursor: pointer;
+		text-decoration: none;
+	}
+	.sub-menu{
+		display: none;
+		position: absolute;
+		top: 100%;
+		left: 0;
+		min-width: 160px;
+		text-align: left;
+		li{
+			width: 100%;
+			padding-top: 10px;
+			padding-left: 20px;
+			padding-right: 20px;
+			padding-bottom: 10px;
+			&:last-child{
+				border-bottom: none;
+				padding-bottom: 20px;
+			}
+			&:first-child{
+				padding-top: 20px;
+			}
+			a{
+				text-align: left;
+				font-weight: 700;
+				&:hover{
+					border-bottom: 2px solid transparent;
+					
+				}
+			}
+			&.current-menu-item{
+				a{
+					
+				}
+			}
+		}
+	}
+	.menu-item-has-children{
+		position: relative;
+		&:hover{
+			> .sub-menu{
+				display: block;
+			}
+		}
+		.menu-item-has-children{
+			> .sub-menu{
+				left: 100%;
+				top: 0;
+				margin-left: 10px;
+				&:before{
+					content: "\f0d9";
+					font-family: FontAwesome;
+					position: absolute;
+					left: -11px;
+					top: 2px;
+					
+					font-size: 40px;
+				}
+			}
+			&:hover{
+				> .sub-menu{
+					display: block;
+				}
+			}
+		}
+	}//end of menu-item-has-children
+}//end of desktop-menu
+
+.login{
+	float: left;
+	width: 157px;
+	margin-top: 10px;
+	a{
+		color: $dark-blue;
+		border: 1px solid $dark-blue;
+		padding: 8px;
+		-webkit-border-radius: 2px;
+		border-radius: 2px;
+		@include transition(.3);
+		&:hover{
+			border-color: $sky;
+		}
+	}
+}
+.search{
+	float: left;
+	width: 40px;
+	margin-top: 17px;
+	padding-left: 25px;
+	color: $dark-blue;
+	cursor: pointer;
+	.fa{
+		@include transition(0.2);
+	}
+	&:hover{
+		.fa{
+			font-size: 18px;
+			color: $sky;
+		}
+	}
+}
+
+// Banners
+@mixin home-banner-height($height){
+	min-height: $height;
+	.swiper-slide{
+		height: $height;
+	}
+	.home-page-menu{
+		height: $height;
+	}
+}
+.home-banner{
+	@include home-banner-height(570px);
+	position: relative;
+	.container{
+		height: 100%;
+		position: relative;
+		h1{
+			max-width: 63%;
+			color: white;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+		}
+	}
+	.swiper-slide{
+		background-repeat: no-repeat;
+		-webkit-background-size: 63%;
+		     -o-background-size: 63%;
+		        background-size: 63%;
+		    background-position: 0;
+	}
+}
+h1{
+	font-size: 42px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	word-spacing: 0.5px;
+	margin-bottom: 20px;
+	line-height: 1.2;
+}
+.blue-shadow{
+	width: 100%;
+	height: 100%;
+	float: left;
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#00c0f3+11,7db9e8+100&1+0,0+50 */
+background: -moz-linear-gradient(45deg,  rgba(0,192,243,1) 0%, rgba(0,192,243,0.78) 11%, rgba(55,189,238,0) 50%, rgba(125,185,232,0) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(45deg,  rgba(0,192,243,1) 0%,rgba(0,192,243,0.78) 11%,rgba(55,189,238,0) 50%,rgba(125,185,232,0) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(45deg,  rgba(0,192,243,1) 0%,rgba(0,192,243,0.78) 11%,rgba(55,189,238,0) 50%,rgba(125,185,232,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00c0f3', endColorstr='#007db9e8',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+}
+.home-slider{
+	height: 100%;
+}
+.home-page-menu{
+	width: 37%;
+	float: left;
+	height: 100%;
+	position: absolute;
+	right: 0;
+	z-index: 2;
+	top: 0;
+	background-color: white;
+	ul{
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		height: 100%;
+	}
+	li{
+		height: 25%;
+		width: 100%;
+	    border-bottom: 1px solid #cecece;
+    	border-top: 1px solid #7b7b7b;
+		display: table;
+		&:first-child{
+			border-top: none;
+		}
+		&:last-child{
+			a{
+				border-bottom: 1px solid #7b7b7b;
+			}
+		}
+		a{
+			height: 100%;
+			width: 100%;
+			padding-left: 30px;
+			padding-right: 20px;
+			display: table-cell;
+			vertical-align: middle;
+			@include transition(.3);
+			&:hover{
+				background-color: $sky;
+				span{
+					color: white;
+				}
+			}
+		}
+		.menu-icon{
+			float: left;
+			width: 60px;
+			min-height: 60px;
+			background-repeat: no-repeat;
+			background-position: center;
+			@include transition(.3);
+			-webkit-background-size: contain;
+			     -o-background-size: contain;
+			        background-size: contain;
+		}
+		span{
+			float: left;
+			width: 70%;
+			color: $dark-blue;
+			font-weight: 800;
+			font-size: 19px;
+			padding-top: 18px;
+			padding-left: 53px;
+			@include transition(.3);
+		}
+	}
+
+}
+.banner{
+	background-repeat: no-repeat;
+	-webkit-background-size: cover;
+	     -o-background-size: cover;
+	        background-size: cover;
+	    background-position: center;
+}
+
+// Swiper-2 for sponsors
+ .swiper-container-2{
+        width: 100%;
+        height: 200px;
+        margin: 20px auto;
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+    }
+}
+
+//This file link includes resonsive style and it MUST always stays at the bottom of this file. If you need to type code, please type above to this link. Don't type below of responsive file link.
+@import 'responsive';
+

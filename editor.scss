@@ -1,0 +1,260 @@
+// Mixins
+@mixin placeholder($color){
+	::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    	color:    $color;
+	}
+	:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+	   color:    $color;
+	   opacity:  1;
+	}
+	::-moz-placeholder { /* Mozilla Firefox 19+ */
+	   color:    $color;
+	   opacity:  1;
+	}
+	:-ms-input-placeholder { /* Internet Explorer 10-11 */
+	   color:    $color;
+	}
+}
+@mixin transition($transition){
+	-webkit-transition: all $transition+s ease;
+	   -moz-transition: all $transition+s ease;
+	    -ms-transition: all $transition+s ease;
+	     -o-transition: all $transition+s ease;
+	        transition: all $transition+s ease;
+}
+
+@mixin background-color($color){
+	background-color: $color;
+	&:hover{
+		background-color: darken($color, 10%);
+	}
+}
+
+@mixin transform($amount){
+	-webkit-transform: rotate($amount+deg);
+	   -moz-transform: rotate($amount+deg);
+	    -ms-transform: rotate($amount+deg);
+	     -o-transform: rotate($amount+deg);
+	        transform: rotate($amount+deg);
+}
+@mixin responsive-padding-l-r($num){
+	padding-left: $num;
+	padding-right: $num;
+}
+
+@mixin body-smooth($color, $color2){
+	body{
+	-webkit-animation: smooth 2s;
+     -moz-animation: smooth 2s;
+       -o-animation: smooth 2s;
+          animation: smooth 2s;
+}
+@-webkit-keyframes smooth{
+	from {
+		opacity: 0;
+		-webkit-transition: all .3s ease;
+		   -moz-transition: all .3s ease;
+		    -ms-transition: all .3s ease;
+		     -o-transition: all .3s ease;
+		        transition: all .3s ease;
+		background-color: $color;
+	}
+	to {
+		opacity: 1;
+		background-color: $color2;
+		-webkit-transition: all 0s ease;
+		   -moz-transition: all 0s ease;
+		    -ms-transition: all 0s ease;
+		     -o-transition: all 0s ease;
+		        transition: all 0s ease;
+	}
+}
+@-moz-keyframes smooth{
+	from {
+		opacity: 0;
+		background-color: $color;
+	}
+	to {
+		opacity: 1;
+		background-color: $color2;
+	}
+}
+@-o-keyframes smooth{
+	from {
+		opacity: 0;
+		background-color: $color;
+	}
+	to {
+		opacity: 1;
+		background-color: $color2;
+	}
+}
+@keyframes smooth{
+	from {
+		opacity: 0;
+		background-color: $color;
+	}
+	to {
+		opacity: 1;
+		background-color: $color2;
+	}
+}
+
+}
+
+@mixin fixed-header-height($height){
+	&:before{
+		height: $height;
+	}
+	header{
+		min-height: $height;
+	}
+}
+/* Common */
+*{
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+  	-webkit-box-sizing: border-box;
+  	   -moz-box-sizing: border-box;
+  	        box-sizing: border-box;
+}
+img{
+	width:auto;
+	height:auto;
+	border:0;
+	max-width: 100%;
+}
+body{
+  margin: 0;
+  padding: 0;
+  &:after{
+  	clear: both;
+  	display: block;
+  	content: "";
+  }
+}
+header, section, footer, aside, nav{
+  float: left;
+  width: 100%;
+}
+.row{
+	width:100%;
+	float: left;
+	&:not(:first-child){
+		margin-top: 15px;
+	}
+}
+.col-2{
+	float: left;
+	width: 50%;
+	&:nth-of-type(2){
+		img{
+			float: right;
+		}
+	}
+}
+.col-3{
+	float: left;
+	width: 33.33%;
+}
+.col-4{
+	float: left;
+	width: 20%;
+	margin-right: 5%;
+	&:last-child{
+		margin-right: 0;
+	}
+}
+.one-third{
+	width: 33.33%;
+	float: left;
+}
+.two-third{
+	width: 66.66%;
+	float: left;
+}
+.responsive{
+	display: none;
+}
+.responsive-menu{
+	display: none;
+}
+p{
+	&:empty{
+		margin: 0;
+		padding: 0;
+	}
+	&:last-child{
+		margin-bottom: 0;
+	}
+}
+.table{
+	display: table;
+	width: 100%;
+}
+.table-padding-t-b{
+	padding-top: 2%;
+	padding-bottom: 2%;
+}
+.table-cell{
+	display: table-cell;
+	vertical-align: middle;
+	float: none;
+    }
+.verticalAlign{
+	& > * {
+		position: relative;
+	}
+}    
+.width-70{
+	display: inline-block;
+	width: 70%;
+	margin: auto;
+	margin-bottom: 1%;
+}
+.swiper-button-next, .swiper-button-prev{
+	width: 50%;
+	height: 100%;
+	top: 0;
+	margin-top: 0;
+	bottom: 0;
+	@include transition(.5s);
+}
+.swiper-button-prev{
+	background-position: 1%;
+	left: 0;
+	&:hover{
+		background-position: 4%;
+	}
+}
+.swiper-button-next{
+	background-position: 99%;
+	right: 0;
+	&:hover{
+		background-position: 96%;
+	}
+}
+.container{
+	padding-left: 15px;
+	padding-right: 15px;
+	width: 100%;
+	margin: auto;
+	&:after{
+		content: "";
+		display: block;
+		clear: both;
+	}
+}
+h1,h2,h3,h4,h5,h6{
+	display: block;
+	margin-top: 0;
+	margin-bottom: 15px;
+	line-height: 1;
+}
+.customize-support{
+	header.fixed{
+		top: 32px;	
+	}
+}
+
+
