@@ -21,4 +21,34 @@ $(document).ready(function(){
         effect: 'fade'
     });
 
+  var swiper = new Swiper('.swiper-container-2', {
+        slidesPerView: 7,
+        spaceBetween: 50,
+        nextButton: '.swiper-button-next-2',
+        prevButton: '.swiper-button-prev-2',
+        breakpoints: {
+            1024: {
+                slidesPerView: 4,
+                spaceBetween: 40
+            },
+            768: {
+                slidesPerView: 3,
+                spaceBetween: 30
+            },
+            640: {
+                slidesPerView: 2,
+                spaceBetween: 20
+            },
+            320: {
+                slidesPerView: 1,
+                spaceBetween: 10
+            }
+        }
+    });
+
+  $('.show-search').click(function(){
+    $('.search-form').slideToggle();
+    $('.search-form input').focus();
+  });
+
 });//end of document ready

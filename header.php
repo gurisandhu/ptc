@@ -10,54 +10,88 @@
 	<!-- font awesome -->
 		<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css?ver=4.7.0">
 	<!-- google fonts open sans | Merriweather-->
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700">
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather">
 	<!-- Fevicon -->
 		<link rel="icon" type="image/x-icon" href="compressed/uploads/fevicon.ico" >
 </head>
 <body>
-	<header>
-		<div class="container">
-			<div class="logo">
-				<img src="compressed/uploads/logo.png" alt="PTC Logo" title="Professional Teachers' Council NSW">
+	<section class="header">
+		<header>
+			<div class="container">
+				<div class="logo">
+					<a href="#"><img src="compressed/uploads/logo.png" alt="PTC Logo" title="Professional Teachers' Council NSW"></a>
+				</div>
+				<div class="desktop-menu desktop">
+					<nav>
+						<ul>
+							<li><a href="#">Home</a></li>
+							<li><a href="#">About</a></li>
+							<li><a href="#">Resources</a></li>
+							<li><a href="#">Awards</a></li>
+							<li><a href="#">News</a></li>
+							<li class="menu-item-has-children"><a href="#">Courses</a>
+								<ul class="sub-menu">
+									<li><a href="#">Item 1</a></li>
+									<li><a href="#">Item 2</a></li>
+									<li class="menu-item-has-children"><a href="#">Item 3</a>
+										<ul class="sub-menu">
+											<li><a href="#">Sub Item 1</a></li>
+											<li><a href="#">Sub Item 2</a></li>
+											<li><a href="#">Sub Item 3</a></li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							<li><a href="#">Contact</a></li>
+						</ul>
+					</nav>
+					<div class="login">
+						<a href="#">PTC Plus log in</a>
+					</div>
+					<div class="search show-search">
+						<i class="fa fa-search"></i>
+					</div>
+				</div>
+				<div class="responsive-menu responsive">
+					<nav>
+						<ul>
+							<li><a href="#">Home</a></li>
+							<li><a href="#">About</a></li>
+							<li><a href="#">Resources</a></li>
+							<li><a href="#">Awards</a></li>
+							<li><a href="#">News</a></li>
+							<li class="menu-item-has-children"><a href="#">Courses</a>
+								<ul class="sub-menu">
+									<li><a href="#">Item 1</a></li>
+									<li><a href="#">Item 2</a></li>
+									<li class="menu-item-has-children">Item 3</a>
+										<ul class="sub-menu">
+											<li><a href="#">Sub Item 1</a></li>
+											<li><a href="#">Sub Item 2</a></li>
+											<li><a href="#">Sub Item 3</a></li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							<li><a href="#">Contact</a></li>
+						</ul>
+					</nav>
+					<div class="login">
+						<a href="#">PTC Plus log in</a>
+					</div>
+					<div class="search">
+						<i class="fa fa-search"></i>
+					</div>
+				</div>
 			</div>
-			<div class="desktop-menu desktop">
-				<nav>
-					<ul>
-						<li><a href="#">Home</a></li>
-						<li><a href="#">About</a></li>
-						<li><a href="#">Resources</a></li>
-						<li><a href="#">Awards</a></li>
-						<li><a href="#">News</a></li>
-						<li><a href="#">Courses</a></li>
-						<li><a href="#">Contact</a></li>
-					</ul>
-				</nav>
-				<div class="login">
-					<a href="#">PTC Plus log in</a>
+		</header>
+		<section class="toggle-form desktop search-form">
+				<div class="container">
+					<form class="row" role="search" method="get" id="searchform" action="#">
+							<input class="row search-input" type="text" value="" name="s" id="s" placeholder="Start typing ..." />
+							<summary>Press enter</summary>
+					</form>
 				</div>
-				<div class="search">
-					<i class="fa fa-search"></i>
-				</div>
-			</div>
-			<div class="responsive-menu responsive">
-				<nav>
-					<ul>
-						<li><a href="#">Home</a></li>
-						<li><a href="#">About</a></li>
-						<li><a href="#">Resources</a></li>
-						<li><a href="#">Awards</a></li>
-						<li><a href="#">News</a></li>
-						<li><a href="#">Courses</a></li>
-						<li><a href="#">Contact</a></li>
-					</ul>
-				</nav>
-				<div class="login">
-					<a href="#">PTC Plus log in</a>
-				</div>
-				<div class="search">
-					<i class="fa fa-search"></i>
-				</div>
-			</div>
-		</div>
-	</header>
+		</section>
+	</section>
