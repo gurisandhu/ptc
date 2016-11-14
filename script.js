@@ -49,6 +49,29 @@ $(document).ready(function(){
   $('.show-search').click(function(){
     $('.search-form').slideToggle();
     $('.search-form input').focus();
+    $('.hide-body').toggleClass('show');
   });
+
+  $('.hide-body').click(function(){
+    $(this).removeClass('show');
+    $('.search-form').slideUp();
+  });
+
+  $(window).bind("load", function(){
+    $('.hide-body').removeClass('show-loader');
+  });
+
+// ++++++++++++++++++++
+// Header fixed, reduce size
+// ++++++++++++++++++++
+$(window).scroll(function(){
+  var scroll = $(window).scrollTop();
+
+  if (scroll >= 200){
+      $('body').addClass('on-scrolled');
+  } else {
+    $('body').removeClass('on-scrolled');
+  }
+});
 
 });//end of document ready

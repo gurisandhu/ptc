@@ -25,22 +25,30 @@
 		<div class="home-page-menu">
 			<ul>
 				<li><a href="#">
-					<div class="menu-icon" style="background-image: url('compressed/uploads/oppor.png');">
+					<div class="menu-icon">
+						<img src="uploads/icons/members-off.svg" alt="">
+						<img src="uploads/icons/members-on.svg" alt="">
 					</div>
-					<span>Opportunities</span>
+					<span>Member Associations</span>
 				</a></li>
 				<li><a href="#">
-					<div class="menu-icon" style="background-image: url('compressed/uploads/fullcourse.png');">
+					<div class="menu-icon">
+						<img src="uploads/icons/course-off.svg" alt="">
+						<img src="uploads/icons/course-on.svg" alt="">
 					</div>
 					<span>Full course List</span>
 				</a></li>
 				<li><a href="#">
-					<div class="menu-icon" style="background-image: url('compressed/uploads/teaching-2.png');">
+					<div class="menu-icon">
+						<img src="uploads/icons/resources-off.svg" alt="">
+						<img src="uploads/icons/resources-on.svg" alt="">
 					</div>
 					<span>Teaching Resources</span>
 				</a></li>
 				<li><a href="#">
-					<div class="menu-icon" style="background-image: url('compressed/uploads/awards.png');">
+					<div class="menu-icon">
+						<img src="uploads/icons/awards-off.svg" alt="">
+						<img src="uploads/icons/awards-on.svg" alt="">
 					</div>
 					<span>Awards</span>
 				</a></li>
@@ -48,8 +56,47 @@
 		</div>
 	</section>
 
-		<section class="section-2">
+	<section class="section-2">
 		<div class="container">
+			<form action="" class="row">
+				<ul class="filters row">
+					<li>
+						<select name="association" id="">
+							<option value="">Association</option>
+							<option value="company-1">Company 1</option>
+							<option value="company-2">Company 2</option>
+							<option value="company-3">Company 3</option>
+						</select>
+					</li>
+					<li>
+						<select name="subject" id="">
+							<option value="">Subject</option>
+							<option value="company-1">Subject 1</option>
+							<option value="company-2">Subject 2</option>
+							<option value="company-3">Subject 3</option>
+						</select>
+					</li>
+					<li>
+						<select name="level" id="">
+							<option value="">Level</option>
+							<option value="company-1">Level 1</option>
+							<option value="company-2">Level 2</option>
+							<option value="company-3">Level 3</option>
+						</select>
+					</li>
+					<li>
+						<select name="region" id="">
+							<option value="">Region</option>
+							<option value="company-1">Region 1</option>
+							<option value="company-2">Region 2</option>
+							<option value="company-3">Region 3</option>
+						</select>
+					</li>
+					<li>
+						<input class="more" type="submit" value="search">
+					</li>
+				</ul>
+			</form>
 			<h2>Events</h2>
 			<a href="#" class="col-3">
 				<div class="section-2-image" style="background-image: url('compressed/uploads/course.png');">
@@ -65,6 +112,52 @@
 						</div>
 					</div>
 					<div class="section-2-title">
+						<h4>Building units of work through global education and cooperative learning and interdisciplinary approach to planning</h4>
+						<p>Hornsby</p>
+					</div>
+					<div class="section-2-link">
+						Read More <i class="fa fa-angle-right"></i>
+					</div>
+				</div>
+			</a>
+
+			<a href="#" class="col-3">
+				<div class="section-2-image" style="background-image: url('compressed/uploads/course.png');">
+					<span class="date">12 Jul</span>
+				</div>
+				<div class="section-2-content">
+					<div class="provider">
+						<div class="provider-logo" style="background-image: url('compressed/uploads/course-sub.jpg');">
+							
+						</div>
+						<div class="provider-title">
+							<h3>Kodály Music Education Institute Aust NSW</h3>
+						</div>
+					</div>
+					<div class="section-2-title">
+						<h4>Primary Levels 1 &amp; 2 Winter Scholl</h4>
+						<p>Hornsby</p>
+					</div>
+					<div class="section-2-link">
+						Read More <i class="fa fa-angle-right"></i>
+					</div>
+				</div>
+			</a>
+
+			<a href="#" class="col-3">
+				<div class="section-2-image" style="background-image: url('compressed/uploads/course.png');">
+					<span class="date">12 Jul</span>
+				</div>
+				<div class="section-2-content">
+					<div class="provider">
+						<div class="provider-logo" style="background-image: url('compressed/uploads/course-sub.jpg');">
+							
+						</div>
+						<div class="provider-title">
+							<h3>Kodály Music Education Institute Aust NSW</h3>
+						</div>
+					</div>
+					<div class="section-2-title">
 						<h4>Primary Levels 1 &amp; 2 Winter Scholl</h4>
 						<p>Hornsby</p>
 					</div>
@@ -111,53 +204,7 @@
 						</div>
 					</div>
 					<div class="section-2-title">
-						<h4>Primary Levels 1 &amp; 2 Winter Scholl Primary Levels 1 &amp; 2 Winter Scholl Primary Levels 1 &amp; 2 Winter Scholl Primary Levels 1 &amp; 2 Winter Scholl</h4>
-						<p>Hornsby</p>
-					</div>
-					<div class="section-2-link">
-						Read More <i class="fa fa-angle-right"></i>
-					</div>
-				</div>
-			</a>
-
-			<a href="#" class="col-3">
-				<div class="section-2-image" style="background-image: url('compressed/uploads/course.png');">
-					<span class="date">12 Jul</span>
-				</div>
-				<div class="section-2-content">
-					<div class="provider">
-						<div class="provider-logo" style="background-image: url('compressed/uploads/course-sub.jpg');">
-							
-						</div>
-						<div class="provider-title">
-							<h3>Kodály Music Education Institute Aust NSW</h3>
-						</div>
-					</div>
-					<div class="section-2-title">
-						<h4>Primary Levels 1 &amp; 2 Winter Scholl</h4>
-						<p>Hornsby</p>
-					</div>
-					<div class="section-2-link">
-						Read More <i class="fa fa-angle-right"></i>
-					</div>
-				</div>
-			</a>
-
-			<a href="#" class="col-3">
-				<div class="section-2-image" style="background-image: url('compressed/uploads/course.png');">
-					<span class="date">12 Jul</span>
-				</div>
-				<div class="section-2-content">
-					<div class="provider">
-						<div class="provider-logo" style="background-image: url('compressed/uploads/course-sub.jpg');">
-							
-						</div>
-						<div class="provider-title">
-							<h3>Kodály Music Education Institute Aust NSW</h3>
-						</div>
-					</div>
-					<div class="section-2-title">
-						<h4>Primary Levels 1 &amp; 2 Winter Scholl Primary Levels 1 &amp; 2 Winter Scholl Primary Levels 1 &amp; 2 Winter Scholl Primary Levels 1 &amp; 2 Winter Scholl</h4>
+						<h4>Primary Levels 1 &amp; 2 Winter Scholl Primary Levels 1 &amp; 2 Winter Scholl </h4>
 						<p>Hornsby</p>
 					</div>
 					<div class="section-2-link">
@@ -213,7 +260,7 @@
 			</a>
 
 			<div class="row">
-				<a href="#" class="more events-col-3">See More</a>
+				<a href="#" class="more but-col-3">See More</a>
 			</div>
 		</div>
 	</section><!-- section-2 -->
@@ -275,10 +322,10 @@
 					</li>
 				</ul>
 				<div class="row">
-					<a href="#" class="more events-col-3">Read older news</a>
+					<a href="#" class="more but-col-3">Read more news</a>
 				</div>
 			</div>
-			<a href="#" class="one-third">
+			<a href="#" class="one-third scale-bg">
 				<h2>Join PTC Plus</h2>
 				<div class="row">
 					<img src="compressed/uploads/ad.jpg" alt="Advertise by PTC" title="PTC Plus">
@@ -293,57 +340,57 @@
 				<div class="swiper-container-2">
 					<div class="swiper-wrapper">
 						<div class="swiper-slide">
-							<a href="#" class="section-4-image" target="_blank" style="background-image: url('compressed/uploads/supponsor.jpg');">
+							<a href="#" class="section-4-image" target="_blank" style="background-image: url('uploads/associations/aboda-1.jpg');">
 							
 							</a>
 						</div>
 						<div class="swiper-slide">
-							<a href="#" class="section-4-image" target="_blank" style="background-image: url('compressed/uploads/supponsor.jpg');">
+							<a href="#" class="section-4-image" target="_blank" style="background-image: url('uploads/associations/achper.jpg');">
 							
 							</a>
 						</div>
 						<div class="swiper-slide">
-							<a href="#" class="section-4-image" target="_blank" style="background-image: url('compressed/uploads/supponsor.jpg');">
+							<a href="#" class="section-4-image" target="_blank" style="background-image: url('uploads/associations/aeta.jpg');">
 							
 							</a>
 						</div>
 						<div class="swiper-slide">
-							<a href="#" class="section-4-image" target="_blank" style="background-image: url('compressed/uploads/supponsor.jpg');">
+							<a href="#" class="section-4-image" target="_blank" style="background-image: url('uploads/associations/alea.jpg');">
 							
 							</a>
 						</div>
 						<div class="swiper-slide">
-							<a href="#" class="section-4-image" target="_blank" style="background-image: url('compressed/uploads/supponsor.jpg');">
+							<a href="#" class="section-4-image" target="_blank" style="background-image: url('uploads/associations/apacs.jpg');">
 							
 							</a>
 						</div>
 						<div class="swiper-slide">
-							<a href="#" class="section-4-image" target="_blank" style="background-image: url('compressed/uploads/supponsor.jpg');">
+							<a href="#" class="section-4-image" target="_blank" style="background-image: url('uploads/associations/asa.png');">
 							
 							</a>
 						</div>
 						<div class="swiper-slide">
-							<a href="#" class="section-4-image" target="_blank" style="background-image: url('compressed/uploads/supponsor.jpg');">
+							<a href="#" class="section-4-image" target="_blank" style="background-image: url('uploads/associations/asr.jpg');">
 							
 							</a>
 						</div>
 						<div class="swiper-slide">
-							<a href="#" class="section-4-image" target="_blank" style="background-image: url('compressed/uploads/supponsor.jpg');">
+							<a href="#" class="section-4-image" target="_blank" style="background-image: url('uploads/associations/atom.png');">
 							
 							</a>
 						</div>
 						<div class="swiper-slide">
-							<a href="#" class="section-4-image" target="_blank" style="background-image: url('compressed/uploads/supponsor.jpg');">
+							<a href="#" class="section-4-image" target="_blank" style="background-image: url('uploads/associations/caa.jpg');">
 							
 							</a>
 						</div>
 						<div class="swiper-slide">
-							<a href="#" class="section-4-image" target="_blank" style="background-image: url('compressed/uploads/supponsor.jpg');">
+							<a href="#" class="section-4-image" target="_blank" style="background-image: url('uploads/associations/eta.png');">
 							
 							</a>
 						</div>
 						<div class="swiper-slide">
-							<a href="#" class="section-4-image" target="_blank" style="background-image: url('compressed/uploads/supponsor.jpg');">
+							<a href="#" class="section-4-image" target="_blank" style="background-image: url('uploads/associations/heia.png');">
 							
 							</a>
 						</div>
