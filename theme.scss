@@ -438,15 +438,15 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00c0f3', end
 		    }
 	}
 }
+.col-3{
+		@include col-3(2.5%);
+	}
 h2{
 	color: $light-grey;
 	font-size: 36px;
 	text-transform: uppercase;
 	font-weight: 700;
 	margin-bottom: 35px;
-}
-.col-3{
-	@include col-3(2.4%);
 }
 .section-2-content{
 	float: left;
@@ -582,6 +582,13 @@ h4{
 	float: left;
 	width: 100%;
 	padding: 8px;
+}
+.but-left{
+	float: left;
+	width: 100%;
+	max-width: 33%;
+	padding: 8px;
+	min-width: 110px;
 }
 button{
 	font-weight: 600;
@@ -779,7 +786,6 @@ footer{
 	background-color: $dark-blue;	
 	display: table;
 	color: white;
-	font-size: 17px;
 	@include two-oneThird(27.632%, 0);
 	span{
 		display: block;
@@ -1018,6 +1024,11 @@ footer{
 		margin-top: 12px;
 	}
 }
+.custom-page{
+	.bread-crumb{
+		margin-bottom: 30px;
+	}
+}
 ul.bread-crumb{
 	list-style: none;
 	margin: 0;
@@ -1051,9 +1062,6 @@ ul.bread-crumb{
 	h1{
 		font-size: 28px;
 		color: $blue;
-	}
-	p, li{
-		font-size: 19px;
 	}
 	.page-menu{
 		padding-left: 20px;
@@ -1104,6 +1112,90 @@ ul.bread-crumb{
 		}
 	}
 }
+.custom-page{
+	padding: 35px 0;
+	
+	.two-onethird{
+		@include two-oneThird(31.671%, 5%);	
+	}
+	.one-twothird{
+		@include one-twoThird(31.671%, 5%);	
+	}
+	.col-2{
+		@include col-2(5%);
+		margin-bottom: 0;
+	}
+	.col-3{
+		@include col-3(5%);
+	}
+	.col-4{
+		@include col-4(5%);
+	}
+	h1{
+		font-size: 28px;
+		color: $blue;
+	}
+	h2{
+		color: $blue;
+		font-size: 18px;
+		margin-bottom: 10px;
+	}
+	.page-menu{
+		padding-left: 20px;
+		margin: 0;
+		li{
+			margin-bottom: 19px;
+			&:last-of-type{
+				margin-bottom: 0;
+			}
+		}
+	}
+}
+h2{
+	&.button{
+		position: relative;
+		cursor: pointer;
+		padding: 8px;
+		-webkit-border-radius: 3px;
+		        border-radius: 3px;
+		background-color: $light-bg;
+		@include transition(.3);
+		&:after{
+			position: absolute;
+			content: "\f055";
+			font-family: FontAwesome;
+			color: $blue;
+			font-size: 25.7px;
+			right: 12px;
+			top: 6px;
+			line-height: 0.9;
+			@include transition(1);
+		}
+		&.show{
+			background-color: darken($light-bg, 10%);
+			&:after{
+				@include transform(225);
+			}
+		}
+		&:hover{
+			background-color: darken($light-bg, 10%);
+		}
+	}
+}
+.accordian{
+	padding: 30px 0;
+	float: left;
+	width: 100%;
+	.col-2{
+		margin-bottom: 0%;
+	}
+}
+.accordian-content{
+	display: none;
+	margin-bottom: 5%;
+	float: left;
+	width: 100%;
+}
 .single-padding{
 	padding: 30px;
 }
@@ -1113,9 +1205,6 @@ ul.bread-crumb{
 	h1{
 		font-size: 28px;
 		color: $blue;
-	}
-	p, li{
-		font-size: 19px;
 	}
 	.page-menu{
 		padding-left: 20px;
@@ -1341,6 +1430,7 @@ h6{
 			&:last-of-type{
 				font-weight: bold;
 				color: $blue;
+				font-size: 18px;
 			}
 			span{
 				font-weight: normal;

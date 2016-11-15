@@ -204,7 +204,7 @@ header, section, footer, aside, nav{
 
 @mixin col-4($margin){
 	float: left;
-	width: (100%-($margin*2))/4;
+	width: (100%-($margin*3))/4;
 	margin-right: $margin;
 	margin-bottom: $margin;
 	&:first-child{
@@ -228,14 +228,15 @@ header, section, footer, aside, nav{
 			}
 	}
 }
+
 @mixin two-oneThird($one-third, $margin-right){
 	.two-third{
 		width: 100% - $margin-right - $one-third;
 		float: left;
+		margin-right: $margin-right;
 			& + .one-third{
 				width: $one-third;
 				float: left;
-				margin-left: $margin-right;
 			}
 	}
 }

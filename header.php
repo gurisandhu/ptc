@@ -26,7 +26,7 @@
 						<ul>
 							<li><a href="/PTC/">Home</a></li>
 							<li><a href="/PTC/about.php">About</a></li>
-							<li><a href="#">Resources</a></li>
+							<li><a href="/ptc/template-custom.php">Custom</a></li>
 							<li><a href="#">Awards</a></li>
 							<li><a href="#">News</a></li>
 							<li><a href="/PTC/single.php">Events</a></li>

@@ -74,4 +74,13 @@ $(window).scroll(function(){
   }
 });
 
+// ++++++++++++++++++++
+// Accordian
+// ++++++++++++++++++++
+
+$('h2.button').click(function(){
+  $('+ .accordian-content', this).slideToggle();
+  $(this).toggleClass('show');
+});
+
 });//end of document ready
