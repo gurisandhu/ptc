@@ -36,10 +36,12 @@ body{
 	color: $dark-grey;
 	font-family: $open;
 	font-size: 14px;
+	position: relative;
 	&:before{
 		content: "";
 		display: block;
 		width: 100%;
+		
 	}
 	@include fixed-header-height(88px);
 }
@@ -103,7 +105,7 @@ nav{
 		max-width: 775px;
 		padding-right: 25px;
 		@include transition(.3);
-			> ul{
+			> div ul{
 				float: right;
 				width: auto;
 				margin: 0;
@@ -945,21 +947,25 @@ footer{
 	        box-shadow: 0 0 7px #ccc;
 	li{
 		float: left;
-		width: 22%;	
-		padding-right: 20px;
+		width: 20.1%;	
+		margin-right: 20px;
 		text-align: center;
+		-webkit-border-radius: 3px;
+		        border-radius: 3px;
+		background-color: white;
 		position: relative;
 			&:after{
 				position: absolute;
 				content: "\f107";
-				right: 36px;
+				right: 11px;
 				top: 9px;
 				color: $dark-blue;
 				font-family: FontAwesome;
 				font-size: 32px;
+				z-index: 0;
 			}
 		&:last-of-type{
-			padding-right: 0;
+			margin-right: 0;
 			width: 12%;
 			&:after{
 				display: none;
@@ -975,6 +981,9 @@ footer{
 		// height: 45px;
 		border: none;
 		font-weight: 600;
+		position: relative;
+		z-index: 1;
+		background-color: transparent;
 		-webkit-appearance: none;
 		   -moz-appearance: none;
 		        appearance: none;
@@ -1112,9 +1121,60 @@ ul.bread-crumb{
 		}
 	}
 }
+.with-sidebar{
+	width: 66%;
+	padding-right: 60px;
+	float: left;
+}
+.sidebar{
+	width: 34%;
+	float: left;
+	.page-menu{
+		padding: 0;
+		margin: 0;
+		li{
+			margin-bottom: 19px;
+			&:last-of-type{
+				margin-bottom: 0;
+			}
+		}
+	}
+	border-left: 1px solid $border;
+	padding-left: 5%;
+	ul{
+		list-style: none;
+		padding: 0;
+		a{
+			h4{
+				color: $dark-blue;
+			}
+		}
+	}
+	.news{
+		border-top: 1px solid $border;
+		border-right: 1px solid $border;
+		border-bottom: 1px solid $border;
+		li{
+			@include news(80px);
+		}
+		.news-image{
+			width: 23.96%;
+		}
+		.news-content{
+			width: 100%-23.96%;
+			padding-right: 10px;
+			span{
+				font-size: 13px;
+			}
+			h4{
+				font-size: 15px;
+				color: $dark-blue;
+			}
+		}
+	}
+}
 .custom-page{
 	padding: 35px 0;
-	
 	.two-onethird{
 		@include two-oneThird(31.671%, 5%);	
 	}
@@ -1127,9 +1187,11 @@ ul.bread-crumb{
 	}
 	.col-3{
 		@include col-3(5%);
+		margin-bottom: 0;
 	}
 	.col-4{
 		@include col-4(5%);
+		margin-bottom: 0;
 	}
 	h1{
 		font-size: 28px;
@@ -1139,16 +1201,6 @@ ul.bread-crumb{
 		color: $blue;
 		font-size: 18px;
 		margin-bottom: 10px;
-	}
-	.page-menu{
-		padding-left: 20px;
-		margin: 0;
-		li{
-			margin-bottom: 19px;
-			&:last-of-type{
-				margin-bottom: 0;
-			}
-		}
 	}
 }
 h2{
@@ -1167,7 +1219,7 @@ h2{
 			color: $blue;
 			font-size: 25.7px;
 			right: 12px;
-			top: 6px;
+			top: 7px;
 			line-height: 0.9;
 			@include transition(1);
 		}
@@ -1176,9 +1228,12 @@ h2{
 			&:after{
 				@include transform(225);
 			}
+			&:hover{
+				background-color: darken($light-bg, 10%);
+			}
 		}
 		&:hover{
-			background-color: darken($light-bg, 10%);
+			background-color: darken($light-bg, 5%);
 		}
 	}
 }
@@ -1307,7 +1362,7 @@ h6{
 		top: -108px;
 		width: 100%;
 		height: 100%;
-		background-image: url("uploads/rectangle.png");
+		background-image: url("images/rectangle.png");
 		background-repeat: no-repeat;
 		background-position: 0 0;
 	}

@@ -40,9 +40,9 @@ gulp.task('styles', function() {
 
 // Image compressed tasks
 gulp.task('imagemin', function(){
-	gulp.src('uploads/*')
+	gulp.src('images/*')
 		.pipe(imagemin())
-		.pipe(gulp.dest('compressed/uploads'));
+		.pipe(gulp.dest('compressed/images'));
 });
 
 // Watch Task
@@ -50,7 +50,7 @@ gulp.task('imagemin', function(){
 gulp.task('watch', ['styles'], function(){
 	gulp.watch('script.js', ['script']);
 	gulp.watch('*.scss', ['styles']);
-	gulp.watch('uploads/*', ['imagemin']);
+	gulp.watch('images/*', ['imagemin']);
 });
 
 gulp.task('default', ['script', 'styles', 'imagemin', 'watch', 'serve']);

@@ -1,13 +1,10 @@
-<?php include 'header.php'; ?>
+<?php 
+get_header();
+ ?>
 
 	<section class="inner-page">
 		<div class="container">
-			<div class="row">
-				<ul class="row bread-crumb">
-					<li><a href="#">PTC</a></li>
-					<li class="active"><i class="fa fa-arrow-right"></i><a href="#">About</a></li>
-				</ul>
-			</div>
+			<?php include (TEMPLATEPATH . 'bread-crumb.php'); ?>	
 			<div class="row">
 				<div class="two-third">
 					<h1>About</h1>
@@ -55,7 +52,7 @@
 							 ?>
 							<li>
 								<a href="#">
-									<div class="news-image" style="background-image: url('compressed/uploads/news.jpg');"><!-- image in style --></div>
+									<div class="news-image" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/news.jpg');"><!-- image in style --></div>
 									<div class="news-content">
 										<div class="table-cell">
 											<span>Thursday, 8 September 2016</span><h4><?php echo $trimedTitle; ?></h4>
@@ -65,7 +62,7 @@
 							</li>
 							<li>
 								<a href="#">
-									<div class="news-image" style="background-image: url('compressed/uploads/news.jpg');"><!-- image in style --></div>
+									<div class="news-image" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/news.jpg');"><!-- image in style --></div>
 									<div class="news-content">
 										<div class="table-cell">
 											<span>Thursday, 8 September 2016</span><h4><?php echo $trimedTitle; ?></h4>
@@ -75,7 +72,7 @@
 							</li>
 							<li>
 								<a href="#">
-									<div class="news-image" style="background-image: url('compressed/uploads/news.jpg');"><!-- image in style --></div>
+									<div class="news-image" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/news.jpg');"><!-- image in style --></div>
 									<div class="news-content">
 										<div class="table-cell">
 											<span>Thursday, 8 September 2016</span><h4><?php echo $trimedTitle; ?></h4>
@@ -85,7 +82,7 @@
 							</li>
 							<li>
 								<a href="#">
-									<div class="news-image" style="background-image: url('compressed/uploads/news.jpg');"><!-- image in style --></div>
+									<div class="news-image" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/news.jpg');"><!-- image in style --></div>
 									<div class="news-content">
 										<div class="table-cell">
 											<span>Thursday, 8 September 2016</span><h4><?php echo $trimedTitle; ?></h4>
@@ -95,7 +92,7 @@
 							</li>
 							<li>
 								<a href="#">
-									<div class="news-image" style="background-image: url('compressed/uploads/news.jpg');"><!-- image in style --></div>
+									<div class="news-image" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/news.jpg');"><!-- image in style --></div>
 									<div class="news-content">
 										<div class="table-cell">
 											<span>Thursday, 8 September 2016</span><h4><?php echo $trimedTitle; ?></h4>
@@ -112,7 +109,7 @@
 					<div class="widget scale-bg">
 						<h5>Join PTC Plus</h5>
 						<div class="row">
-							<img src="compressed/uploads/ad.jpg" alt="Advertise by PTC" title="PTC Plus">
+							<img src="<?php echo get_template_directory_uri(); ?>/images/ad.jpg" alt="Advertise by PTC" title="PTC Plus">
 						</div>
 					</div>
 				</div> <!-- one-third -->
@@ -124,12 +121,12 @@
 		<div class="container">
 			<h2> Realated Events</h2>
 			<a href="#" class="col-3">
-				<div class="section-2-image" style="background-image: url('compressed/uploads/course.png');">
+				<div class="section-2-image" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/course.png');">
 					<span class="date">12 Jul</span>
 				</div>
 				<div class="section-2-content">
 					<div class="provider">
-						<div class="provider-logo" style="background-image: url('compressed/uploads/course-sub.jpg');">
+						<div class="provider-logo" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/course-sub.jpg');">
 							
 						</div>
 						<div class="provider-title">
@@ -147,12 +144,12 @@
 			</a>
 
 			<a href="#" class="col-3">
-				<div class="section-2-image" style="background-image: url('compressed/uploads/course.png');">
+				<div class="section-2-image" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/course.png');">
 					<span class="date">12 Jul</span>
 				</div>
 				<div class="section-2-content">
 					<div class="provider">
-						<div class="provider-logo" style="background-image: url('compressed/uploads/course-sub.jpg');">
+						<div class="provider-logo" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/course-sub.jpg');">
 							
 						</div>
 						<div class="provider-title">
@@ -170,12 +167,12 @@
 			</a>
 
 			<a href="#" class="col-3">
-				<div class="section-2-image" style="background-image: url('compressed/uploads/course.png');">
+				<div class="section-2-image" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/course.png');">
 					<span class="date">12 Jul</span>
 				</div>
 				<div class="section-2-content">
 					<div class="provider">
-						<div class="provider-logo" style="background-image: url('compressed/uploads/course-sub.jpg');">
+						<div class="provider-logo" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/course-sub.jpg');">
 							
 						</div>
 						<div class="provider-title">
@@ -198,75 +195,8 @@
 		</div>
 	</section><!-- section-2 related events-->
 	
-	<section class="light-bg">
-		<section class="section-4">
-			<div class="container">
-				<div class="section-4-wrapper">
-					<div class="swiper-container-2">
-						<div class="swiper-wrapper">
-							<div class="swiper-slide">
-								<a href="#" class="section-4-image" target="_blank" style="background-image: url('uploads/associations/aboda-1.jpg');">
-								
-								</a>
-							</div>
-							<div class="swiper-slide">
-								<a href="#" class="section-4-image" target="_blank" style="background-image: url('uploads/associations/achper.jpg');">
-								
-								</a>
-							</div>
-							<div class="swiper-slide">
-								<a href="#" class="section-4-image" target="_blank" style="background-image: url('uploads/associations/aeta.jpg');">
-								
-								</a>
-							</div>
-							<div class="swiper-slide">
-								<a href="#" class="section-4-image" target="_blank" style="background-image: url('uploads/associations/alea.jpg');">
-								
-								</a>
-							</div>
-							<div class="swiper-slide">
-								<a href="#" class="section-4-image" target="_blank" style="background-image: url('uploads/associations/apacs.jpg');">
-								
-								</a>
-							</div>
-							<div class="swiper-slide">
-								<a href="#" class="section-4-image" target="_blank" style="background-image: url('uploads/associations/asa.png');">
-								
-								</a>
-							</div>
-							<div class="swiper-slide">
-								<a href="#" class="section-4-image" target="_blank" style="background-image: url('uploads/associations/asr.jpg');">
-								
-								</a>
-							</div>
-							<div class="swiper-slide">
-								<a href="#" class="section-4-image" target="_blank" style="background-image: url('uploads/associations/atom.png');">
-								
-								</a>
-							</div>
-							<div class="swiper-slide">
-								<a href="#" class="section-4-image" target="_blank" style="background-image: url('uploads/associations/caa.jpg');">
-								
-								</a>
-							</div>
-							<div class="swiper-slide">
-								<a href="#" class="section-4-image" target="_blank" style="background-image: url('uploads/associations/eta.png');">
-								
-								</a>
-							</div>
-							<div class="swiper-slide">
-								<a href="#" class="section-4-image" target="_blank" style="background-image: url('uploads/associations/heia.png');">
-								
-								</a>
-							</div>
-						</div>
-		        		<div class="swiper-button-prev-2 swiper-button"><!-- button --></div>
-		        		<div class="swiper-button-next-2 swiper-button"><!-- button --></div>
-					</div>
-				</div>
-			</div>
-		</section>
-	</section>
+	<!-- <section class="light-bg">
+		
+	</section> -->
 
-
-<?php include 'footer.php'; ?>
+<?php get_footer(); ?>
