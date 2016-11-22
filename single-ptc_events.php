@@ -1,28 +1,31 @@
 <?php 
 /*
-* Template Name: Single Event
+* Template Name: Single PTC Events
 */
 get_header();
  ?>
 
+ <?php 
+	$ptc_events 	= 	array( 'post_type' => 'ptc_events',);
+	$repeat_events 	= 	new WP_Query( $ptc_events );
+  ?>
+
 	<section class="single-page light-bg">
 		<div class="container rect-bg">
+
+			<?php while ( $repeat_events->have_posts() ) : $repeat_events->the_post(); ?>
 			<?php include (TEMPLATEPATH . 'bread-crumb.php'); ?>	
 
 			<div class="row">
 				<ul class="single-title" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/icons/single-event.png');">
 					<li><span class="image" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/associations/orff.png');"></span><h6>Orff Schulwerk Association NSW</h6></li>
-					<li><h1>Richard Gill Workshop: ORFF Schulwerk and its relation to music outside the volumes</h1></li>
+					<li><h1><?php the_title(); ?><!-- Richard Gill Workshop: ORFF Schulwerk and its relation to music outside the volumes --></h1></li>
 				</ul>
 			</div>
 			<div class="row">
 				<div class="two-third bg-shadow">
 					<div class="single-padding">
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus nemo voluptatum sint nesciunt adipisci dolore. Enim, est, doloremque. Deleniti harum, omnis eligendi nam, mollitia labore odit dolorum saepe molestias voluptatibus.</p>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit deserunt odio totam mollitia accusantium temporibus ratione rerum culpa quasi porro incidunt eum, nulla hic, earum enim possimus exercitationem pariatur, blanditiis.</p>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus nemo voluptatum sint nesciunt adipisci dolore. Enim, est, doloremque. Deleniti harum, omnis eligendi nam, mollitia labore odit dolorum saepe molestias voluptatibus.</p>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit deserunt odio totam mollitia accusantium temporibus ratione rerum culpa quasi porro incidunt eum, nulla hic, earum enim possimus exercitationem pariatur, blanditiis.</p>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde tenetur asperiores cum suscipit possimus illo delectus nihil error, nobis. Culpa ipsum eaque sapiente. Ut obcaecati laboriosam minus nisi magni, asperiores.</p>
+						<?php the_content(); ?>
 					</div>
 					<ul class="tags single-padding">
 						<li><div>Audience:</div>
@@ -76,6 +79,7 @@ get_header();
 					</div>
 				</div> <!-- one-third -->
 			</div>	
+			<?php endwhile; ?>
 		</div><!-- container -->
 	</section>
 
@@ -160,6 +164,6 @@ get_header();
 	<!-- <section class="light-bg">
 		
 	</section> -->
-
+<?php wp_reset_query(); ?>
 
 <?php get_footer(); ?>

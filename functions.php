@@ -83,30 +83,4 @@ if (function_exists('acf_add_options_page')){
 // Events Custom post
 // *************************
   
-  function events_category(){
-   $labels = array(
-        'name'                => _x( 'Events', 'post type general name' ),
-        'singular_name'       => _x( 'Event', 'post type singular name'),
-        'add_new_item'        => __( 'Add Event'),
-        'edit_item'           => __( 'Edit Event'),
-        'new_item'            => __( 'New Event'),
-        'all_items'           => __( 'All Events'),
-        'view_item'           => __( 'View Event'),
-        'not_found'           => __( 'No Event found'),
-        'not_found_in_trash'  => __( 'No Event found in the Trash'),
-        'menu_name'           => __( 'Events')
-      );
-
-   $args  =   array(
-      'labels'          =>  $labels,
-      'taxonomies'      =>  array('category', 'post_tag'),
-      'menu_icon'       =>  'dashicons-building',
-      'menu_position'   =>  95,
-      'public'          =>  true,
-      'rewrite'         =>  array('slug' => 'events', 'with_front' => true),
-    );
-   register_post_type('project', $args);
-  }
-  add_action('init', 'events_category');
-
 ?>
