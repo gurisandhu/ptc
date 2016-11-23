@@ -6,26 +6,44 @@ get_header();
  ?>
 
  <?php 
-	$ptc_events 	= 	array( 'post_type' => 'ptc_events',);
+	$ptc_events 	= 	array( 'post_type' => 'ptc_events');
 	$repeat_events 	= 	new WP_Query( $ptc_events );
   ?>
+	
+	<section class="single-page light-bg">
+		<div class="container rect-bg">
+			<?php while ( $repeat_events->have_posts() ) : $repeat_events->the_post();?>	
+				<h1><?php the_title(); ?></h1>
+				<div class="single-padding">
+					<?php the_content(); ?>
+				</div>
 
+				<div class="full-width">
+					<div class="col-2">
+						Associations:
+					</div>
+					<div class="col-2">
+						<?php echo esc_html( get_post_meta( get_the_ID(), 'ptc_associations', true ) ); ?>
+					</div>
+				</div>
+			<?php endwhile; ?>		
+		</div>
+	</section>
 	<section class="single-page light-bg">
 		<div class="container rect-bg">
 
-			<?php while ( $repeat_events->have_posts() ) : $repeat_events->the_post(); ?>
 			<?php include (TEMPLATEPATH . 'bread-crumb.php'); ?>	
 
 			<div class="row">
 				<ul class="single-title" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/icons/single-event.png');">
 					<li><span class="image" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/associations/orff.png');"></span><h6>Orff Schulwerk Association NSW</h6></li>
-					<li><h1><?php the_title(); ?><!-- Richard Gill Workshop: ORFF Schulwerk and its relation to music outside the volumes --></h1></li>
+					<li><h1>Richard Gill Workshop: ORFF Schulwerk and its relation to music outside the volumes</h1></li>
 				</ul>
 			</div>
 			<div class="row">
 				<div class="two-third bg-shadow">
 					<div class="single-padding">
-						<?php the_content(); ?>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus natus, repellendus quae voluptate magni iusto vel error sint alias est, similique quasi culpa ullam nulla, voluptas eos facilis. Facilis, voluptatem!</p>
 					</div>
 					<ul class="tags single-padding">
 						<li><div>Audience:</div>
@@ -79,7 +97,7 @@ get_header();
 					</div>
 				</div> <!-- one-third -->
 			</div>	
-			<?php endwhile; ?>
+			
 		</div><!-- container -->
 	</section>
 
@@ -164,6 +182,6 @@ get_header();
 	<!-- <section class="light-bg">
 		
 	</section> -->
-<?php wp_reset_query(); ?>
+<?php wp_reset_query();  ?>
 
 <?php get_footer(); ?>

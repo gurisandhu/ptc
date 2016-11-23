@@ -82,5 +82,123 @@ if (function_exists('acf_add_options_page')){
 // *************************
 // Events Custom post
 // *************************
-  
+  add_action( 'init', 'create_ptc_events');
+
+  function create_ptc_events() {
+    register_post_type( 'ptc_events',
+
+      array(
+        'labels'    => array(
+            'name'                  =>  'PTC Events',
+            'singular_name'         =>  'Event',
+            'add_new'               =>  'Add Event',
+            'add_new_item'          =>  'Add New Event',
+            'edit'                  =>  'Edit',
+            'edit_item'             =>  'Edit Event',
+            'new_item'              =>  'New Event',
+            'view'                  =>  'View',
+            'view_item'             =>  'View Event',
+            'search_items'          =>  'Search Events',
+            'not_found'             =>  'No Events Found',
+            'not_found_in_trash'    =>    'No Events found in Trash',
+            'parent'                =>  'Parent Event'
+        ),
+            'public'            =>  true,
+            'menu_position'     =>  20,
+            'supports'          =>  array( 'title', 'editor', 'comments', 'thumbnail'),
+            'taxonomies'        =>  array( '' ),
+            'menu_icon'         =>  'dashicons-calendar-alt',
+            'has_archive'       => true
+        )
+      );
+  }
+
+  add_action( 'init', 'create_my_taxonomies', 0);
+
+function create_my_taxonomies() {
+    register_taxonomy(
+            'ptc_associations',
+            'ptc_events',
+            array(
+                'labels'   => array(
+                    'name'  => 'Associations',
+                    'add_new_item' =>   'Add New Association',
+                    'new_item_name' =>  'New Association'
+                    ),
+                'show_ui'   => true,
+                'show_tagcloud'     => false,
+                'hierarchical'      => true
+                )
+        );
+    register_taxonomy(
+            'ptc_subjects',
+            'ptc_events',
+            array(
+                'labels'   => array(
+                    'name'  => 'Subjects',
+                    'add_new_item' =>   'Add New Subject',
+                    'new_item_name' =>  'New Subject'
+                    ),
+                'show_ui'   => true,
+                'show_tagcloud'     => false,
+                'hierarchical'      => true
+                )
+        );
+    register_taxonomy(
+            'ptc_levels',
+            'ptc_events',
+            array(
+                'labels'   => array(
+                    'name'  => 'Levels',
+                    'add_new_item' =>   'Add New Level',
+                    'new_item_name' =>  'New Level'
+                    ),
+                'show_ui'   => true,
+                'show_tagcloud'     => false,
+                'hierarchical'      => true
+                )
+        );
+    register_taxonomy(
+            'ptc_regions',
+            'ptc_events',
+            array(
+                'labels'   => array(
+                    'name'  => 'Regions',
+                    'add_new_item' =>   'Add New Region',
+                    'new_item_name' =>  'New Region'
+                    ),
+                'show_ui'   => true,
+                'show_tagcloud'     => false,
+                'hierarchical'      => true
+                )
+        );
+    register_taxonomy(
+        'shiba_theme', 'ptc_events',
+        array(
+            'hierarchical'  => False, 
+            'label'         => __('Theme'),
+            'public'        => True,
+            'show_ui'       => True,
+            'query_var'     => 'theme',
+            'rewrite'       => array('slug' => 'theme')
+          )
+
+      );
+    add_filter("manage_edit-shiba_theme_columns", 'theme_columns');
+
+function theme_columns($theme_columns) {
+  $new_columns = array(
+      'cb'                =>    '<input type="checkbox" />',
+      'name'              =>    __( 'Name' ),
+      'header_icon'       =>    '',
+      'slug'              =>    __('Slug'),
+      'posts'             =>    __('Posts')
+    );
+  return $new_columns;
+}
+}
+
+
+
+
 ?>
