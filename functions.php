@@ -89,8 +89,8 @@ if (function_exists('acf_add_options_page')){
 
       array(
         'labels'    => array(
-            'name'                  =>  'PTC Events',
-            'singular_name'         =>  'Event',
+            'name'                  =>  'PTC Events', 'post type general name',
+            'singular_name'         =>  'Event', 'post type singular name',
             'add_new'               =>  'Add Event',
             'add_new_item'          =>  'Add New Event',
             'edit'                  =>  'Edit',
@@ -103,12 +103,30 @@ if (function_exists('acf_add_options_page')){
             'not_found_in_trash'    =>    'No Events found in Trash',
             'parent'                =>  'Parent Event'
         ),
-            'public'            =>  true,
+            // 'public'            =>  true,
             'menu_position'     =>  20,
-            'supports'          =>  array( 'title', 'editor', 'comments', 'thumbnail'),
-            'taxonomies'        =>  array( '' ),
+            // 'supports'          =>  array( 'title', 'editor', 'comments', 'thumbnail'),
+            'taxonomies'        =>  array( 'create_my_taxonomies'),
             'menu_icon'         =>  'dashicons-calendar-alt',
-            'has_archive'       => true
+            'update_count_callback' => '_update_post_term_count',
+            'query_var'             => true,
+            // 'has_archive'       => true,
+            // 'hierarchical'      => true,
+            'supports'              => array( 'title', 'editor', 'excerpt', 'thumbnail', 'revisions', 'page-attributes', ),
+
+        // 'taxonomies'            => array('hire_taxonomies'),
+        'hierarchical'          => true,
+        'public'                => true,
+        'show_ui'               => true,
+        'show_in_menu'          => true,
+        // 'menu_position'         => 5,
+        'show_in_admin_bar'     => true,
+        'show_in_nav_menus'     => true,
+        'can_export'            => true,
+        'has_archive'           => true,        
+        'exclude_from_search'   => false,
+        'publicly_queryable'    => true,
+        'capability_type'       => 'post',
         )
       );
   }
@@ -127,21 +145,33 @@ function create_my_taxonomies() {
                     ),
                 'show_ui'   => true,
                 'show_tagcloud'     => false,
-                'hierarchical'      => true
+                'hierarchical'      => true,
+                'public'                     => true,
+                'show_ui'                    => true,
+                'show_admin_column'          => true,
+                'show_in_nav_menus'          => true,
+                'show_tagcloud'              => true,
+                'rewrite'                    => true
                 )
         );
     register_taxonomy(
-            'ptc_subjects',
+            'ptc_audience',
             'ptc_events',
             array(
                 'labels'   => array(
-                    'name'  => 'Subjects',
-                    'add_new_item' =>   'Add New Subject',
-                    'new_item_name' =>  'New Subject'
+                    'name'  => 'Audience',
+                    'add_new_item' =>   'Add New Audience',
+                    'new_item_name' =>  'New Audience'
                     ),
                 'show_ui'   => true,
                 'show_tagcloud'     => false,
-                'hierarchical'      => true
+                'hierarchical'      => true,
+                'public'                     => true,
+                'show_ui'                    => true,
+                'show_admin_column'          => true,
+                'show_in_nav_menus'          => true,
+                'show_tagcloud'              => true,
+                'rewrite'                    => true
                 )
         );
     register_taxonomy(
@@ -155,7 +185,53 @@ function create_my_taxonomies() {
                     ),
                 'show_ui'   => true,
                 'show_tagcloud'     => false,
-                'hierarchical'      => true
+                'hierarchical'      => true,
+                'public'                     => true,
+                'show_ui'                    => true,
+                'show_admin_column'          => true,
+                'show_in_nav_menus'          => true,
+                'show_tagcloud'              => true,
+                'rewrite'                    => true
+                )
+        );
+    register_taxonomy(
+            'ptc_subjects',
+            'ptc_events',
+            array(
+                'labels'   => array(
+                    'name'  => 'Subjects | KLA',
+                    'add_new_item' =>   'Add New Subject',
+                    'new_item_name' =>  'New Subject'
+                    ),
+                'show_ui'   => true,
+                'show_tagcloud'     => false,
+                'hierarchical'      => true,
+                'public'                     => true,
+                'show_ui'                    => true,
+                'show_admin_column'          => true,
+                'show_in_nav_menus'          => true,
+                'show_tagcloud'              => true,
+                'rewrite'                    => true
+                )
+        );
+    register_taxonomy(
+            'ptc_specilist_area',
+            'ptc_events',
+            array(
+                'labels'   => array(
+                    'name'  => 'Specilist area',
+                    'add_new_item' =>   'Add New Specilist area',
+                    'new_item_name' =>  'New Specilist area'
+                    ),
+                'show_ui'   => true,
+                'show_tagcloud'     => false,
+                'hierarchical'      => true,
+                'public'                     => true,
+                'show_ui'                    => true,
+                'show_admin_column'          => true,
+                'show_in_nav_menus'          => true,
+                'show_tagcloud'              => true,
+                'rewrite'                    => true
                 )
         );
     register_taxonomy(
@@ -169,33 +245,15 @@ function create_my_taxonomies() {
                     ),
                 'show_ui'   => true,
                 'show_tagcloud'     => false,
-                'hierarchical'      => true
+                'hierarchical'      => true,
+                'public'                     => true,
+                'show_ui'                    => true,
+                'show_admin_column'          => true,
+                'show_in_nav_menus'          => true,
+                'show_tagcloud'              => true,
+                'rewrite'                    => true
                 )
         );
-    register_taxonomy(
-        'shiba_theme', 'ptc_events',
-        array(
-            'hierarchical'  => False, 
-            'label'         => __('Theme'),
-            'public'        => True,
-            'show_ui'       => True,
-            'query_var'     => 'theme',
-            'rewrite'       => array('slug' => 'theme')
-          )
-
-      );
-    add_filter("manage_edit-shiba_theme_columns", 'theme_columns');
-
-function theme_columns($theme_columns) {
-  $new_columns = array(
-      'cb'                =>    '<input type="checkbox" />',
-      'name'              =>    __( 'Name' ),
-      'header_icon'       =>    '',
-      'slug'              =>    __('Slug'),
-      'posts'             =>    __('Posts')
-    );
-  return $new_columns;
-}
 }
 
 
