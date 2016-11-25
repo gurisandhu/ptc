@@ -5,22 +5,55 @@
 get_header();
  ?>
 
-<?php $current_post_id = get_the_ID();
-		$current_cat_id = the_category_ID();
 
-		$args = array(
-			'cat'		=> $current_cat_id,
-			'post_type'	=>	'PTC-events',
-			'posts_per_page'	=> 4
-		);
-	$projects = new WP_Query($current_post_id);
+<?php 
 
-	$current_post = var_export($GLOBALS['post'], TRUE);
+// Taxonomies
+// $ptc_asso = the_terms( $post->ID, 'ptc_associations', '');
+// $ptc_audience = the_terms( $post->ID, 'ptc_audience', '');
+// $ptc_levels = the_terms( $post->ID, 'ptc_levels', '');
+// $ptc_subjects = the_terms( $post->ID, 'ptc_subjects', '');
+// $ptc_specilist_area = the_terms( $post->ID, 'ptc_specilist_area', '');
+// $ptc_regions = the_terms( $post->ID, 'ptc_regions', '');
 
-	 ?>
+// Custom fields from Taxonomies
+$association = get_the_terms( get_the_ID(), 'ptc_associations');
+if ( !empty($association)){
+	$term = array_pop($association);
+	$asso_person = get_field('association_contact_person', $term);
+	$asso_image = get_field('association_images', $term);
+	$asso_website = get_field('association_website', $term);
+	$asso_email = get_field('association_email', $term);
+	$asso_contact = get_field('association_contact_number', $term);
+	$asso_contact_2 = get_field('association_contact_number_2', $term);
+}
+$subjects 	= get_the_terms( get_the_ID(), 'ptc_subjects');
+if ( !empty($subjects)){
+	$sub_term = array_pop($subjects);
+	$sub_icon = get_field('subject_kla_icon', $sub_term);
+}
 
-
-
+// Custom fields from Events
+$bostes_approved = get_field_object('events_approved_by')["value"][0];
+if ($bostes_approved == "Yes"){
+	$show_bostes_image = get_template_directory_uri() . '/images/event-logo.png';	
+}
+// If contact detials is from Association or in event (custom)
+$event_contact_details 	= get_field('association_contact_details');
+if ($event_contact_details == "Use Custom"){
+	$contact_person = get_field('events_contact_person');
+	$website_url = get_field('events_website');
+	$email_id = get_field('events_email');
+	$contact_number = get_field('events_contact_number');
+	$contact_number_2 = get_field('events_contact_number_2');
+} else {
+	$contact_person = $asso_person;
+	$website_url = $asso_website;
+	$email_id = $asso_email;
+	$contact_number = $asso_contact;
+	$contact_number_2 = $asso_contact_2;
+}
+ ?>
 
 	<section class="single-page light-bg">
 		<div class="container rect-bg">
@@ -28,8 +61,8 @@ get_header();
 			<?php include (TEMPLATEPATH . 'bread-crumb.php'); ?>	
 
 			<div class="row">
-				<ul class="single-title" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/icons/single-event.png');">
-					<li><span class="image" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/associations/orff.png');"></span><h6>Orff Schulwerk Association NSW</h6></li>
+				<ul class="single-title" style="background-image: url('<?php echo $sub_icon ?>');">
+					<li><span class="image" style="background-image: url('<?php echo $asso_image; ?>');"></span><h6><?php echo the_terms( $current_post_ID, 'ptc_associations', ''); ?></h6></li>
 					<li><h1><?php the_title(); ?></h1></li>
 				</ul>
 			</div>
@@ -37,74 +70,84 @@ get_header();
 				<div class="two-third bg-shadow">
 
 					<?php if (have_posts()) : 
-					while (have_posts()) :
-					the_post(); ?>
-					<div class="single-padding">
-						<?php the_content();  ?>
-					</div>
-					<?php endwhile;
+						while (have_posts()) :
+						the_post(); ?>
+							<div class="single-padding">
+								<?php the_content();  ?>
+							</div>
+						<?php endwhile;
 					endif;  ?>
-
-					<div class="single-padding">
-						 <?php
-
-$taxonomy = create_my_taxonomies();
-var_dump($taxonomy);
-
-?>
-					</div>
-					
-					
-
+					<?php $current_post_ID= $post->ID; ?>
 					<ul class="tags single-padding">
 						<li><div>Audience:</div>
-							<div>Secondary teachers</div></li>
-						<li><div>Target group:</div>
-							<div>7-12</div></li>
-						<li><div>KLA:</div>
-							<div>Creative Arts</div></li>
+							<div><?php echo the_terms( $current_post_ID, 'ptc_audience', ''); ?></div></li>
+						<li><div>Levels:</div>
+							<div><?php echo the_terms( $current_post_ID, 'ptc_levels', ''); ?></div></li>
+						<li><div>Subject | KLA:</div>
+							<div><?php echo the_terms( $current_post_ID, 'ptc_subjects', ''); ?></div></li>
 						<li><div>Specilist area:</div>
-							<div>Music</div></li>
+							<div><?php echo the_terms( $current_post_ID, 'ptc_specilist_area', ''); ?></div></li>
 					</ul>
 					<div class="full-width single-padding">
 							<div class="full-width contact-title">Event contacts:</div>
-							<ul class="event-contacts full-width" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/event-logo.png');">
-								<li><i class="fa fa-user"></i><p>Michele Ellis</p></li>
-								<li><i class="fa fa-phone"></i><p><b><a href="tel:0423 180 119">0423 180 119</a></b></p></li>
-								<li><i class="fa fa-envelope"></i><p><a href="mailto:michele.ellis@hotmail.com">michele.ellis@hotmail.com</a></p></li>
-								<li><i class="fa fa-laptop"></i><p><a href="http://www.orffnasw.org.au" target="_blank">www.orffnasw.org.au</a></p></li>
+							<ul class="event-contacts full-width" style="background-image: url('<?php echo $show_bostes_image; ?>');">
+								<?php if ($contact_person): ?>
+									<li><i class="fa fa-user"></i><p><?php echo $contact_person; ?></p></li>
+								<?php endif; ?>
+								<?php if ($contact_number): ?>
+									<li><i class="fa fa-phone"></i><p><b><a href="tel:<?php echo $contact_number; ?>"><?php echo $contact_number; ?></a></b>
+										<?php if($contact_number_2): ?>
+											, <b><a href="tel:<?php echo $contact_number_2; ?>"><?php echo $contact_number_2; ?></a></b>
+										<?php endif; ?>
+									</p></li>
+								<?php endif; ?>
+								<?php if ($email_id): ?>
+									<li><i class="fa fa-envelope"></i><p><a href="mailto:<?php echo $email_id; ?>"><?php echo $email_id; ?></a></p></li>
+								<?php endif; ?>
+								<?php if ($website_url): ?>
+									<li><i class="fa fa-laptop"></i><p><a title="Link open in new tab" target="_blank" href="http://<?php echo $website_url; ?>" target="_blank"><?php echo $website_url; ?></a></p></li>
+								<?php endif; ?>
 							</ul>
 					</div>
 				</div>
 				<div class="one-third">
 					<div class="widget">
 						<ul class="event-details">
-							<li class="day">
-								<div>Start Date</div>
-								<div>Saturday 16 July</div>
-							</li>
+							<?php if(get_field('events_start_date')): ?>
+								<li class="day">
+									<div>Start Date</div>
+									<div><?php the_field('events_start_date'); ?></div>
+								</li>
+							<?php endif; ?>
+							<?php if(get_field('events_time')): ?>
 							<li class="time">
 								<div>Time</div>
-								<div>9.00am - 3.00pm</div>
+								<div><?php the_field('events_time'); ?> - <?php the_field('events_end_time'); ?></div>
 							</li>
+							<?php endif; ?>
+							<?php if(get_field('events_location')): ?>
 							<li class="location">
 								<div>Location</div>
-								<div>Venue: International Grammar School, 4-8 Kelly Street Ultimo</div>
+								<div>Venue: <a title="Open in Google Map with New Tab" target="_blank" href="https://maps.google.com/?q=<?php the_field('events_location'); ?>"><?php the_field('events_location'); ?></a></div>
 							</li>
+							<?php endif; ?>
+							<?php if(get_field('events_registration_closes')): ?>
 							<li class="closes">
 								<div>Registration closes</div>
-								<div>Friday 1 July <span>(numbers limited)</span></div>
+								<div><?php the_field('events_registration_closes'); ?> <span>(<?php the_field('events_closes_comments'); ?>)</span></div>
 							</li>
+							<?php endif; ?>
+							<?php if(get_field('events_costs_other_comments')): ?>
 							<li class="cost">
 								<div>Cost</div>
-								<div>Member $210 <br>
-									Non memeber $230, <br>
-									Student Member $110. <br>
-									<span>Includes course notes, certificate of participation and morning tea.</span>
+								<div><?php the_field('events_costs_other_comments'); ?>
 								</div>
 							</li>
+							<?php endif; ?>
 						</ul>
-						<a href="#" class="but-full sky more">Book your place</a>
+						<?php if(get_field('events_button_link')): ?>
+							<a target="_blank" href="<?php the_field('events_button_link'); ?>" class="but-full sky more"><?php the_field('events_button_text'); ?></a>
+						<?php endif; ?>
 					</div>
 				</div> <!-- one-third -->
 			</div>	
@@ -112,24 +155,48 @@ var_dump($taxonomy);
 		</div><!-- container -->
 	</section>
 
-	<section class="section-2 light-bg">
+
+<!-- +++++++++++++++
+Related posts
+ +++++++++++++++ -->
+ <?php 
+
+ 	$current_post_type     =   array( 'post_type' => 'ptc_events');
+    $repeat_events  =   new WP_Query( $current_post_type );
+    $current_post_subject_obj = get_the_terms( $post->ID, 'ptc_subjects', '');
+    $current_post_subject = $current_post_subject_obj[0]->name; ?>
+
+ <section class="section-2 light-bg">
 		<div class="container">
-			<h2> Realated Events</h2>
+			<h2>Realated Events</h2>
+
+ 		<?php	while ( $repeat_events->have_posts() ) : 
+ 			$repeat_events->the_post(); 
+			$terms_object = get_the_terms( $repeat_events->the_ID(), 'ptc_subjects', '');
+			$related_terms = $terms_object[0]->name;
+			$related_association = get_the_terms( $repeat_events->the_ID(), 'ptc_associations');
+			$related_term = array_pop($related_association);
+			$related_asso_image = get_field('association_images', $related_term);
+			$related_subjects 	= get_the_terms( $repeat_events->the_ID(), 'ptc_subjects');
+			$related_sub_term = array_pop($related_subjects);
+			$related_sub_icon = get_field('subject_kla_icon', $related_sub_term);
+			if ($related_terms == $current_post_subject):
+	 	?>
+
 			<a href="#" class="col-3">
-				<div class="section-2-image" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/course.png');">
+				<div class="section-2-image" style="background-image: url('<?php echo $related_sub_icon; ?>');">
 					<span class="date">12 Jul</span>
 				</div>
 				<div class="section-2-content">
 					<div class="provider">
-						<div class="provider-logo" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/course-sub.jpg');">
-							
+						<div class="provider-logo" style="background-image: url('<?php echo $related_asso_image; ?>');">
 						</div>
 						<div class="provider-title">
-							<h3>Kodály Music Education Institute Aust NSW</h3>
+							<h3><?php echo get_the_terms( $repeat_events->the_ID(), 'ptc_associations', '')[0]->name; ?></h3>
 						</div>
 					</div>
 					<div class="section-2-title">
-						<h4>Building units of work through global education and cooperative learning and interdisciplinary approach to planning</h4>
+						<h4><?php the_title(); ?></h4>
 						<p>Hornsby</p>
 					</div>
 					<div class="section-2-link">
@@ -138,13 +205,14 @@ var_dump($taxonomy);
 				</div>
 			</a>
 
-			<a href="#" class="col-3">
-				<div class="section-2-image" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/course.png');">
+	<?php endif; endwhile; ?>
+			<!-- <a href="#" class="col-3">
+				<div class="section-2-image" style="background-image: url('');">
 					<span class="date">12 Jul</span>
 				</div>
 				<div class="section-2-content">
 					<div class="provider">
-						<div class="provider-logo" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/course-sub.jpg');">
+						<div class="provider-logo" style="background-image: url('');">
 							
 						</div>
 						<div class="provider-title">
@@ -162,12 +230,12 @@ var_dump($taxonomy);
 			</a>
 
 			<a href="#" class="col-3">
-				<div class="section-2-image" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/course.png');">
+				<div class="section-2-image" style="background-image: url('');">
 					<span class="date">12 Jul</span>
 				</div>
 				<div class="section-2-content">
 					<div class="provider">
-						<div class="provider-logo" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/course-sub.jpg');">
+						<div class="provider-logo" >
 							
 						</div>
 						<div class="provider-title">
@@ -182,7 +250,7 @@ var_dump($taxonomy);
 						Read More <i class="fa fa-angle-right"></i>
 					</div>
 				</div>
-			</a>
+			</a> -->
 
 			<div class="row">
 				<a href="#" class="more but-col-3">See All events</a>
@@ -193,6 +261,6 @@ var_dump($taxonomy);
 	<!-- <section class="light-bg">
 		
 	</section> -->
-<?php wp_reset_query();  ?>
 
+<?php wp_reset_query();  ?>
 <?php get_footer(); ?>

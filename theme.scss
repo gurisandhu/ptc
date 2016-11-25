@@ -464,6 +464,8 @@ h2{
 }
 .section-2-image{
 	height: 240px;
+	background-repeat: no-repeat;
+	background-position: center;
 }
 
 // //////////////
@@ -1327,23 +1329,43 @@ h5{
 	list-style: none;
 	margin: 45px 0 0;
 	padding: 0 0 0 110px;
+	min-height: 95px;
+	float: left;
+	width: 100%;
 	-webkit-background-size: 95px;
 	     -o-background-size: 95px;
 	        background-size: 95px;
 	background-repeat: no-repeat;
 	.image{
-		width: 55px;
+		width: 110px;
 		display: block;
 		float: left;
 		margin-right: 20px;
 		height: 30px;
 		-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
     			filter: grayscale(100%);
-		-webkit-background-size: cover;
-		     -o-background-size: cover;
-		        background-size: cover;
+		-webkit-background-size: 100%;
+		     -o-background-size: 100%;
+		        background-size: 100%;
 		background-repeat: no-repeat;
 	    background-position: 0;
+	}
+	li{
+		float: left;
+		width: 100%;
+		h6{
+			float: left;
+			width: auto;
+			a{
+				color: inherit;
+			}
+			&:hover{
+				a{
+					text-decoration: none;
+					color: $grey;
+				}
+			}
+		}
 	}
 }
 h6{
@@ -1379,6 +1401,10 @@ h6{
 		float: left;
 		width: (100%-6)/4;
 		margin-right: 2%;
+		a{
+			color: inherit;
+			
+		}
 		&:last-of-type{
 			margin-right: 0;
 		}
@@ -1397,6 +1423,13 @@ h6{
 				        border-radius: 3px;
 				    color: white;
 				    padding: 4px 10px;
+				    @include transition(.3);
+				    &:hover{
+				    	background-color: lighten($blue, 10%);
+				    	a{
+				    		text-decoration: none;
+				    	}
+				    }
 			}
 		}
 	}
@@ -1477,6 +1510,9 @@ h6{
 			&:before{
 				content: "\f155";
 			}
+			div:last-of-type{
+				font-weight: normal;
+			}
 		}
 		div{
 			&:first-of-type{
@@ -1489,6 +1525,14 @@ h6{
 			}
 			span{
 				font-weight: normal;
+			}
+			a{
+				color: inherit;
+				@include transition(.3);
+				&:hover{
+					text-decoration: none;
+					color: lighten($blue, 10%);
+				}
 			}
 		}
 	}
