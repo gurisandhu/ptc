@@ -1,10 +1,8 @@
 <?php 
-/*
-* Template Name: Single
-*/
 get_header();
  ?>
 
+<!-- single -->
 
 <?php 
 
@@ -31,6 +29,7 @@ $subjects 	= get_the_terms( get_the_ID(), 'ptc_subjects');
 if ( !empty($subjects)){
 	$sub_term = array_pop($subjects);
 	$sub_icon = get_field('subject_kla_icon', $sub_term);
+	$sub_bg_color = get_field('subject_background_color', $sub_term);
 }
 
 // Custom fields from Events
@@ -87,6 +86,9 @@ if ($event_contact_details == "Use Custom"){
 							<div><?php echo the_terms( $current_post_ID, 'ptc_subjects', ''); ?></div></li>
 						<li><div>Specilist area:</div>
 							<div><?php echo the_terms( $current_post_ID, 'ptc_specilist_area', ''); ?></div></li>
+						<li><div>Region</div>
+							<div><?php echo the_terms( $current_post_ID, 'ptc_regions', ''); ?></div>
+						</li>
 					</ul>
 					<div class="full-width single-padding">
 							<div class="full-width contact-title">Event contacts:</div>
@@ -128,7 +130,7 @@ if ($event_contact_details == "Use Custom"){
 							<?php if(get_field('events_location')): ?>
 							<li class="location">
 								<div>Location</div>
-								<div>Venue: <a title="Open in Google Map with New Tab" target="_blank" href="https://maps.google.com/?q=<?php the_field('events_location'); ?>"><?php the_field('events_location'); ?></a></div>
+								<div>Venue: <a title="Open in Google Map with New Tab" target="_blank" href="https://maps.google.com/?q=<?php the_field('events_location'); ?> <?php the_field('events_location_suburb'); ?>"><?php the_field('events_location'); ?>, <?php the_field('events_location_suburb'); ?></a></div>
 							</li>
 							<?php endif; ?>
 							<?php if(get_field('events_registration_closes')): ?>
@@ -181,11 +183,15 @@ Related posts
 			$related_sub_term = array_pop($related_subjects);
 			$related_sub_icon = get_field('subject_kla_icon', $related_sub_term);
 			if ($related_terms == $current_post_subject):
+			$related_date = get_field('events_start_date');
+			$realted_suburb = get_field('events_location_suburb');
+			$format_in 	= '';
+			$related_date_short = date("j M", strtotime($related_date));
 	 	?>
 
-			<a href="#" class="col-3">
+			<a href="<?php echo get_permalink(); ?>" class="col-3" style="background-color:<?php echo $sub_bg_color; ?>;">
 				<div class="section-2-image" style="background-image: url('<?php echo $related_sub_icon; ?>');">
-					<span class="date">12 Jul</span>
+					<span class="date"><?php echo $related_date_short; ?></span>
 				</div>
 				<div class="section-2-content">
 					<div class="provider">
@@ -197,63 +203,16 @@ Related posts
 					</div>
 					<div class="section-2-title">
 						<h4><?php the_title(); ?></h4>
-						<p>Hornsby</p>
+						<p><?php echo $realted_suburb; ?></p>
 					</div>
 					<div class="section-2-link">
 						Read More <i class="fa fa-angle-right"></i>
 					</div>
 				</div>
 			</a>
-
 	<?php endif; endwhile; ?>
-			<!-- <a href="#" class="col-3">
-				<div class="section-2-image" style="background-image: url('');">
-					<span class="date">12 Jul</span>
-				</div>
-				<div class="section-2-content">
-					<div class="provider">
-						<div class="provider-logo" style="background-image: url('');">
-							
-						</div>
-						<div class="provider-title">
-							<h3>Kodály Music Education Institute Aust NSW</h3>
-						</div>
-					</div>
-					<div class="section-2-title">
-						<h4>Primary Levels 1 &amp; 2 Winter Scholl</h4>
-						<p>Hornsby</p>
-					</div>
-					<div class="section-2-link">
-						Read More <i class="fa fa-angle-right"></i>
-					</div>
-				</div>
-			</a>
-
-			<a href="#" class="col-3">
-				<div class="section-2-image" style="background-image: url('');">
-					<span class="date">12 Jul</span>
-				</div>
-				<div class="section-2-content">
-					<div class="provider">
-						<div class="provider-logo" >
-							
-						</div>
-						<div class="provider-title">
-							<h3>Kodály Music Education Institute Aust NSW</h3>
-						</div>
-					</div>
-					<div class="section-2-title">
-						<h4>Primary Levels 1 &amp; 2 Winter Scholl</h4>
-						<p>Hornsby</p>
-					</div>
-					<div class="section-2-link">
-						Read More <i class="fa fa-angle-right"></i>
-					</div>
-				</div>
-			</a> -->
-
 			<div class="row">
-				<a href="#" class="more but-col-3">See All events</a>
+				<a href="<?php echo esc_url( home_url( '/' ) ); ?>/ptc_events" class="more but-col-3">See All events</a>
 			</div>
 		</div>
 	</section><!-- section-2 related events-->

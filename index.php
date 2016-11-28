@@ -8,6 +8,7 @@
 					<div class="swiper-slide" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/home-banner.jpg');">
 						<div class="blue-shadow">
 							<div class="container">
+								<h1>Blog post page</h1>
 								<h1>Support And Services to Teachers' Associations in New South Wales</h1>
 							</div>
 						</div>

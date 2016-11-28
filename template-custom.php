@@ -5,6 +5,7 @@
 get_header();
  ?>
 
+<!-- template-custom -->
 	<section class="custom-page">
 		<div class="container">
 				
@@ -476,23 +477,15 @@ get_header();
 					<h5>Latest News</h5>
 					<ul class="news">
 						<?php 
-							function trimText($string, $repl, $limit){
-								if(strlen($string) > $limit){
-									return substr($string, 0, $limit) . $repl;
-								}
-								else{
-									return $string;
-								}
-							}
 							$eventTitle = "Professional teacher's associations deliver the greatest number and variety of professional learning";
-							$trimedTitle = trimText($eventTitle, "...", 43);
+							$trimedContent = trimText($eventTitle, "...", 43);
 						 ?>
 						<li>
 							<a href="#">
 								<div class="news-image" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/news.jpg');"><!-- image in style --></div>
 								<div class="news-content">
 									<div class="table-cell">
-										<span>Thursday, 8 September 2016</span><h4><?php echo $trimedTitle; ?></h4>
+										<span>Thursday, 8 September 2016</span><h4><?php echo $trimedContent; ?></h4>
 									</div>
 								</div>
 							</a>
@@ -502,7 +495,7 @@ get_header();
 								<div class="news-image" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/news.jpg');"><!-- image in style --></div>
 								<div class="news-content">
 									<div class="table-cell">
-										<span>Thursday, 8 September 2016</span><h4><?php echo $trimedTitle; ?></h4>
+										<span>Thursday, 8 September 2016</span><h4><?php echo $trimedContent; ?></h4>
 									</div>
 								</div>
 							</a>
@@ -512,7 +505,7 @@ get_header();
 								<div class="news-image" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/news.jpg');"><!-- image in style --></div>
 								<div class="news-content">
 									<div class="table-cell">
-										<span>Thursday, 8 September 2016</span><h4><?php echo $trimedTitle; ?></h4>
+										<span>Thursday, 8 September 2016</span><h4><?php echo $trimedContent; ?></h4>
 									</div>
 								</div>
 							</a>
@@ -522,7 +515,7 @@ get_header();
 								<div class="news-image" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/news.jpg');"><!-- image in style --></div>
 								<div class="news-content">
 									<div class="table-cell">
-										<span>Thursday, 8 September 2016</span><h4><?php echo $trimedTitle; ?></h4>
+										<span>Thursday, 8 September 2016</span><h4><?php echo $trimedContent; ?></h4>
 									</div>
 								</div>
 							</a>
@@ -532,7 +525,7 @@ get_header();
 								<div class="news-image" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/news.jpg');"><!-- image in style --></div>
 								<div class="news-content">
 									<div class="table-cell">
-										<span>Thursday, 8 September 2016</span><h4><?php echo $trimedTitle; ?></h4>
+										<span>Thursday, 8 September 2016</span><h4><?php echo $trimedContent; ?></h4>
 									</div>
 								</div>
 							</a>

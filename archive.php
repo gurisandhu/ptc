@@ -1,49 +1,31 @@
 <?php 
-/*
-* Template Name: Archive Events
-*/
 get_header();
  ?>
-
- <?php 
-    $ptc_events     =   array( 'post_type' => 'ptc_events');
-    $repeat_events  =   new WP_Query( $ptc_events );
-  ?>
-
-<section id="primary">
-    <div id="content" role="main" style="width: 70%">
-    <?php if ( have_posts() ) : ?>
-        <header class="page-header">
-            <h1 class="page-title">Archive</h1>
-        </header>
-        <table>
-            <!-- Display table headers -->
-            <tr>
-                <th style="width: 200px"><strong>Title</strong></th>
-                <th><strong>Association</strong></th>
-            </tr>
-            <!-- Start the Loop -->
-            <?php while ( have_posts() ) : the_post(); ?>
-                <!-- Display review title and author -->
-                <tr>
-                    <td><a href="<?php the_permalink(); ?>">
-                    <?php the_title(); ?></a></td>
-                    <td><?php echo esc_html( get_post_meta( get_the_ID(), 'ptc_associations', true ) ); ?></td>
-                </tr>
-            <?php endwhile; ?>
- 
-            <!-- Display page navigation -->
- 
-        </table>
-        <?php global $wp_query;
-        if ( isset( $wp_query->max_num_pages ) && $wp_query->max_num_pages > 1 ) { ?>
-            <nav id="<?php echo $nav_id; ?>">
-                <div class="nav-previous"><?php next_posts_link( '<span class="meta-nav">&larr;</span> Older reviews'); ?></div>
-                <div class="nav-next"><?php previous_posts_link( 'Newer reviews <span class= "meta-nav">&rarr;</span>' ); ?></div>
-            </nav>
-        <?php };
-    endif; ?>
-    </div>
+<!-- archive -->
+<section class="single-page light-bg">
+	<div class="container">
+		<div class="row">
+			<h2>News</h2>
+		</div>
+		<div class="full-width">
+			<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+				<a href="<?php echo get_permalink(); ?>" class="single-padding row bg-shadow post">
+					<h1><?php the_title(); ?></h1>
+					<?php $content_to_trim = get_the_content(); ?>
+					<?php $trimedContent = trimText($content_to_trim, "...", 400);
+					 ?>
+					 <div class="post-image">
+					 	<?php the_post_thumbnail(); ?>
+					 </div>
+				 	<p><?php echo $trimedContent; ?></p>
+					<div class="full-width">
+						<button class="row but-left more">Read more</button>
+					</div>
+				</a>
+			<?php endwhile; endif; ?>
+		</div>
+	</div>
 </section>
-<br /><br />
+
+
 <?php get_footer(); ?>

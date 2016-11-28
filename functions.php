@@ -1,6 +1,5 @@
 <?php 
 
-
 // *************************
 // Add links for stylesheet, fonts and scripts (Instead of inserting in <head> section or before </body>)
 // *************************
@@ -257,6 +256,15 @@ function create_my_taxonomies() {
 }
 
 
+function trimText($string, $repl, $limit){
+    if(strlen($string) > $limit){
+        return substr($string, 0, $limit) . $repl;
+    }
+    else{
+        return $string;
+    }
+}
 
+add_theme_support('post-thumbnails');
 
 ?>

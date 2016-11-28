@@ -5,6 +5,7 @@
 get_header();
  ?>
 
+<!-- front-page -->
 
 	<section class="home-banner">
 		<div class="slider home-slider">
@@ -103,231 +104,88 @@ get_header();
 				</ul>
 			</form>
 			<h2>Events</h2>
-			<a href="#" class="col-3">
-				<div class="section-2-image" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/course.png');">
-					<span class="date">12 Jul</span>
-				</div>
-				<div class="section-2-content">
-					<div class="provider">
-						<div class="provider-logo" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/course-sub.jpg');">
-							
-						</div>
-						<div class="provider-title">
-							<h3>Kodály Music Education Institute Aust NSW</h3>
-						</div>
-					</div>
-					<div class="section-2-title">
-						<h4>Building units of work through global education and cooperative learning and interdisciplinary approach to planning</h4>
-						<p>Hornsby</p>
-					</div>
-					<div class="section-2-link">
-						Read More <i class="fa fa-angle-right"></i>
-					</div>
-				</div>
-			</a>
+			<?php 
+				$args = array(
+					'post_type' => 'ptc_events',
+					'posts_per_page' =>	9,
+					'orderby' 	=> 'rand' 
+					);
+				$hp_events = new WP_Query($args);
+			if ( $hp_events->have_posts() ) : while ( $hp_events->have_posts() ) : $hp_events->the_post(); 
+				$association = get_the_terms( get_the_ID(), 'ptc_associations');
+                if ( !empty($association)){
+                    $term = array_pop($association);
+                    $asso_image = get_field('association_images', $term);
+                }
+                $subjects   = get_the_terms( get_the_ID(), 'ptc_subjects');
+                if ( !empty($subjects)){
+                    $sub_term = array_pop($subjects);
+                    $sub_icon = get_field('subject_kla_icon', $sub_term);
+                    $sub_bg_color = get_field('subject_background_color', $sub_term);
+                }
+                $date = get_field('events_start_date');
+                $suburb = get_field('events_location_suburb');
+                $date_short = date("j M", strtotime($date));	
 
-			<a href="#" class="col-3">
-				<div class="section-2-image" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/course.png');">
-					<span class="date">12 Jul</span>
-				</div>
-				<div class="section-2-content">
-					<div class="provider">
-						<div class="provider-logo" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/course-sub.jpg');">
-							
-						</div>
-						<div class="provider-title">
-							<h3>Kodály Music Education Institute Aust NSW</h3>
-						</div>
-					</div>
-					<div class="section-2-title">
-						<h4>Primary Levels 1 &amp; 2 Winter Scholl</h4>
-						<p>Hornsby</p>
-					</div>
-					<div class="section-2-link">
-						Read More <i class="fa fa-angle-right"></i>
-					</div>
-				</div>
-			</a>
+			?>
 
-			<a href="#" class="col-3">
-				<div class="section-2-image" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/course.png');">
-					<span class="date">12 Jul</span>
-				</div>
-				<div class="section-2-content">
-					<div class="provider">
-						<div class="provider-logo" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/course-sub.jpg');">
-							
-						</div>
-						<div class="provider-title">
-							<h3>Kodály Music Education Institute Aust NSW</h3>
-						</div>
-					</div>
-					<div class="section-2-title">
-						<h4>Primary Levels 1 &amp; 2 Winter Scholl</h4>
-						<p>Hornsby</p>
-					</div>
-					<div class="section-2-link">
-						Read More <i class="fa fa-angle-right"></i>
-					</div>
-				</div>
-			</a>
-
-			<a href="#" class="col-3">
-				<div class="section-2-image" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/course.png');">
-					<span class="date">12 Jul</span>
-				</div>
-				<div class="section-2-content">
-					<div class="provider">
-						<div class="provider-logo" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/course-sub.jpg');">
-							
-						</div>
-						<div class="provider-title">
-							<h3>Kodály Music Education Institute Aust NSW</h3>
-						</div>
-					</div>
-					<div class="section-2-title">
-						<h4>Primary Levels 1 &amp; 2 Winter Scholl</h4>
-						<p>Hornsby</p>
-					</div>
-					<div class="section-2-link">
-						Read More <i class="fa fa-angle-right"></i>
-					</div>
-				</div>
-			</a>
-
-			<a href="#" class="col-3">
-				<div class="section-2-image" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/course.png');">
-					<span class="date">12 Jul</span>
-				</div>
-				<div class="section-2-content">
-					<div class="provider">
-						<div class="provider-logo" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/course-sub.jpg');">
-							
-						</div>
-						<div class="provider-title">
-							<h3>Kodály Music Education Institute Aust NSW</h3>
-						</div>
-					</div>
-					<div class="section-2-title">
-						<h4>Primary Levels 1 &amp; 2 Winter Scholl Primary Levels 1 &amp; 2 Winter Scholl </h4>
-						<p>Hornsby</p>
-					</div>
-					<div class="section-2-link">
-						Read More <i class="fa fa-angle-right"></i>
-					</div>
-				</div>
-			</a>
-
-			<a href="#" class="col-3">
-				<div class="section-2-image" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/course.png');">
-					<span class="date">12 Jul</span>
-				</div>
-				<div class="section-2-content">
-					<div class="provider">
-						<div class="provider-logo" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/course-sub.jpg');">
-							
-						</div>
-						<div class="provider-title">
-							<h3>Kodály Music Education Institute Aust NSW</h3>
-						</div>
-					</div>
-					<div class="section-2-title">
-						<h4>Primary Levels 1 &amp; 2 Winter Scholl</h4>
-						<p>Hornsby</p>
-					</div>
-					<div class="section-2-link">
-						Read More <i class="fa fa-angle-right"></i>
-					</div>
-				</div>
-			</a>
-
-			<a href="#" class="col-3">
-				<div class="section-2-image" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/course.png');">
-					<span class="date">12 Jul</span>
-				</div>
-				<div class="section-2-content">
-					<div class="provider">
-						<div class="provider-logo" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/course-sub.jpg');">
-							
-						</div>
-						<div class="provider-title">
-							<h3>Kodály Music Education Institute Aust NSW</h3>
-						</div>
-					</div>
-					<div class="section-2-title">
-						<h4>Primary Levels 1 &amp; 2 Winter Scholl</h4>
-						<p>Hornsby</p>
-					</div>
-					<div class="section-2-link">
-						Read More <i class="fa fa-angle-right"></i>
-					</div>
-				</div>
-			</a>
+				<a href="<?php echo get_permalink(); ?>" class="col-3" style="background-color:<?php echo $sub_bg_color; ?>;">
+					<div class="section-2-image" style="background-image: url('<?php echo $sub_icon; ?>');">
+                        <span class="date"><?php echo $date_short; ?></span>
+                    </div>
+                     <div class="section-2-content">
+                        <div class="provider">
+                            <div class="provider-logo" style="background-image: url('<?php echo $asso_image; ?>');">
+                            </div>
+                            <div class="provider-title">
+                                <h3><?php echo get_the_terms( $hp_events->the_ID(), 'ptc_associations', '')[0]->name; ?></h3>
+                            </div>
+                        </div>
+                        <div class="section-2-title">
+                            <h4><?php the_title(); ?></h4>
+                            <p><?php echo $suburb; ?></p>
+                        </div>
+                        <div class="section-2-link">
+                            Read More <i class="fa fa-angle-right"></i>
+                        </div>
+                    </div>
+				</a>
+			
+			<?php endwhile; endif; ?>
 
 			<div class="row">
-				<a href="#" class="more but-col-3">See More</a>
+				<a href="<?php echo esc_url( home_url( '/' ) ); ?>/ptc_events" class="more but-col-3">See More</a>
 			</div>
 		</div>
 	</section><!-- section-2 -->
+<?php wp_reset_query(); ?>
 
 	<section class="section-3">
 		<div class="container">
 			<div class="two-third">
 				<h2>Latest News</h2>
 				<ul class="news">
+					<?php $the_query = new WP_Query( 'posts_per_page=5' ); ?>
+					<?php while ($the_query -> have_posts()) : $the_query -> the_post(); ?>
 					<li>
-						<a href="#">
-							<div class="news-image" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/news.jpg');"><!-- image in style --></div>
+						<a href="<?php echo get_permalink(); ?>">
+							<div class="news-image" style="background-image: url('<?php the_post_thumbnail_url(); ?>');">
+							</div>
 							<div class="news-content">
 								<div class="table-cell">
-									<span>Thursday, 8 September 2016</span><h4>Professional teacher's associations deliver the greatest number and variety of professional learning</h4>
+									<span><?php echo get_the_date( 'l, j F Y' ); ?></span>
+									<h4><?php the_title(); ?></h4>
 								</div>
 							</div>
+							
 						</a>
 					</li>
-					<li>
-						<a href="#">
-							<div class="news-image" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/news.jpg');"><!-- image in style --></div>
-							<div class="news-content">
-								<div class="table-cell">
-									<span>Thursday, 8 September 2016</span><h4>Professional teacher's associations deliver the greatest number and variety of professional learning</h4>
-								</div>
-							</div>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<div class="news-image" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/news.jpg');"><!-- image in style --></div>
-							<div class="news-content">
-								<div class="table-cell">
-									<span>Thursday, 8 September 2016</span><h4>Professional teacher's associations deliver the greatest number and variety of professional learning</h4>
-								</div>
-							</div>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<div class="news-image" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/news.jpg');"><!-- image in style --></div>
-							<div class="news-content">
-								<div class="table-cell">
-									<span>Thursday, 8 September 2016</span><h4>Professional teacher's associations deliver the greatest number and variety of professional learning</h4>
-								</div>
-							</div>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<div class="news-image" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/news.jpg');"><!-- image in style --></div>
-							<div class="news-content">
-								<div class="table-cell">
-									<span>Thursday, 8 September 2016</span><h4>Professional teacher's associations deliver the greatest number and variety of professional learning</h4>
-								</div>
-							</div>
-						</a>
-					</li>
+					<?php 
+					endwhile; wp_reset_postdata();
+					?>
 				</ul>
 				<div class="row">
-					<a href="#" class="more but-col-3">Read more news</a>
+					<a href="<?php echo esc_url( home_url( '/' ) ); ?>/category/news/" class="more but-col-3">Read more news</a>
 				</div>
 			</div>
 			<a href="#" class="one-third scale-bg">
@@ -338,5 +196,5 @@ get_header();
 			</a>
 		</div>
 	</section><!-- section-3 -->
-	
+<?php wp_reset_query(); ?>	
 <?php get_footer(); ?>

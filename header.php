@@ -31,28 +31,6 @@
 				</div>
 				<div class="desktop-menu desktop">
 					<nav>
-						<!-- <ul>
-							<li><a href="/PTC/">Home</a></li>
-							<li><a href="/PTC/about.php">About</a></li>
-							<li><a href="/PTC/template-custom.php">Custom</a></li>
-							<li><a href="#">Awards</a></li>
-							<li><a href="#">News</a></li>
-							<li><a href="/PTC/single.php">Events</a></li>
-							<li class="menu-item-has-children"><a href="#">Courses</a>
-								<ul class="sub-menu">
-									<li><a href="#">Item 1</a></li>
-									<li><a href="#">Item 2</a></li>
-									<li class="menu-item-has-children"><a href="#">Item 3</a>
-										<ul class="sub-menu">
-											<li><a href="#">Sub Item 1</a></li>
-											<li><a href="#">Sub Item 2</a></li>
-											<li><a href="#">Sub Item 3</a></li>
-										</ul>
-									</li>
-								</ul>
-							</li>
-							<li><a href="#">Contact</a></li>
-						</ul> -->
 						<?php wp_nav_menu( array( 'theme_location' => 'header-menu' ) ); ?>
 					</nav>
 					<div class="login">
