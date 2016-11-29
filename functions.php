@@ -241,6 +241,7 @@ function create_my_taxonomies() {
                 'rewrite'                    => true
                 )
         );
+
 }
 
 
@@ -254,5 +255,21 @@ function trimText($string, $repl, $limit){
 }
 
 add_theme_support('post-thumbnails');
+
+// ++++++++++++++++++
+// It creates radio buttons in categories
+// ++++++++++++++++++
+
+// add_action('add_meta_boxes','mysite_add_meta_boxes',10,2);
+// function mysite_add_meta_boxes($post_type, $post) {
+//   ob_start();
+// }
+// add_action('dbx_post_sidebar','mysite_dbx_post_sidebar');
+// function mysite_dbx_post_sidebar() {
+//   $html = ob_get_clean();
+//   $html = str_replace('"checkbox"','"radio"',$html);
+//   echo $html;
+// }
+
 
 ?>
