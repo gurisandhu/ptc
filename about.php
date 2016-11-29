@@ -4,7 +4,7 @@ get_header();
 
 	<section class="inner-page">
 		<div class="container">
-			<?php include (TEMPLATEPATH . 'bread-crumb.php'); ?>	
+			<?php include (TEMPLATEPATH . '/bread-crumb.php'); ?>
 			<div class="row">
 				<div class="two-third">
 					<h1>About</h1>

@@ -57,11 +57,11 @@ if ($event_contact_details == "Use Custom"){
 	<section class="single-page light-bg">
 		<div class="container rect-bg">
 
-			<?php include (TEMPLATEPATH . 'bread-crumb.php'); ?>	
+			<?php include (TEMPLATEPATH . '/bread-crumb.php'); ?>	
 
 			<div class="row">
 				<ul class="single-title" style="background-image: url('<?php echo $sub_icon ?>');">
-					<li><span class="image" style="background-image: url('<?php echo $asso_image; ?>');"></span><h6><?php echo the_terms( $current_post_ID, 'ptc_associations', ''); ?></h6></li>
+					<li><span class="image"><img src="<?php echo $asso_image; ?>" alt=""></span><h6><?php echo the_terms( $current_post_ID, 'ptc_associations', ''); ?></h6></li>
 					<li><h1><?php the_title(); ?></h1></li>
 				</ul>
 			</div>
@@ -220,6 +220,7 @@ Related posts
 	<!-- <section class="light-bg">
 		
 	</section> -->
+<?php include(TEMPLATEPATH . '/association-slider.php'); ?>	
 
 <?php wp_reset_query();  ?>
 <?php get_footer(); ?>

@@ -10,7 +10,7 @@ get_header();
 
 <section class="section-2">
     <div class="container">
-        <?php include (TEMPLATEPATH . 'bread-crumb.php'); ?>    
+        <?php include (TEMPLATEPATH . '/bread-crumb.php'); ?>    
 
         <?php if ( have_posts() ) : ?>
 
@@ -58,5 +58,7 @@ get_header();
         <?php endif; ?>
     </div>
 </section>  
+
+<?php include(TEMPLATEPATH . '/association-slider.php'); ?>
 
 <?php get_footer(); ?>

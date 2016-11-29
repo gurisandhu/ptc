@@ -4,6 +4,7 @@ get_header();
 <!-- archive -->
 <section class="single-page light-bg">
 	<div class="container">
+		<?php include (TEMPLATEPATH . '/bread-crumb.php'); ?>
 		<div class="row">
 			<h2>News</h2>
 		</div>
@@ -27,5 +28,6 @@ get_header();
 	</div>
 </section>
 
+<?php include(TEMPLATEPATH . '/association-slider.php'); ?>
 
 <?php get_footer(); ?>

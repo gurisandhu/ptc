@@ -196,5 +196,6 @@ get_header();
 			</a>
 		</div>
 	</section><!-- section-3 -->
+	<?php include(TEMPLATEPATH . '/association-slider.php'); ?>
 <?php wp_reset_query(); ?>	
 <?php get_footer(); ?>
