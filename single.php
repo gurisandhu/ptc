@@ -220,7 +220,9 @@ Related posts
 	<!-- <section class="light-bg">
 		
 	</section> -->
-<?php include(TEMPLATEPATH . '/association-slider.php'); ?>	
+<section class="light-bg">
+	<?php include(TEMPLATEPATH . '/association-slider.php'); ?>
+</section>
 
 <?php wp_reset_query();  ?>
 <?php get_footer(); ?>

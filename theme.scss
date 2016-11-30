@@ -44,6 +44,11 @@ body{
 		
 	}
 	@include fixed-header-height(88px);
+	&.customize-support{
+		.header{
+			top: 33px;
+		}
+	}
 }
 
 //container: max width
@@ -1321,6 +1326,7 @@ h5{
 }
 .bg-shadow{
 	background-color: white;
+	@include transition (.3);
 	-webkit-border-radius: 3px;
 	        border-radius: 3px;
 	-webkit-box-shadow: 0 0 6px #ccc;
@@ -1557,6 +1563,33 @@ h6{
 	img{
 		float: left;
 	}
+}
+.asso-page{
+	.col-3{
+		padding: 25px;
+		text-align: center;
+		&:hover{
+			text-decoration: none;
+		}
+		button{
+			background-color: inherit;
+		}
+	}
+}
+.asso-image{
+	width: 130px;
+	height: 130px;
+	margin: auto;
+	margin-bottom: 25px;
+	-webkit-border-radius: 100%;
+	        border-radius: 100%;
+	background-repeat: no-repeat;
+	background-position: 0;
+	border: 2px solid rgb(243, 244, 245);
+	-webkit-background-size: 110px;
+	     -o-background-size: 110px;
+	        background-size: 110px;
+	background-position: center;
 }
 
 

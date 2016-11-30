@@ -30,7 +30,7 @@ get_header();
 		</div> <!-- slider -->
 		<div class="home-page-menu">
 			<ul>
-				<li><a href="#">
+				<li><a href="<?php echo esc_url( home_url( '' ) ); ?>/member-associations">
 					<div class="menu-icon">
 						<img src="<?php echo get_template_directory_uri(); ?>/images/icons/members-off.svg" alt="">
 						<img src="<?php echo get_template_directory_uri(); ?>/images/icons/members-on.svg" alt="">
@@ -196,6 +196,9 @@ get_header();
 			</a>
 		</div>
 	</section><!-- section-3 -->
+
+	
 	<?php include(TEMPLATEPATH . '/association-slider.php'); ?>
+	
 <?php wp_reset_query(); ?>	
 <?php get_footer(); ?>

@@ -625,6 +625,8 @@ get_header();
 		</div>
 	</section><!-- section-2 related events-->
 	
-<?php include(TEMPLATEPATH . '/association-slider.php'); ?>
+<section class="light-bg">
+	<?php include(TEMPLATEPATH . '/association-slider.php'); ?>
+</section>
 
 <?php get_footer(); ?>

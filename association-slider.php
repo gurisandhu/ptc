@@ -7,7 +7,6 @@
     	'hide_empty' => false,
     	));
   ?>
-	<section class="light-bg">
 		<section class="section-4">
 			<div class="container">
 				<div class="section-4-wrapper">
@@ -28,6 +27,5 @@
 				</div>
 			</div>
 		</section>
-	</section>
 
 <?php wp_reset_query(); ?>	

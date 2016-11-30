@@ -67,3 +67,5 @@
 <!-- <div class="hide-body show-loader"></div> -->
 </body>
 </html>
+
+<?php wp_footer(); ?>

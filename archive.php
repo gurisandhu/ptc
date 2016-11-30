@@ -28,6 +28,8 @@ get_header();
 	</div>
 </section>
 
-<?php include(TEMPLATEPATH . '/association-slider.php'); ?>
+<section class="light-bg">
+	<?php include(TEMPLATEPATH . '/association-slider.php'); ?>
+</section>
 
 <?php get_footer(); ?>
