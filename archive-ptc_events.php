@@ -10,7 +10,12 @@ get_header();
 
 <section class="section-2">
     <div class="container">
-        <?php include (TEMPLATEPATH . '/bread-crumb.php'); ?>    
+        <div class="full-width">
+            <ul class="full-width bread-crumb">
+                <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>">PTC</a></li>
+                <li>Courses</li>
+            </ul>
+        </div>
 
         <?php if ( have_posts() ) : ?>
 

@@ -351,8 +351,13 @@ h1,h2,h3,h4,h5,h6{
 		-webkit-box-shadow: none;
 		        box-shadow: none;
 		&:after{
-			content: "\f110";
-			font-family: FontAwesome;
+			content: "";
+			width: 150px;
+			height: 150px;
+			border: 2px solid white;
+			border-top: 4px solid #00c0f3;;
+			-webkit-border-radius: 100%;
+			        border-radius: 100%;
 			display: block;
 			color: white;
 			position: absolute;
@@ -360,10 +365,10 @@ h1,h2,h3,h4,h5,h6{
 			font-size: 55px;
 			left: 45%;
 			// z-index: 1;
-		-webkit-animation: fa-spin 2s infinite linear;
-		   -moz-animation: fa-spin 2s infinite linear;
-		     -o-animation: fa-spin 2s infinite linear;
-		        animation: fa-spin 2s infinite linear;
+		-webkit-animation: fa-spin .6s infinite linear;
+		   -moz-animation: fa-spin .6s infinite linear;
+		     -o-animation: fa-spin .6s infinite linear;
+		        animation: fa-spin .6s infinite linear;
 		}
 	}
 }

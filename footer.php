@@ -3,7 +3,7 @@
 	<div class="table-cell">
 		<div class="container">
 			<div class="row common-p-t-b">
-				<button type="button" class="more sky but-2-col-3">Back to top</button>
+				<button type="button" id="scroll-top" class="more sky but-2-col-3">Back to top</button>
 			</div>
 			<div class="row">
 				<p><b>The Professional Teachers' Council NSW (PTCNSW)</b></p>
@@ -64,7 +64,7 @@
 		</div>
 	</div>
 </footer>
-<!-- <div class="hide-body show-loader"></div> -->
+<div class="hide-body show-loader"></div>
 </body>
 </html>
 

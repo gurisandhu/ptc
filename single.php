@@ -57,8 +57,13 @@ if ($event_contact_details == "Use Custom"){
 	<section class="single-page light-bg">
 		<div class="container rect-bg">
 
-			<?php include (TEMPLATEPATH . '/bread-crumb.php'); ?>	
-
+			<div class="full-width">
+				<ul class="full-width bread-crumb">
+					<li><a href="<?php echo esc_url( home_url( '/' ) ); ?>">PTC</a></li>
+					<li><a href="<?php echo esc_url( home_url( '/' ) ); ?><?php echo get_post_type(); ?>">Courses</a></li>
+					<li><?php the_title(); ?></li>
+				</ul>
+			</div>
 			<div class="row">
 				<ul class="single-title" style="background-image: url('<?php echo $sub_icon ?>');">
 					<li><span class="image"><img src="<?php echo $asso_image; ?>" alt=""></span><h6><?php echo the_terms( $current_post_ID, 'ptc_associations', ''); ?></h6></li>
@@ -139,13 +144,22 @@ if ($event_contact_details == "Use Custom"){
 								<div><?php the_field('events_registration_closes'); ?> <span>(<?php the_field('events_closes_comments'); ?>)</span></div>
 							</li>
 							<?php endif; ?>
-							<?php if(get_field('events_costs_other_comments')): ?>
+							
 							<li class="cost">
 								<div>Cost</div>
-								<div><?php the_field('events_costs_other_comments'); ?>
+								<div>
+								<?php $event_costs = get_field('events_costs');
+									if (have_rows('events_costs') ) : while (have_rows('events_costs') ) : the_row();
+								 ?>
+										<strong><?php echo get_sub_field('events_cost_ticket_type'); ?>: $<?php echo get_sub_field('events_cost_ticket_cost'); ?> </strong> <br>
+								 <?php 
+								 	endwhile; endif;
+								 if(get_field('events_costs_other_comments')): ?>
+									<?php the_field('events_costs_other_comments'); ?>
+								<?php endif; ?>
 								</div>
 							</li>
-							<?php endif; ?>
+							
 						</ul>
 						<?php if(get_field('events_button_link')): ?>
 							<a target="_blank" href="<?php the_field('events_button_link'); ?>" class="but-full sky more"><?php the_field('events_button_text'); ?></a>
@@ -170,7 +184,7 @@ Related posts
 
  <section class="section-2 light-bg">
 		<div class="container">
-			<h2>Realated Events</h2>
+			<h2>Related Events</h2>
 
  		<?php	while ( $repeat_events->have_posts() ) : 
  			$repeat_events->the_post(); 

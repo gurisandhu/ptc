@@ -4,7 +4,12 @@ get_header();
 <!-- archive -->
 <section class="single-page light-bg">
 	<div class="container">
-		<?php include (TEMPLATEPATH . '/bread-crumb.php'); ?>
+		<div class="full-width">
+			<ul class="full-width bread-crumb">
+				<li><a href="<?php echo esc_url( home_url( '/' ) ); ?>">PTC</a></li>
+				<li>News</li>
+			</ul>
+		</div>
 		<div class="row">
 			<h2>News</h2>
 		</div>
