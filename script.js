@@ -18,6 +18,7 @@ $(document).ready(function(){
         prevButton: '.swiper-button-prev',
         spaceBetween: 30,
         autoplay: 1500,
+        loop: true,
         effect: 'fade'
     });
 
@@ -88,7 +89,7 @@ $('h2.button').click(function(){
 // ++++++++++++++++++++
   $("#scroll-top").click(function(){
     $('html, body').animate({
-            scrollTop: $("body").offset().top
+            scrollTop: $("body").offset().top - 100
         }, 1000);
   });
 });//end of document ready

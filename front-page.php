@@ -11,20 +11,18 @@ get_header();
 		<div class="slider home-slider">
 			<div class="swiper-container">
 				<div class="swiper-wrapper">
-					<div class="swiper-slide" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/home-banner.jpg');">
-						<div class="blue-shadow">
-							<div class="container">
-								<h1>Support And Services to Teachers' Associations in New South Wales</h1>
+					<?php if (have_rows('front_page_slider')) : while(have_rows('front_page_slider')) : the_row() ; ?>
+						<div class="swiper-slide" style="background-image: url('<?php the_sub_field('front_page_slide_image') ?>');">
+							<div class="blue-shadow">
+								<div class="container">
+									<div class="slider-content">
+										<h1><?php the_sub_field('front_page_text'); ?></h1>
+										<a href="<?php the_sub_field('front_page_button_link'); ?>" class="more but-left"><?php the_sub_field('front_page_button_text'); ?></a>
+									</div>
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="swiper-slide" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/home-banner.jpg');">
-						<div class="blue-shadow">
-							<div class="container">
-								<h1>Support to Teachers' Associations in New South Wales</h1>
-							</div>
-						</div>
-					</div>
+					<?php endwhile; endif; ?>
 				</div>
 			</div>
 		</div> <!-- slider -->

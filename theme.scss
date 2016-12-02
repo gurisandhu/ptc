@@ -46,7 +46,7 @@ body{
 	@include fixed-header-height(88px);
 	&.customize-support{
 		.header{
-			top: 33px;
+			top: 32px;
 		}
 	}
 }
@@ -104,7 +104,7 @@ nav{
 }
 .desktop-menu{
 	width: 1140-166px;
-	float: left;
+	float: right;
 	> nav{
 		padding-top: 20px;
 		max-width: 775px;
@@ -288,11 +288,7 @@ nav{
 		height: 100%;
 		position: relative;
 		h1{
-			max-width: 63%;
-			color: white;
-			position: absolute;
-			bottom: 0;
-			left: 0;
+			color: #FFF;
 		}
 	}
 	.swiper-slide{
@@ -302,6 +298,12 @@ nav{
 		        background-size: 63%;
 		    // background-position: 0;
 	}
+}
+.slider-content{
+	max-width: 63%;
+	position: absolute;
+	bottom: 20px;
+	left: 0;
 }
 h1{
 	font-size: 42px;
@@ -704,7 +706,7 @@ button{
 	position: relative;
 	top: 61px;
 	margin-top: -31px;
-	.container{
+	.section-4-container{
 		background-color: white;
 		overflow: hidden;
 	-webkit-box-shadow: 0 0 7px #ccc;
@@ -1153,7 +1155,7 @@ ul.bread-crumb{
 .sidebar{
 	width: 34%;
 	float: left;
-	.page-menu{
+	ul{
 		padding: 0;
 		margin: 0;
 		li{

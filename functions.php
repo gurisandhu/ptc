@@ -23,8 +23,6 @@ function my_styles_scripts(){
 add_action('template_redirect', 'my_styles_scripts');
 //end of styles scripts
 
-
-
 // *************************
 // Display Main Navigation in admin section
 // *************************
@@ -42,17 +40,7 @@ add_action( 'init', 'register_my_menus' );
 // *************************
 // Contact info (ACF: option page)
 // *************************
-if (function_exists('acf_add_options_page')){
-  $contact_info = acf_add_options_page(array(
-      'page_title'  =>  'Sidebar Widget',
-      'menu_title'  => 'Sidebar Widget',
-      'menu_slug'   =>  'sidebar-widget-settings',
-      'capability'  =>  'edit_posts',
-      'icon_url'    =>  'dashicons-index-card',
-      'redirect'    =>  false
-    ));
-  add_filter('menu_order', 'custom_menu_order', 99);
-}
+
 if (function_exists('acf_add_options_page')){
   $contact_info = acf_add_options_page(array(
       'page_title'  =>  'Footer Widget',
@@ -281,39 +269,11 @@ function arphabet_widgets_init() {
     register_sidebar( array(
         'name'          => '1. PTC Sidebar',
         'id'            => '1_ptc_sidebar',
-        'before_widget' => '<div class="widget">',
+        'before_widget' => '<div class="row">',
         'after_widget'  => '</div>',
         'before_title'  => '<h5>',
-        'after_title'   => '</h5>',
+        'after_title'   => '</h5>'
     ) );
-
-    register_sidebar( array(
-        'name'          => '2. PTC Sidebar',
-        'id'            => '2_ptc_sidebar',
-        'before_widget' => '<div class="widget">',
-        'after_widget'  => '</div>',
-        'before_title'  => '<h5>',
-        'after_title'   => '</h5>',
-    ) );
-
-    register_sidebar( array(
-        'name'          => '3. PTC Sidebar',
-        'id'            => '3_ptc_sidebar',
-        'before_widget' => '<div class="widget">',
-        'after_widget'  => '</div>',
-        'before_title'  => '<h5>',
-        'after_title'   => '</h5>',
-    ) );
-
-    register_sidebar( array(
-        'name'          => '4. PTC Sidebar',
-        'id'            => '4_ptc_sidebar',
-        'before_widget' => '<div class="widget">',
-        'after_widget'  => '</div>',
-        'before_title'  => '<h5>',
-        'after_title'   => '</h5>',
-    ) );
-
 }
 add_action( 'widgets_init', 'arphabet_widgets_init' );
 
@@ -357,11 +317,9 @@ add_filter( 'posts_where', 'cf_search_where' );
  */
 function cf_search_distinct( $where ) {
     global $wpdb;
-
     if ( is_search() ) {
         return "DISTINCT";
     }
-
     return $where;
 }
 add_filter( 'posts_distinct', 'cf_search_distinct' );

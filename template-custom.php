@@ -19,7 +19,7 @@ get_header();
 			<div class="with-sidebar"> <!-- full or side -->
 				<!-- with full width -->
 				<div class="full-width">
-					<h1>Title</h1>
+					<h1><?php the_title(); ?></h1>
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus nemo voluptatum sint nesciunt adipisci dolore. Enim, est, doloremque. Deleniti harum, omnis eligendi nam, mollitia labore odit dolorum saepe molestias voluptatibus.</p>
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit deserunt odio totam mollitia accusantium temporibus ratione rerum culpa quasi porro incidunt eum, nulla hic, earum enim possimus exercitationem pariatur, blanditiis.</p>
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus nemo voluptatum sint nesciunt adipisci dolore. Enim, est, doloremque. Deleniti harum, omnis eligendi nam, mollitia labore odit dolorum saepe molestias voluptatibus.</p>
@@ -472,77 +472,57 @@ get_header();
 	<section class="section-2 light-bg inset-top-shadow">
 		<div class="container">
 			<h2>Events</h2>
-			<a href="#" class="col-3">
-				<div class="section-2-image" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/course.png');">
-					<span class="date">12 Jul</span>
-				</div>
-				<div class="section-2-content">
-					<div class="provider">
-						<div class="provider-logo" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/course-sub.jpg');">
-							
-						</div>
-						<div class="provider-title">
-							<h3>Kodály Music Education Institute Aust NSW</h3>
-						</div>
-					</div>
-					<div class="section-2-title">
-						<h4>Building units of work through global education and cooperative learning and interdisciplinary approach to planning</h4>
-						<p>Hornsby</p>
-					</div>
-					<div class="section-2-link">
-						Read More <i class="fa fa-angle-right"></i>
-					</div>
-				</div>
-			</a>
+			<?php 
+				$args = array(
+					'post_type' => 'ptc_events',
+					'posts_per_page' =>	9,
+					'orderby' 	=> 'rand' 
+					);
+				$hp_events = new WP_Query($args);
+			if ( $hp_events->have_posts() ) : while ( $hp_events->have_posts() ) : $hp_events->the_post(); 
+				$association = get_the_terms( get_the_ID(), 'ptc_associations');
+                if ( !empty($association)){
+                    $term = array_pop($association);
+                    $asso_image = get_field('association_images', $term);
+                }
+                $subjects   = get_the_terms( get_the_ID(), 'ptc_subjects');
+                if ( !empty($subjects)){
+                    $sub_term = array_pop($subjects);
+                    $sub_icon = get_field('subject_kla_icon', $sub_term);
+                    $sub_bg_color = get_field('subject_background_color', $sub_term);
+                }
+                $date = get_field('events_start_date');
+                $suburb = get_field('events_location_suburb');
+                $date_short = date("j M", strtotime($date));	
 
-			<a href="#" class="col-3">
-				<div class="section-2-image" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/course.png');">
-					<span class="date">12 Jul</span>
-				</div>
-				<div class="section-2-content">
-					<div class="provider">
-						<div class="provider-logo" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/course-sub.jpg');">
-							
-						</div>
-						<div class="provider-title">
-							<h3>Kodály Music Education Institute Aust NSW</h3>
-						</div>
-					</div>
-					<div class="section-2-title">
-						<h4>Primary Levels 1 &amp; 2 Winter Scholl</h4>
-						<p>Hornsby</p>
-					</div>
-					<div class="section-2-link">
-						Read More <i class="fa fa-angle-right"></i>
-					</div>
-				</div>
-			</a>
+			?>
 
-			<a href="#" class="col-3">
-				<div class="section-2-image" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/course.png');">
-					<span class="date">12 Jul</span>
-				</div>
-				<div class="section-2-content">
-					<div class="provider">
-						<div class="provider-logo" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/course-sub.jpg');">
-							
-						</div>
-						<div class="provider-title">
-							<h3>Kodály Music Education Institute Aust NSW</h3>
-						</div>
-					</div>
-					<div class="section-2-title">
-						<h4>Primary Levels 1 &amp; 2 Winter Scholl</h4>
-						<p>Hornsby</p>
-					</div>
-					<div class="section-2-link">
-						Read More <i class="fa fa-angle-right"></i>
-					</div>
-				</div>
-			</a>
+				<a href="<?php echo get_permalink(); ?>" class="col-3" style="background-color:<?php echo $sub_bg_color; ?>;">
+					<div class="section-2-image" style="background-image: url('<?php echo $sub_icon; ?>');">
+                        <span class="date"><?php echo $date_short; ?></span>
+                    </div>
+                     <div class="section-2-content">
+                        <div class="provider">
+                            <div class="provider-logo" style="background-image: url('<?php echo $asso_image; ?>');">
+                            </div>
+                            <div class="provider-title">
+                                <h3><?php echo get_the_terms( $hp_events->the_ID(), 'ptc_associations', '')[0]->name; ?></h3>
+                            </div>
+                        </div>
+                        <div class="section-2-title">
+                            <h4><?php the_title(); ?></h4>
+                            <p><?php echo $suburb; ?></p>
+                        </div>
+                        <div class="section-2-link">
+                            Read More <i class="fa fa-angle-right"></i>
+                        </div>
+                    </div>
+				</a>
+			
+			<?php endwhile; endif; ?>
 
-			<div class="full-width">
-				<a href="#" class="more but-col-3">See All events</a>
+			<div class="row">
+				<a href="<?php echo esc_url( home_url( '/' ) ); ?>/ptc_events" class="more but-col-3">See all events</a>
 			</div>
 		</div>
 	</section><!-- section-2 related events-->
