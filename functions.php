@@ -323,4 +323,82 @@ function cf_search_distinct( $where ) {
     return $where;
 }
 add_filter( 'posts_distinct', 'cf_search_distinct' );
+
+// *************************
+// PTC Plus
+// *************************
+add_action( 'init', 'create_ptc_plus');
+
+  function create_ptc_plus() {
+    register_post_type( 'ptc_plus',
+
+      array(
+        'labels'    => array(
+            'name'                  =>  'PTC Plus Events', 'post type general name',
+            'singular_name'         =>  'Plus Event', 'post type singular name',
+            'add_new'               =>  'Add Plus Event',
+            'add_new_item'          =>  'Add New Plus Event',
+            'edit'                  =>  'Edit',
+            'edit_item'             =>  'Edit Event',
+            'new_item'              =>  'New Event',
+            'view'                  =>  'View',
+            'view_item'             =>  'View Event',
+            'search_items'          =>  'Search Events',
+            'not_found'             =>  'No Events Found',
+            'not_found_in_trash'    =>   'No Events found in Trash',
+            'parent'                =>  'Parent Event'
+        ),
+            // 'public'            =>  true,
+            'menu_position'     =>  21,
+            // 'supports'          =>  array( 'title', 'editor', 'comments', 'thumbnail'),
+            'taxonomies'        =>  array( 'create_ptc_plus_taxonomies'),
+            'menu_icon'         =>  'dashicons-calendar',
+            'update_count_callback' => '_update_post_term_count',
+            'query_var'             => true,
+            // 'has_archive'       => true,
+            // 'hierarchical'      => true,
+            'supports'              => array( 'title', 'editor', 'excerpt', 'thumbnail', 'revisions', 'page-attributes', ),
+
+        // 'taxonomies'            => array('hire_taxonomies'),
+        'hierarchical'          => true,
+        'public'                => true,
+        'show_ui'               => true,
+        'show_in_menu'          => true,
+        // 'menu_position'         => 5,
+        'show_in_admin_bar'     => true,
+        'show_in_nav_menus'     => true,
+        'can_export'            => true,
+        'has_archive'           => true,        
+        'exclude_from_search'   => false,
+        'publicly_queryable'    => true,
+        'capability_type'       => 'post',
+        )
+      );
+  }
+
+  add_action( 'init', 'create_ptc_plus_taxonomies', 0);
+
+function create_ptc_plus_taxonomies() {
+    register_taxonomy(
+            'ptc_schools',
+            'ptc_plus',
+            array(
+                'labels'   => array(
+                    'name'  => 'Schools',
+                    'add_new_item' =>   'Add New School',
+                    'new_item_name' =>  'New School'
+                    ),
+                'show_ui'   => true,
+                'show_tagcloud'     => false,
+                'hierarchical'      => true,
+                'public'                     => true,
+                'show_ui'                    => true,
+                'show_admin_column'          => true,
+                'show_in_nav_menus'          => true,
+                'show_tagcloud'              => true,
+                'rewrite'                    => true
+                )
+        );
+} 
+
 ?>

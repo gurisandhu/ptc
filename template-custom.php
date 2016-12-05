@@ -17,450 +17,458 @@ get_header();
 			
 
 			<div class="with-sidebar"> <!-- full or side -->
-				<!-- with full width -->
 				<div class="full-width">
 					<h1><?php the_title(); ?></h1>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus nemo voluptatum sint nesciunt adipisci dolore. Enim, est, doloremque. Deleniti harum, omnis eligendi nam, mollitia labore odit dolorum saepe molestias voluptatibus.</p>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit deserunt odio totam mollitia accusantium temporibus ratione rerum culpa quasi porro incidunt eum, nulla hic, earum enim possimus exercitationem pariatur, blanditiis.</p>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus nemo voluptatum sint nesciunt adipisci dolore. Enim, est, doloremque. Deleniti harum, omnis eligendi nam, mollitia labore odit dolorum saepe molestias voluptatibus.</p>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit deserunt odio totam mollitia accusantium temporibus ratione rerum culpa quasi porro incidunt eum, nulla hic, earum enim possimus exercitationem pariatur, blanditiis.</p>
-					<ul>
-						<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. In sint nihil, maxime, omnis eaque magni aliquam. Harum, tenetur blanditiis commodi accusamus. Doloremque repellendus quasi pariatur quaerat laboriosam itaque unde, dolor.</li>
-						<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima facilis vero eaque nulla deleniti aliquid ducimus quae vel, commodi odio sed ex repellat, repudiandae eligendi perspiciatis accusamus delectus quidem. Exercitationem.</li>
-						<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae nulla, eveniet veritatis reiciendis laudantium. Eos illum non veniam minima amet enim quo consectetur, quaerat expedita accusamus libero, facilis ullam corrupti.</li>
-						<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur eligendi ipsam perspiciatis deleniti quas, adipisci officia, ratione maiores, error labore reiciendis temporibus modi. Iure, quibusdam, atque ratione possimus animi illum.</li>
-					</ul>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde tenetur asperiores cum suscipit possimus illo delectus nihil error, nobis. Culpa ipsum eaque sapiente. Ut obcaecati laboriosam minus nisi magni, asperiores.</p>
-					
-					<div class="full-width">
-						<a href="#" class="but-left more">Read more</a>
-					</div>
+					<?php if(have_rows('add_custom_rows')) : while (have_rows('add_custom_rows')): the_row(); ?>
+							<?php if(get_row_layout() == 'full_width'): ?>
+								<?php $row_full = get_sub_field('full_width'); ?>
+								<?php if($row_full['custom_content']): ?>
+									<div class="full-width">
+										<p><?php echo $row_full['custom_content']; ?></p>
+									</div>
+								<?php endif; ?>	
+								<?php if($row_full['custom_add_button']): ?>
+									<div class="full-width">
+										<a href="<?php echo $row_full['custom_button_link']; ?>" class="but-left more"><?php echo $row_full['custom_button_text'] ?></a>
+									</div>
+								<?php endif; ?>
+								<?php if($row_full['custom_add_accordion']): ?>
+									<div class="accordian">
+										<h5><?php echo $row_full['custom_main_title']; ?></h5>
+										<?php $cust_accor_rept = $row_full['custom_repeater_accordion']; ?>
+										<?php foreach($cust_accor_rept as $each_accord): ?>
+											<div class="col-2">
+												<h2 class="button"><?php echo $each_accord['custom_accordion_title']; ?></h2>
+												<div class="accordian-content">
+													<?php echo $each_accord['custom_accordion_content'] ?>
+													<?php if($each_accord['custom_accordion_add_button']): ?>
+														<a href="<?php echo $each_accord['custom_accordion_button_link']; ?>" class="but-left more"><?php echo $each_accord['custom_accordion_button_text']; ?></a>	
+													<?php endif; ?>
+												</div>
+											</div>
+										<?php endforeach; ?>
+									</div>
+								<?php endif; ?>
+							<?php endif; ?>
+							<!-- end of full-width -->
+							<?php if(get_row_layout() == 'two_columns'): ?>
+								<div class="full-width">
+									<div class="col-2">
+										<?php $row_full = get_sub_field('column_1'); ?>
+								<?php if($row_full['custom_content']): ?>
+									<div class="full-width">
+										<p><?php echo $row_full['custom_content']; ?></p>
+									</div>
+								<?php endif; ?>	
+								<?php if($row_full['custom_add_button']): ?>
+									<div class="full-width">
+										<a href="<?php echo $row_full['custom_button_link']; ?>" class="but-left more"><?php echo $row_full['custom_button_text'] ?></a>
+									</div>
+								<?php endif; ?>
+								<?php if($row_full['custom_add_accordion']): ?>
+									<div class="accordian">
+										<h5><?php echo $row_full['custom_main_title']; ?></h5>
+											<?php $cust_accor_rept = $row_full['custom_repeater_accordion']; ?>
+											<?php foreach($cust_accor_rept as $each_accord): ?>
+												<div class="full-width">
+													<h2 class="button"><?php echo $each_accord['custom_accordion_title']; ?></h2>
+													<div class="accordian-content">
+														<?php echo $each_accord['custom_accordion_content'] ?>
+														<?php if($each_accord['custom_accordion_add_button']): ?>
+															<a href="<?php echo $each_accord['custom_accordion_button_link']; ?>" class="but-left more"><?php echo $each_accord['custom_accordion_button_text']; ?></a>	
+														<?php endif; ?>
+													</div>
+												</div>
+											<?php endforeach; ?>
+										</div>
+									<?php endif; ?> <!-- two cols left -->
+									</div>
+									<div class="col-2">
+										<?php $row_full = get_sub_field('columns_2'); ?>
+								<?php if($row_full['custom_content']): ?>
+									<div class="full-width">
+										<p><?php echo $row_full['custom_content']; ?></p>
+									</div>
+								<?php endif; ?>	
+								<?php if($row_full['custom_add_button']): ?>
+									<div class="full-width">
+										<a href="<?php echo $row_full['custom_button_link']; ?>" class="but-left more"><?php echo $row_full['custom_button_text'] ?></a>
+									</div>
+								<?php endif; ?>
+								<?php if($row_full['custom_add_accordion']): ?>
+									<div class="accordian">
+										<h5><?php echo $row_full['custom_main_title']; ?></h5>
+											<?php $cust_accor_rept = $row_full['custom_repeater_accordion']; ?>
+											<?php foreach($cust_accor_rept as $each_accord): ?>
+												<div class="full-width">
+													<h2 class="button"><?php echo $each_accord['custom_accordion_title']; ?></h2>
+													<div class="accordian-content">
+														<?php echo $each_accord['custom_accordion_content'] ?>
+														<?php if($each_accord['custom_accordion_add_button']): ?>
+															<a href="<?php echo $each_accord['custom_accordion_button_link']; ?>" class="but-left more"><?php echo $each_accord['custom_accordion_button_text']; ?></a>	
+														<?php endif; ?>
+													</div>
+												</div>
+											<?php endforeach; ?>
+										</div>
+									<?php endif; ?> <!-- two cols right -->
+									</div>
+								</div>
+							<?php endif; ?> <!-- two cols row -->
 
-					<div class="accordian">
-						<h5>Main Title</h5>
-						<div class="col-2">
-							<h2 class="button">Accordian Title</h2>
-							<div class="accordian-content">
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam, quis quas. Debitis, aliquid quis reprehenderit? Magni obcaecati autem aliquid, incidunt cupiditate optio, adipisci expedita quis voluptate, cumque ab reiciendis doloremque.</p>
-								<a href="#" class="but-left more">Read more</a>						
-							</div>
-						</div>
-						<div class="col-2">
-							<h2 class="button">Accordian Title</h2>
-							<div class="accordian-content">
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam, quis quas. Debitis, aliquid quis reprehenderit? Magni obcaecati autem aliquid, incidunt cupiditate optio, adipisci expedita quis voluptate, cumque ab reiciendis doloremque.</p>
-								<a href="#" class="but-left more">Read more</a>						
-							</div>
-						</div>
-						<div class="col-2">
-							<h2 class="button">Accordian Title</h2>
-							<div class="accordian-content">
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam, quis quas. Debitis, aliquid quis reprehenderit? Magni obcaecati autem aliquid, incidunt cupiditate optio, adipisci expedita quis voluptate, cumque ab reiciendis doloremque.</p>
-								<a href="#" class="but-left more">Read more</a>						
-							</div>
-						</div>
-						<div class="col-2">
-							<h2 class="button">Accordian Title</h2>
-							<div class="accordian-content">
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam, quis quas. Debitis, aliquid quis reprehenderit? Magni obcaecati autem aliquid, incidunt cupiditate optio, adipisci expedita quis voluptate, cumque ab reiciendis doloremque.</p>
-								<a href="#" class="but-left more">Read more</a>						
-							</div>
-						</div>
-					</div>
-				</div>	
-				<!-- with two columns -->
-				<div class="full-width">
-					<div class="col-2">
-						<div class="full-width">
-							<h1>Title</h1>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus nemo voluptatum sint nesciunt adipisci dolore. Enim, est, doloremque. Deleniti harum, omnis eligendi nam, mollitia labore odit dolorum saepe molestias voluptatibus.</p>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit deserunt odio totam mollitia accusantium temporibus ratione rerum culpa quasi porro incidunt eum, nulla hic, earum enim possimus exercitationem pariatur, blanditiis.</p>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus nemo voluptatum sint nesciunt adipisci dolore. Enim, est, doloremque. Deleniti harum, omnis eligendi nam, mollitia labore odit dolorum saepe molestias voluptatibus.</p>
-							<div class="full-width">
-								<a href="#" class="but-left more">Read more</a>
-							</div>
+							<?php if(get_row_layout() == 'three_columns'): ?>
+								<div class="full-width">
+									<div class="col-3">
+										<?php $row_full = get_sub_field('column_1_3'); ?>
+								<?php if($row_full['custom_content']): ?>
+									<div class="full-width">
+										<p><?php echo $row_full['custom_content']; ?></p>
+									</div>
+								<?php endif; ?>	
+								<?php if($row_full['custom_add_button']): ?>
+									<div class="full-width">
+										<a href="<?php echo $row_full['custom_button_link']; ?>" class="but-left more"><?php echo $row_full['custom_button_text'] ?></a>
+									</div>
+								<?php endif; ?>
+								<?php if($row_full['custom_add_accordion']): ?>
+									<div class="accordian">
+										<h5><?php echo $row_full['custom_main_title']; ?></h5>
+											<?php $cust_accor_rept = $row_full['custom_repeater_accordion']; ?>
+											<?php foreach($cust_accor_rept as $each_accord): ?>
+												<div class="full-width">
+													<h2 class="button"><?php echo $each_accord['custom_accordion_title']; ?></h2>
+													<div class="accordian-content">
+														<?php echo $each_accord['custom_accordion_content'] ?>
+														<?php if($each_accord['custom_accordion_add_button']): ?>
+															<a href="<?php echo $each_accord['custom_accordion_button_link']; ?>" class="but-left more"><?php echo $each_accord['custom_accordion_button_text']; ?></a>	
+														<?php endif; ?>
+													</div>
+												</div>
+											<?php endforeach; ?>
+										</div>
+									<?php endif; ?> <!-- three cols first -->
+									</div>
+									<div class="col-3">
+										<?php $row_full = get_sub_field('column_2_3'); ?>
+								<?php if($row_full['custom_content']): ?>
+									<div class="full-width">
+										<p><?php echo $row_full['custom_content']; ?></p>
+									</div>
+								<?php endif; ?>	
+								<?php if($row_full['custom_add_button']): ?>
+									<div class="full-width">
+										<a href="<?php echo $row_full['custom_button_link']; ?>" class="but-left more"><?php echo $row_full['custom_button_text'] ?></a>
+									</div>
+								<?php endif; ?>
+								<?php if($row_full['custom_add_accordion']): ?>
+									<div class="accordian">
+										<h5><?php echo $row_full['custom_main_title']; ?></h5>
+											<?php $cust_accor_rept = $row_full['custom_repeater_accordion']; ?>
+											<?php foreach($cust_accor_rept as $each_accord): ?>
+												<div class="full-width">
+													<h2 class="button"><?php echo $each_accord['custom_accordion_title']; ?></h2>
+													<div class="accordian-content">
+														<?php echo $each_accord['custom_accordion_content'] ?>
+														<?php if($each_accord['custom_accordion_add_button']): ?>
+															<a href="<?php echo $each_accord['custom_accordion_button_link']; ?>" class="but-left more"><?php echo $each_accord['custom_accordion_button_text']; ?></a>	
+														<?php endif; ?>
+													</div>
+												</div>
+											<?php endforeach; ?>
+										</div>
+									<?php endif; ?> <!-- three cols second -->
+									</div>
+									<div class="col-3">
+										<?php $row_full = get_sub_field('column_3_3'); ?>
+								<?php if($row_full['custom_content']): ?>
+									<div class="full-width">
+										<p><?php echo $row_full['custom_content']; ?></p>
+									</div>
+								<?php endif; ?>	
+								<?php if($row_full['custom_add_button']): ?>
+									<div class="full-width">
+										<a href="<?php echo $row_full['custom_button_link']; ?>" class="but-left more"><?php echo $row_full['custom_button_text'] ?></a>
+									</div>
+								<?php endif; ?>
+								<?php if($row_full['custom_add_accordion']): ?>
+									<div class="accordian">
+										<h5><?php echo $row_full['custom_main_title']; ?></h5>
+											<?php $cust_accor_rept = $row_full['custom_repeater_accordion']; ?>
+											<?php foreach($cust_accor_rept as $each_accord): ?>
+												<div class="full-width">
+													<h2 class="button"><?php echo $each_accord['custom_accordion_title']; ?></h2>
+													<div class="accordian-content">
+														<?php echo $each_accord['custom_accordion_content'] ?>
+														<?php if($each_accord['custom_accordion_add_button']): ?>
+															<a href="<?php echo $each_accord['custom_accordion_button_link']; ?>" class="but-left more"><?php echo $each_accord['custom_accordion_button_text']; ?></a>	
+														<?php endif; ?>
+													</div>
+												</div>
+											<?php endforeach; ?>
+										</div>
+									<?php endif; ?> <!-- three cols third -->
+									</div>
+								</div>
+							<?php endif; ?> <!-- three cols row -->
 
-							<div class="accordian">
-								<h5>Main Title</h5>
+							<?php if(get_row_layout() == 'four_columns'): ?>
 								<div class="full-width">
-									<h2 class="button">Accordian Title</h2>
-									<div class="accordian-content">
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam, quis quas. Debitis, aliquid quis reprehenderit? Magni obcaecati autem aliquid, incidunt cupiditate optio, adipisci expedita quis voluptate, cumque ab reiciendis doloremque.</p>
-										<a href="#" class="but-left more">Read more</a>						
+									<div class="col-4">
+										<?php $row_full = get_sub_field('column_1_4'); ?>
+								<?php if($row_full['custom_content']): ?>
+									<div class="full-width">
+										<p><?php echo $row_full['custom_content']; ?></p>
+									</div>
+								<?php endif; ?>	
+								<?php if($row_full['custom_add_button']): ?>
+									<div class="full-width">
+										<a href="<?php echo $row_full['custom_button_link']; ?>" class="but-left more"><?php echo $row_full['custom_button_text'] ?></a>
+									</div>
+								<?php endif; ?>
+								<?php if($row_full['custom_add_accordion']): ?>
+									<div class="accordian">
+										<h5><?php echo $row_full['custom_main_title']; ?></h5>
+											<?php $cust_accor_rept = $row_full['custom_repeater_accordion']; ?>
+											<?php foreach($cust_accor_rept as $each_accord): ?>
+												<div class="full-width">
+													<h2 class="button"><?php echo $each_accord['custom_accordion_title']; ?></h2>
+													<div class="accordian-content">
+														<?php echo $each_accord['custom_accordion_content'] ?>
+														<?php if($each_accord['custom_accordion_add_button']): ?>
+															<a href="<?php echo $each_accord['custom_accordion_button_link']; ?>" class="but-left more"><?php echo $each_accord['custom_accordion_button_text']; ?></a>	
+														<?php endif; ?>
+													</div>
+												</div>
+											<?php endforeach; ?>
+										</div>
+									<?php endif; ?> <!-- four cols first -->
+									</div>
+									<div class="col-4">
+										<?php $row_full = get_sub_field('column_2_4'); ?>
+								<?php if($row_full['custom_content']): ?>
+									<div class="full-width">
+										<p><?php echo $row_full['custom_content']; ?></p>
+									</div>
+								<?php endif; ?>	
+								<?php if($row_full['custom_add_button']): ?>
+									<div class="full-width">
+										<a href="<?php echo $row_full['custom_button_link']; ?>" class="but-left more"><?php echo $row_full['custom_button_text'] ?></a>
+									</div>
+								<?php endif; ?>
+								<?php if($row_full['custom_add_accordion']): ?>
+									<div class="accordian">
+										<h5><?php echo $row_full['custom_main_title']; ?></h5>
+											<?php $cust_accor_rept = $row_full['custom_repeater_accordion']; ?>
+											<?php foreach($cust_accor_rept as $each_accord): ?>
+												<div class="full-width">
+													<h2 class="button"><?php echo $each_accord['custom_accordion_title']; ?></h2>
+													<div class="accordian-content">
+														<?php echo $each_accord['custom_accordion_content'] ?>
+														<?php if($each_accord['custom_accordion_add_button']): ?>
+															<a href="<?php echo $each_accord['custom_accordion_button_link']; ?>" class="but-left more"><?php echo $each_accord['custom_accordion_button_text']; ?></a>	
+														<?php endif; ?>
+													</div>
+												</div>
+											<?php endforeach; ?>
+										</div>
+									<?php endif; ?> <!-- four cols second -->
+									</div>
+									<div class="col-4">
+										<?php $row_full = get_sub_field('column_3_4'); ?>
+								<?php if($row_full['custom_content']): ?>
+									<div class="full-width">
+										<p><?php echo $row_full['custom_content']; ?></p>
+									</div>
+								<?php endif; ?>	
+								<?php if($row_full['custom_add_button']): ?>
+									<div class="full-width">
+										<a href="<?php echo $row_full['custom_button_link']; ?>" class="but-left more"><?php echo $row_full['custom_button_text'] ?></a>
+									</div>
+								<?php endif; ?>
+								<?php if($row_full['custom_add_accordion']): ?>
+									<div class="accordian">
+										<h5><?php echo $row_full['custom_main_title']; ?></h5>
+											<?php $cust_accor_rept = $row_full['custom_repeater_accordion']; ?>
+											<?php foreach($cust_accor_rept as $each_accord): ?>
+												<div class="full-width">
+													<h2 class="button"><?php echo $each_accord['custom_accordion_title']; ?></h2>
+													<div class="accordian-content">
+														<?php echo $each_accord['custom_accordion_content'] ?>
+														<?php if($each_accord['custom_accordion_add_button']): ?>
+															<a href="<?php echo $each_accord['custom_accordion_button_link']; ?>" class="but-left more"><?php echo $each_accord['custom_accordion_button_text']; ?></a>	
+														<?php endif; ?>
+													</div>
+												</div>
+											<?php endforeach; ?>
+										</div>
+									<?php endif; ?> <!-- four cols third -->
+									</div>
+									<div class="col-4">
+										<?php $row_full = get_sub_field('column_4_4'); ?>
+								<?php if($row_full['custom_content']): ?>
+									<div class="full-width">
+										<p><?php echo $row_full['custom_content']; ?></p>
+									</div>
+								<?php endif; ?>	
+								<?php if($row_full['custom_add_button']): ?>
+									<div class="full-width">
+										<a href="<?php echo $row_full['custom_button_link']; ?>" class="but-left more"><?php echo $row_full['custom_button_text'] ?></a>
+									</div>
+								<?php endif; ?>
+								<?php if($row_full['custom_add_accordion']): ?>
+									<div class="accordian">
+										<h5><?php echo $row_full['custom_main_title']; ?></h5>
+											<?php $cust_accor_rept = $row_full['custom_repeater_accordion']; ?>
+											<?php foreach($cust_accor_rept as $each_accord): ?>
+												<div class="full-width">
+													<h2 class="button"><?php echo $each_accord['custom_accordion_title']; ?></h2>
+													<div class="accordian-content">
+														<?php echo $each_accord['custom_accordion_content'] ?>
+														<?php if($each_accord['custom_accordion_add_button']): ?>
+															<a href="<?php echo $each_accord['custom_accordion_button_link']; ?>" class="but-left more"><?php echo $each_accord['custom_accordion_button_text']; ?></a>	
+														<?php endif; ?>
+													</div>
+												</div>
+											<?php endforeach; ?>
+										</div>
+									<?php endif; ?> <!-- four cols fourth -->
 									</div>
 								</div>
-								<div class="full-width">
-									<h2 class="button">Accordian Title</h2>
-									<div class="accordian-content">
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam, quis quas. Debitis, aliquid quis reprehenderit? Magni obcaecati autem aliquid, incidunt cupiditate optio, adipisci expedita quis voluptate, cumque ab reiciendis doloremque.</p>
-										<a href="#" class="but-left more">Read more</a>						
-									</div>
-								</div>
-							</div>
-						</div>	
-					</div>
-					<div class="col-2">
-						<div class="full-width">
-							<h1>Title</h1>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus nemo voluptatum sint nesciunt adipisci dolore. Enim, est, doloremque. Deleniti harum, omnis eligendi nam, mollitia labore odit dolorum saepe molestias voluptatibus.</p>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit deserunt odio totam mollitia accusantium temporibus ratione rerum culpa quasi porro incidunt eum, nulla hic, earum enim possimus exercitationem pariatur, blanditiis.</p>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus nemo voluptatum sint nesciunt adipisci dolore. Enim, est, doloremque. Deleniti harum, omnis eligendi nam, mollitia labore odit dolorum saepe molestias voluptatibus.</p>						
-							<div class="full-width">
-								<a href="#" class="but-left more">Read more</a>
-							</div>
+							<?php endif; ?> <!-- four cols row -->
 
-							<div class="accordian">
-								<h5>Main Title</h5>
-								<div class="full-width">
-									<h2 class="button">Accordian Title</h2>
-									<div class="accordian-content">
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam, quis quas. Debitis, aliquid quis reprehenderit? Magni obcaecati autem aliquid, incidunt cupiditate optio, adipisci expedita quis voluptate, cumque ab reiciendis doloremque.</p>
-										<a href="#" class="but-left more">Read more</a>						
+							<?php if(get_row_layout() == '14_and_34'): ?>
+								<div class="full-width one-twothird">
+									<div class="one-third">
+										<?php $row_full = get_sub_field('column_14_34'); ?>
+								<?php if($row_full['custom_content']): ?>
+									<div class="full-width">
+										<p><?php echo $row_full['custom_content']; ?></p>
+									</div>
+								<?php endif; ?>	
+								<?php if($row_full['custom_add_button']): ?>
+									<div class="full-width">
+										<a href="<?php echo $row_full['custom_button_link']; ?>" class="but-left more"><?php echo $row_full['custom_button_text'] ?></a>
+									</div>
+								<?php endif; ?>
+								<?php if($row_full['custom_add_accordion']): ?>
+									<div class="accordian">
+										<h5><?php echo $row_full['custom_main_title']; ?></h5>
+											<?php $cust_accor_rept = $row_full['custom_repeater_accordion']; ?>
+											<?php foreach($cust_accor_rept as $each_accord): ?>
+												<div class="full-width">
+													<h2 class="button"><?php echo $each_accord['custom_accordion_title']; ?></h2>
+													<div class="accordian-content">
+														<?php echo $each_accord['custom_accordion_content'] ?>
+														<?php if($each_accord['custom_accordion_add_button']): ?>
+															<a href="<?php echo $each_accord['custom_accordion_button_link']; ?>" class="but-left more"><?php echo $each_accord['custom_accordion_button_text']; ?></a>	
+														<?php endif; ?>
+													</div>
+												</div>
+											<?php endforeach; ?>
+										</div>
+									<?php endif; ?> <!-- 1/3 cols -->
+									</div>
+									<div class="two-third">
+										<?php $row_full = get_sub_field('column_34_14_34'); ?>
+								<?php if($row_full['custom_content']): ?>
+									<div class="full-width">
+										<p><?php echo $row_full['custom_content']; ?></p>
+									</div>
+								<?php endif; ?>	
+								<?php if($row_full['custom_add_button']): ?>
+									<div class="full-width">
+										<a href="<?php echo $row_full['custom_button_link']; ?>" class="but-left more"><?php echo $row_full['custom_button_text'] ?></a>
+									</div>
+								<?php endif; ?>
+								<?php if($row_full['custom_add_accordion']): ?>
+									<div class="accordian">
+										<h5><?php echo $row_full['custom_main_title']; ?></h5>
+											<?php $cust_accor_rept = $row_full['custom_repeater_accordion']; ?>
+											<?php foreach($cust_accor_rept as $each_accord): ?>
+												<div class="full-width">
+													<h2 class="button"><?php echo $each_accord['custom_accordion_title']; ?></h2>
+													<div class="accordian-content">
+														<?php echo $each_accord['custom_accordion_content'] ?>
+														<?php if($each_accord['custom_accordion_add_button']): ?>
+															<a href="<?php echo $each_accord['custom_accordion_button_link']; ?>" class="but-left more"><?php echo $each_accord['custom_accordion_button_text']; ?></a>	
+														<?php endif; ?>
+													</div>
+												</div>
+											<?php endforeach; ?>
+										</div>
+									<?php endif; ?> <!-- 2/3 cols right -->
 									</div>
 								</div>
-								<div class="full-width">
-									<h2 class="button">Accordian Title</h2>
-									<div class="accordian-content">
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam, quis quas. Debitis, aliquid quis reprehenderit? Magni obcaecati autem aliquid, incidunt cupiditate optio, adipisci expedita quis voluptate, cumque ab reiciendis doloremque.</p>
-										<a href="#" class="but-left more">Read more</a>						
+							<?php endif; ?> <!-- 1/3 and 2/3 cols row -->
+
+							<?php if(get_row_layout() == '34_and_14'): ?>
+								<div class="full-width two-onethird">
+									<div class="two-third">
+										<?php $row_full = get_sub_field('column_34_14'); ?>
+								<?php if($row_full['custom_content']): ?>
+									<div class="full-width">
+										<p><?php echo $row_full['custom_content']; ?></p>
+									</div>
+								<?php endif; ?>	
+								<?php if($row_full['custom_add_button']): ?>
+									<div class="full-width">
+										<a href="<?php echo $row_full['custom_button_link']; ?>" class="but-left more"><?php echo $row_full['custom_button_text'] ?></a>
+									</div>
+								<?php endif; ?>
+								<?php if($row_full['custom_add_accordion']): ?>
+									<div class="accordian">
+										<h5><?php echo $row_full['custom_main_title']; ?></h5>
+											<?php $cust_accor_rept = $row_full['custom_repeater_accordion']; ?>
+											<?php foreach($cust_accor_rept as $each_accord): ?>
+												<div class="full-width">
+													<h2 class="button"><?php echo $each_accord['custom_accordion_title']; ?></h2>
+													<div class="accordian-content">
+														<?php echo $each_accord['custom_accordion_content'] ?>
+														<?php if($each_accord['custom_accordion_add_button']): ?>
+															<a href="<?php echo $each_accord['custom_accordion_button_link']; ?>" class="but-left more"><?php echo $each_accord['custom_accordion_button_text']; ?></a>	
+														<?php endif; ?>
+													</div>
+												</div>
+											<?php endforeach; ?>
+										</div>
+									<?php endif; ?> <!-- 2/3 col -->
+									</div>
+									<div class="one-third">
+										<?php $row_full = get_sub_field('column_14_34_14'); ?>
+								<?php if($row_full['custom_content']): ?>
+									<div class="full-width">
+										<p><?php echo $row_full['custom_content']; ?></p>
+									</div>
+								<?php endif; ?>	
+								<?php if($row_full['custom_add_button']): ?>
+									<div class="full-width">
+										<a href="<?php echo $row_full['custom_button_link']; ?>" class="but-left more"><?php echo $row_full['custom_button_text'] ?></a>
+									</div>
+								<?php endif; ?>
+								<?php if($row_full['custom_add_accordion']): ?>
+									<div class="accordian">
+										<h5><?php echo $row_full['custom_main_title']; ?></h5>
+											<?php $cust_accor_rept = $row_full['custom_repeater_accordion']; ?>
+											<?php foreach($cust_accor_rept as $each_accord): ?>
+												<div class="full-width">
+													<h2 class="button"><?php echo $each_accord['custom_accordion_title']; ?></h2>
+													<div class="accordian-content">
+														<?php echo $each_accord['custom_accordion_content'] ?>
+														<?php if($each_accord['custom_accordion_add_button']): ?>
+															<a href="<?php echo $each_accord['custom_accordion_button_link']; ?>" class="but-left more"><?php echo $each_accord['custom_accordion_button_text']; ?></a>	
+														<?php endif; ?>
+													</div>
+												</div>
+											<?php endforeach; ?>
+										</div>
+									<?php endif; ?> <!-- 1/3 col right -->
 									</div>
 								</div>
-							</div>
-						</div>	
-					</div>
+							<?php endif; ?> <!-- 2/3 and 1/3 cols row -->
+
+						<?php endwhile; ?>
+					<?php endif; ?>
 				</div>
-				<!-- end of two-columns -->
-				<!-- with two-oneThird columns -->
-				<div class="full-width two-onethird">
-					<div class="two-third">
-						<div class="full-width">
-							<h1>Title</h1>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus nemo voluptatum sint nesciunt adipisci dolore. Enim, est, doloremque. Deleniti harum, omnis eligendi nam, mollitia labore odit dolorum saepe molestias voluptatibus.</p>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit deserunt odio totam mollitia accusantium temporibus ratione rerum culpa quasi porro incidunt eum, nulla hic, earum enim possimus exercitationem pariatur, blanditiis.</p>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde tenetur asperiores cum suscipit possimus illo delectus nihil error, nobis. Culpa ipsum eaque sapiente. Ut obcaecati laboriosam minus nisi magni, asperiores.</p>
-							
-							<div class="full-width">
-								<a href="#" class="but-left more">Read more</a>
-							</div>
-
-							<div class="accordian">
-								<h5>Main Title</h5>
-								<div class="full-width">
-									<h2 class="button">Accordian Title</h2>
-									<div class="accordian-content">
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam, quis quas. Debitis, aliquid quis reprehenderit? Magni obcaecati autem aliquid, incidunt cupiditate optio, adipisci expedita quis voluptate, cumque ab reiciendis doloremque.</p>
-										<a href="#" class="but-left more">Read more</a>						
-									</div>
-								</div>
-								<div class="full-width">
-									<h2 class="button">Accordian Title</h2>
-									<div class="accordian-content">
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam, quis quas. Debitis, aliquid quis reprehenderit? Magni obcaecati autem aliquid, incidunt cupiditate optio, adipisci expedita quis voluptate, cumque ab reiciendis doloremque.</p>
-										<a href="#" class="but-left more">Read more</a>						
-									</div>
-								</div>
-							</div>
-						</div>	
-					</div>
-					<div class="one-third">
-						<div class="full-width">
-							<h1>Title</h1>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus nemo voluptatum sint nesciunt adipisci dolore. Enim, est, doloremque. Deleniti harum, omnis eligendi nam, mollitia labore odit dolorum saepe molestias voluptatibus.</p>
-							
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde tenetur asperiores cum suscipit possimus illo delectus nihil error, nobis. Culpa ipsum eaque sapiente. Ut obcaecati laboriosam minus nisi magni, asperiores.</p>
-							
-							<div class="full-width">
-								<a href="#" class="but-left more">Read more</a>
-							</div>
-
-							<div class="accordian">
-								<h5>Main Title</h5>
-								<div class="full-width">
-									<h2 class="button">Accordian Title</h2>
-									<div class="accordian-content">
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam, quis quas. Debitis, aliquid quis reprehenderit? Magni obcaecati autem aliquid, incidunt cupiditate optio, adipisci expedita quis voluptate, cumque ab reiciendis doloremque.</p>
-										<a href="#" class="but-left more">Read more</a>						
-									</div>
-								</div>
-								<div class="full-width">
-									<h2 class="button">Accordian Title</h2>
-									<div class="accordian-content">
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam, quis quas. Debitis, aliquid quis reprehenderit? Magni obcaecati autem aliquid, incidunt cupiditate optio, adipisci expedita quis voluptate, cumque ab reiciendis doloremque.</p>
-										<a href="#" class="but-left more">Read more</a>						
-									</div>
-								</div>
-							</div>
-						</div>	
-					</div>
-				</div>
-				<!-- end of two-oneThird -->
-				<!-- with one-twoThird columns -->
-				<div class="full-width one-twothird">
-					<div class="one-third">
-						<div class="full-width">
-							<h1>Title</h1>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus nemo voluptatum sint nesciunt adipisci dolore. Enim, est, doloremque. Deleniti harum, omnis eligendi nam, mollitia labore odit dolorum saepe molestias voluptatibus.</p>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde tenetur asperiores cum suscipit possimus illo delectus nihil error, nobis. Culpa ipsum eaque sapiente. Ut obcaecati laboriosam minus nisi magni, asperiores.</p>
-							
-							<div class="full-width">
-								<a href="#" class="but-left more">Read more</a>
-							</div>
-
-							<div class="accordian">
-								<h5>Main Title</h5>
-								<div class="full-width">
-									<h2 class="button">Accordian Title</h2>
-									<div class="accordian-content">
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam, quis quas. Debitis, aliquid quis reprehenderit? Magni obcaecati autem aliquid, incidunt cupiditate optio, adipisci expedita quis voluptate, cumque ab reiciendis doloremque.</p>
-										<a href="#" class="but-left more">Read more</a>						
-									</div>
-								</div>
-								<div class="full-width">
-									<h2 class="button">Accordian Title</h2>
-									<div class="accordian-content">
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam, quis quas. Debitis, aliquid quis reprehenderit? Magni obcaecati autem aliquid, incidunt cupiditate optio, adipisci expedita quis voluptate, cumque ab reiciendis doloremque.</p>
-										<a href="#" class="but-left more">Read more</a>						
-									</div>
-								</div>
-							</div>
-						</div>	
-					</div>
-					<div class="two-third">
-						<div class="full-width">
-							<h1>Title</h1>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus nemo voluptatum sint nesciunt adipisci dolore. Enim, est, doloremque. Deleniti harum, omnis eligendi nam, mollitia labore odit dolorum saepe molestias voluptatibus.</p>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit deserunt odio totam mollitia accusantium temporibus ratione rerum culpa quasi porro incidunt eum, nulla hic, earum enim possimus exercitationem pariatur, blanditiis.</p>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde tenetur asperiores cum suscipit possimus illo delectus nihil error, nobis. Culpa ipsum eaque sapiente. Ut obcaecati laboriosam minus nisi magni, asperiores.</p>
-							
-							<div class="full-width">
-								<a href="#" class="but-left more">Read more</a>
-							</div>
-
-							<div class="accordian">
-								<h5>Main Title</h5>
-								<div class="full-width">
-									<h2 class="button">Accordian Title</h2>
-									<div class="accordian-content">
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam, quis quas. Debitis, aliquid quis reprehenderit? Magni obcaecati autem aliquid, incidunt cupiditate optio, adipisci expedita quis voluptate, cumque ab reiciendis doloremque.</p>
-										<a href="#" class="but-left more">Read more</a>						
-									</div>
-								</div>
-								<div class="full-width">
-									<h2 class="button">Accordian Title</h2>
-									<div class="accordian-content">
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam, quis quas. Debitis, aliquid quis reprehenderit? Magni obcaecati autem aliquid, incidunt cupiditate optio, adipisci expedita quis voluptate, cumque ab reiciendis doloremque.</p>
-										<a href="#" class="but-left more">Read more</a>						
-									</div>
-								</div>
-							</div>
-						</div>	
-					</div>
-				</div>
-				<div class="full-width">
-					<div class="col-3">
-						<div class="full-width">
-							<h1>Title</h1>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus nemo voluptatum sint nesciunt adipisci dolore. Enim, est, doloremque. Deleniti harum, omnis eligendi nam, mollitia labore odit dolorum saepe molestias voluptatibus.</p>
-							
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde tenetur asperiores cum suscipit possimus illo delectus nihil error, nobis. Culpa ipsum eaque sapiente. Ut obcaecati laboriosam minus nisi magni, asperiores.</p>
-							
-							<div class="full-width">
-								<a href="#" class="but-left more">Read more</a>
-							</div>
-
-							<div class="accordian">
-								<h5>Main Title</h5>
-								<div class="full-width">
-									<h2 class="button">Accordian Title</h2>
-									<div class="accordian-content">
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam, quis quas. Debitis, aliquid quis reprehenderit? Magni obcaecati autem aliquid, incidunt cupiditate optio, adipisci expedita quis voluptate, cumque ab reiciendis doloremque.</p>
-										<a href="#" class="but-left more">Read more</a>						
-									</div>
-								</div>
-								<div class="full-width">
-									<h2 class="button">Accordian Title</h2>
-									<div class="accordian-content">
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam, quis quas. Debitis, aliquid quis reprehenderit? Magni obcaecati autem aliquid, incidunt cupiditate optio, adipisci expedita quis voluptate, cumque ab reiciendis doloremque.</p>
-										<a href="#" class="but-left more">Read more</a>						
-									</div>
-								</div>
-							</div>
-						</div>
-					</div> <!-- col-3 -->
-					<div class="col-3">
-						<div class="full-width">
-							<h1>Title</h1>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus nemo voluptatum sint nesciunt adipisci dolore. Enim, est, doloremque. Deleniti harum, omnis eligendi nam, mollitia labore odit dolorum saepe molestias voluptatibus.</p>
-							
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde tenetur asperiores cum suscipit possimus illo delectus nihil error, nobis. Culpa ipsum eaque sapiente. Ut obcaecati laboriosam minus nisi magni, asperiores.</p>
-							
-							<div class="full-width">
-								<a href="#" class="but-left more">Read more</a>
-							</div>
-
-							<div class="accordian">
-								<h5>Main Title</h5>
-								<div class="full-width">
-									<h2 class="button">Accordian Title</h2>
-									<div class="accordian-content">
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam, quis quas. Debitis, aliquid quis reprehenderit? Magni obcaecati autem aliquid, incidunt cupiditate optio, adipisci expedita quis voluptate, cumque ab reiciendis doloremque.</p>
-										<a href="#" class="but-left more">Read more</a>						
-									</div>
-								</div>
-								<div class="full-width">
-									<h2 class="button">Accordian Title</h2>
-									<div class="accordian-content">
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam, quis quas. Debitis, aliquid quis reprehenderit? Magni obcaecati autem aliquid, incidunt cupiditate optio, adipisci expedita quis voluptate, cumque ab reiciendis doloremque.</p>
-										<a href="#" class="but-left more">Read more</a>						
-									</div>
-								</div>
-							</div>
-						</div>
-					</div> <!-- col-3 -->
-					<div class="col-3">
-						<div class="full-width">
-							<h1>Title</h1>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus nemo voluptatum sint nesciunt adipisci dolore. Enim, est, doloremque. Deleniti harum, omnis eligendi nam, mollitia labore odit dolorum saepe molestias voluptatibus.</p>
-							
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde tenetur asperiores cum suscipit possimus illo delectus nihil error, nobis. Culpa ipsum eaque sapiente. Ut obcaecati laboriosam minus nisi magni, asperiores.</p>
-							
-							<div class="full-width">
-								<a href="#" class="but-left more">Read more</a>
-							</div>
-
-							<div class="accordian">
-								<h5>Main Title</h5>
-								<div class="full-width">
-									<h2 class="button">Accordian Title</h2>
-									<div class="accordian-content">
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam, quis quas. Debitis, aliquid quis reprehenderit? Magni obcaecati autem aliquid, incidunt cupiditate optio, adipisci expedita quis voluptate, cumque ab reiciendis doloremque.</p>
-										<a href="#" class="but-left more">Read more</a>						
-									</div>
-								</div>
-								<div class="full-width">
-									<h2 class="button">Accordian Title</h2>
-									<div class="accordian-content">
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam, quis quas. Debitis, aliquid quis reprehenderit? Magni obcaecati autem aliquid, incidunt cupiditate optio, adipisci expedita quis voluptate, cumque ab reiciendis doloremque.</p>
-										<a href="#" class="but-left more">Read more</a>						
-									</div>
-								</div>
-							</div>
-						</div>
-					</div> <!-- col-3 -->
-				</div>
-				<div class="full-width">
-					<div class="col-4">
-						<div class="full-width">
-							<h1>Title</h1>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus nemo voluptatum sint nesciunt adipisci dolore. Enim, est, doloremque. Deleniti harum, omnis eligendi nam, mollitia labore odit dolorum saepe molestias voluptatibus.</p>
-							
-							<div class="full-width">
-								<a href="#" class="but-left more">Read more</a>
-							</div>
-
-							<div class="accordian">
-								<h5>Main Title</h5>
-								<div class="full-width">
-									<h2 class="button">Accordian Title</h2>
-									<div class="accordian-content">
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam, quis quas. Debitis, aliquid quis reprehenderit? Magni obcaecati autem aliquid, incidunt cupiditate optio, adipisci expedita quis voluptate, cumque ab reiciendis doloremque.</p>
-										<a href="#" class="but-left more">Read more</a>						
-									</div>
-								</div>
-								<div class="full-width">
-									<h2 class="button">Accordian Title</h2>
-									<div class="accordian-content">
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam, quis quas. Debitis, aliquid quis reprehenderit? Magni obcaecati autem aliquid, incidunt cupiditate optio, adipisci expedita quis voluptate, cumque ab reiciendis doloremque.</p>
-										<a href="#" class="but-left more">Read more</a>						
-									</div>
-								</div>
-							</div>
-						</div>
-					</div> <!-- col-4 -->
-					<div class="col-4">
-						<div class="full-width">
-							<h1>Title</h1>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus nemo voluptatum sint nesciunt adipisci dolore. Enim, est, doloremque. Deleniti harum, omnis eligendi nam, mollitia labore odit dolorum saepe molestias voluptatibus.</p>
-							<div class="full-width">
-								<a href="#" class="but-left more">Read more</a>
-							</div>
-
-							<div class="accordian">
-								<h5>Main Title</h5>
-								<div class="full-width">
-									<h2 class="button">Accordian Title</h2>
-									<div class="accordian-content">
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam, quis quas. Debitis, aliquid quis reprehenderit? Magni obcaecati autem aliquid, incidunt cupiditate optio, adipisci expedita quis voluptate, cumque ab reiciendis doloremque.</p>
-										<a href="#" class="but-left more">Read more</a>						
-									</div>
-								</div>
-								<div class="full-width">
-									<h2 class="button">Accordian Title</h2>
-									<div class="accordian-content">
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam, quis quas. Debitis, aliquid quis reprehenderit? Magni obcaecati autem aliquid, incidunt cupiditate optio, adipisci expedita quis voluptate, cumque ab reiciendis doloremque.</p>
-										<a href="#" class="but-left more">Read more</a>						
-									</div>
-								</div>
-							</div>
-						</div>
-					</div> <!-- col-4 -->
-					<div class="col-4">
-						<div class="full-width">
-							<h1>Title</h1>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus nemo voluptatum sint nesciunt adipisci dolore. Enim, est, doloremque. Deleniti harum, omnis eligendi nam, mollitia labore odit dolorum saepe molestias voluptatibus.</p>
-							<div class="full-width">
-								<a href="#" class="but-left more">Read more</a>
-							</div>
-
-							<div class="accordian">
-								<h5>Main Title</h5>
-								<div class="full-width">
-									<h2 class="button">Accordian Title</h2>
-									<div class="accordian-content">
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam, quis quas. Debitis, aliquid quis reprehenderit? Magni obcaecati autem aliquid, incidunt cupiditate optio, adipisci expedita quis voluptate, cumque ab reiciendis doloremque.</p>
-										<a href="#" class="but-left more">Read more</a>						
-									</div>
-								</div>
-								<div class="full-width">
-									<h2 class="button">Accordian Title</h2>
-									<div class="accordian-content">
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam, quis quas. Debitis, aliquid quis reprehenderit? Magni obcaecati autem aliquid, incidunt cupiditate optio, adipisci expedita quis voluptate, cumque ab reiciendis doloremque.</p>
-										<a href="#" class="but-left more">Read more</a>						
-									</div>
-								</div>
-							</div>
-						</div>
-					</div> <!-- col-4 -->
-					<div class="col-4">
-						<div class="full-width">
-							<h1>Title</h1>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus nemo voluptatum sint nesciunt adipisci dolore. Enim, est, doloremque. Deleniti harum, omnis eligendi nam, mollitia labore odit dolorum saepe molestias voluptatibus.</p>
-							
-							<div class="full-width">
-								<a href="#" class="but-left more">Read more</a>
-							</div>
-
-							<div class="accordian">
-								<h5>Main Title</h5>
-								<div class="full-width">
-									<h2 class="button">Accordian Title</h2>
-									<div class="accordian-content">
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam, quis quas. Debitis, aliquid quis reprehenderit? Magni obcaecati autem aliquid, incidunt cupiditate optio, adipisci expedita quis voluptate, cumque ab reiciendis doloremque.</p>
-										<a href="#" class="but-left more">Read more</a>						
-									</div>
-								</div>
-								<div class="full-width">
-									<h2 class="button">Accordian Title</h2>
-									<div class="accordian-content">
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam, quis quas. Debitis, aliquid quis reprehenderit? Magni obcaecati autem aliquid, incidunt cupiditate optio, adipisci expedita quis voluptate, cumque ab reiciendis doloremque.</p>
-										<a href="#" class="but-left more">Read more</a>						
-									</div>
-								</div>
-							</div>
-						</div>
-					</div> <!-- col-4 -->
-				</div>
-			<!-- end of one-twoThird -->
 			</div> <!-- full-side-bar -->
 
 			<?php include (TEMPLATEPATH . '/sidebar.php'); ?>
