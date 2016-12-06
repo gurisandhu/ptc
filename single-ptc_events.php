@@ -52,6 +52,7 @@ if ($event_contact_details == "Use Custom"){
 	$contact_number = $asso_contact;
 	$contact_number_2 = $asso_contact_2;
 }
+
  ?>
 
 	<section class="single-page light-bg">
@@ -201,6 +202,8 @@ Related posts
 			$realted_suburb = get_field('events_location_suburb');
 			$format_in 	= '';
 			$related_date_short = date("j M", strtotime($related_date));
+			$schools = get_the_terms( get_the_ID(), 'ptc_schools');
+            if ( empty($schools)) :
 	 	?>
 
 			<a href="<?php echo get_permalink(); ?>" class="col-3" style="background-color:<?php echo $sub_bg_color; ?>;">
@@ -224,7 +227,7 @@ Related posts
 					</div>
 				</div>
 			</a>
-	<?php endif; endwhile; ?>
+	<?php endif; endif; endwhile; ?>
 			<div class="row">
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>/ptc_events" class="more but-col-3">See All events</a>
 			</div>

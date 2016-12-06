@@ -13,5 +13,4 @@
 
 <?php include(TEMPLATEPATH . '/association-slider.php'); ?>
 
-
 <?php get_footer(); ?>

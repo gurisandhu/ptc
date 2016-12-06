@@ -502,7 +502,8 @@ get_header();
                 $date = get_field('events_start_date');
                 $suburb = get_field('events_location_suburb');
                 $date_short = date("j M", strtotime($date));	
-
+                $schools = get_the_terms( get_the_ID(), 'ptc_schools');
+            	if ( empty($schools)) :
 			?>
 
 				<a href="<?php echo get_permalink(); ?>" class="col-3" style="background-color:<?php echo $sub_bg_color; ?>;">
@@ -527,7 +528,7 @@ get_header();
                     </div>
 				</a>
 			
-			<?php endwhile; endif; ?>
+			<?php endif; endwhile; endif; ?>
 
 			<div class="row">
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>/ptc_events" class="more but-col-3">See all events</a>

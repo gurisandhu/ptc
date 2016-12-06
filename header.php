@@ -33,7 +33,7 @@
 						<?php wp_nav_menu( array( 'theme_location' => 'header-menu' ) ); ?>
 					</nav>
 					<div class="login">
-						<a href="#">PTC Plus log in</a>
+						<a href="<?php echo esc_url( home_url( '/' ) ); ?>/schools/">PTC Plus</a>
 					</div>
 					<div class="search show-search">
 						<i class="fa fa-search"></i>
@@ -44,7 +44,7 @@
 						<?php wp_nav_menu( array( 'theme_location' => 'header-menu' ) ); ?>
 					</nav>
 					<div class="login">
-						<a href="#">PTC Plus log in</a>
+						<a href="<?php echo esc_url( home_url( '/' ) ); ?>/schools/">PTC Plus</a>
 					</div>
 					<div class="search">
 						<i class="fa fa-search"></i>
@@ -61,4 +61,5 @@
 				</div>
 		</section>
 	</section>
+	<?php include (TEMPLATEPATH . '/ptc-plus-validation.php'); ?>
 	

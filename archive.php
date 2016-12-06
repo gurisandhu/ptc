@@ -7,11 +7,11 @@ get_header();
 		<div class="full-width">
 			<ul class="full-width bread-crumb">
 				<li><a href="<?php echo esc_url( home_url( '/' ) ); ?>">PTC</a></li>
-				<li>PTC Plus Events</li>
+				<li>News</li>
 			</ul>
 		</div>
 		<div class="row">
-			<h2>PTC Plus Events</h2>
+			<h2>News</h2>
 		</div>
 		<div class="full-width">
 			<?php if (have_posts()) : while (have_posts()) : the_post(); ?>

@@ -116,7 +116,14 @@ function create_my_taxonomies() {
                 'labels'   => array(
                     'name'  => 'Associations',
                     'add_new_item' =>   'Add New Association',
-                    'new_item_name' =>  'New Association'
+                    'edit_item'    =>  'Edit Association',
+                    'new_item_name' =>  'New Association',
+                    'new_item'              =>  'New Association',
+                    'view'                  =>  'View',
+                    'view_item'             =>  'View Association',
+                    'search_items'          =>  'Search Associations',
+                    'not_found'             =>  'No Associations Found',
+                    'not_found_in_trash'    =>    'No Associations found in Trash',
                     ),
                 'show_ui'   => true,
                 'show_tagcloud'     => false,
@@ -136,7 +143,14 @@ function create_my_taxonomies() {
                 'labels'   => array(
                     'name'  => 'Audience',
                     'add_new_item' =>   'Add New Audience',
-                    'new_item_name' =>  'New Audience'
+                    'edit_item'    =>  'Edit Audience',
+                    'new_item_name' =>  'New Audience',
+                    'new_item'              =>  'New Audience',
+                    'view'                  =>  'View',
+                    'view_item'             =>  'View Audience',
+                    'search_items'          =>  'Search Audiences',
+                    'not_found'             =>  'No Audiences Found',
+                    'not_found_in_trash'    =>    'No Audiences found in Trash'
                     ),
                 'show_ui'   => true,
                 'show_tagcloud'     => false,
@@ -156,7 +170,14 @@ function create_my_taxonomies() {
                 'labels'   => array(
                     'name'  => 'Levels',
                     'add_new_item' =>   'Add New Level',
-                    'new_item_name' =>  'New Level'
+                    'edit_item'    =>  'Edit Level',
+                    'new_item_name' =>  'New Level',
+                    'new_item'              =>  'New Level',
+                    'view'                  =>  'View',
+                    'view_item'             =>  'View Level',
+                    'search_items'          =>  'Search Levels',
+                    'not_found'             =>  'No Levels Found',
+                    'not_found_in_trash'    =>    'No Levels found in Trash'
                     ),
                 'show_ui'   => true,
                 'show_tagcloud'     => false,
@@ -176,7 +197,14 @@ function create_my_taxonomies() {
                 'labels'   => array(
                     'name'  => 'Subjects | KLA',
                     'add_new_item' =>   'Add New Subject',
-                    'new_item_name' =>  'New Subject'
+                    'edit_item'    =>  'Edit Subject',
+                    'new_item_name' =>  'New Subject',
+                    'new_item'              =>  'New Subject',
+                    'view'                  =>  'View',
+                    'view_item'             =>  'View Subject',
+                    'search_items'          =>  'Search Subjects',
+                    'not_found'             =>  'No Subjects Found',
+                    'not_found_in_trash'    =>    'No Subjects found in Trash'
                     ),
                 'show_ui'   => true,
                 'show_tagcloud'     => false,
@@ -196,7 +224,14 @@ function create_my_taxonomies() {
                 'labels'   => array(
                     'name'  => 'Specilist area',
                     'add_new_item' =>   'Add New Specilist area',
-                    'new_item_name' =>  'New Specilist area'
+                    'edit_item'    =>  'Edit Specilist area',
+                    'new_item_name' =>  'New Specilist area',
+                    'new_item'              =>  'New Specilist area',
+                    'view'                  =>  'View',
+                    'view_item'             =>  'View Specilist area',
+                    'search_items'          =>  'Search Specilist areas',
+                    'not_found'             =>  'No Specilist areas Found',
+                    'not_found_in_trash'    =>    'No Specilist areas found in Trash'
                     ),
                 'show_ui'   => true,
                 'show_tagcloud'     => false,
@@ -216,7 +251,14 @@ function create_my_taxonomies() {
                 'labels'   => array(
                     'name'  => 'Regions',
                     'add_new_item' =>   'Add New Region',
-                    'new_item_name' =>  'New Region'
+                    'edit_item'    =>  'Edit Region',
+                    'new_item_name' =>  'New Region',
+                    'new_item'              =>  'New Region',
+                    'view'                  =>  'View',
+                    'view_item'             =>  'View Region',
+                    'search_items'          =>  'Search Regions',
+                    'not_found'             =>  'No Regions Found',
+                    'not_found_in_trash'    =>    'No Regions found in Trash'
                     ),
                 'show_ui'   => true,
                 'show_tagcloud'     => false,
@@ -230,7 +272,37 @@ function create_my_taxonomies() {
                 )
         );
 
-}
+    register_taxonomy(
+            'ptc_schools',
+            'ptc_events',
+            array(
+                'labels'   => array(
+                    'name'  => 'PTC &#10010; Schools',
+                    'add_new_item' =>   'Add New School',
+                    'edit_item'    =>  'Edit School',
+                    'new_item_name' =>  'New School',
+                    'new_item'              =>  'New School',
+                    'view'                  =>  'View',
+                    'view_item'             =>  'View School',
+                    'search_items'          =>  'Search Schools',
+                    'not_found'             =>  'No Schools Found',
+                    'not_found_in_trash'    =>    'No Schools found in Trash'
+                    ),
+                'show_ui'   => true,
+                'show_tagcloud'     => false,
+                'hierarchical'      => true,
+                'public'                     => true,
+                'show_ui'                    => true,
+                'show_admin_column'          => true,
+                'show_in_nav_menus'          => true,
+                'show_tagcloud'              => true,
+                'rewrite'                    => true
+                )
+        );
+ }
+
+
+
 
 
 function trimText($string, $repl, $limit){
@@ -323,82 +395,5 @@ function cf_search_distinct( $where ) {
     return $where;
 }
 add_filter( 'posts_distinct', 'cf_search_distinct' );
-
-// *************************
-// PTC Plus
-// *************************
-add_action( 'init', 'create_ptc_plus');
-
-  function create_ptc_plus() {
-    register_post_type( 'ptc_plus',
-
-      array(
-        'labels'    => array(
-            'name'                  =>  'PTC Plus Events', 'post type general name',
-            'singular_name'         =>  'Plus Event', 'post type singular name',
-            'add_new'               =>  'Add Plus Event',
-            'add_new_item'          =>  'Add New Plus Event',
-            'edit'                  =>  'Edit',
-            'edit_item'             =>  'Edit Event',
-            'new_item'              =>  'New Event',
-            'view'                  =>  'View',
-            'view_item'             =>  'View Event',
-            'search_items'          =>  'Search Events',
-            'not_found'             =>  'No Events Found',
-            'not_found_in_trash'    =>   'No Events found in Trash',
-            'parent'                =>  'Parent Event'
-        ),
-            // 'public'            =>  true,
-            'menu_position'     =>  21,
-            // 'supports'          =>  array( 'title', 'editor', 'comments', 'thumbnail'),
-            'taxonomies'        =>  array( 'create_ptc_plus_taxonomies'),
-            'menu_icon'         =>  'dashicons-calendar',
-            'update_count_callback' => '_update_post_term_count',
-            'query_var'             => true,
-            // 'has_archive'       => true,
-            // 'hierarchical'      => true,
-            'supports'              => array( 'title', 'editor', 'excerpt', 'thumbnail', 'revisions', 'page-attributes', ),
-
-        // 'taxonomies'            => array('hire_taxonomies'),
-        'hierarchical'          => true,
-        'public'                => true,
-        'show_ui'               => true,
-        'show_in_menu'          => true,
-        // 'menu_position'         => 5,
-        'show_in_admin_bar'     => true,
-        'show_in_nav_menus'     => true,
-        'can_export'            => true,
-        'has_archive'           => true,        
-        'exclude_from_search'   => false,
-        'publicly_queryable'    => true,
-        'capability_type'       => 'post',
-        )
-      );
-  }
-
-  add_action( 'init', 'create_ptc_plus_taxonomies', 0);
-
-function create_ptc_plus_taxonomies() {
-    register_taxonomy(
-            'ptc_schools',
-            'ptc_plus',
-            array(
-                'labels'   => array(
-                    'name'  => 'Schools',
-                    'add_new_item' =>   'Add New School',
-                    'new_item_name' =>  'New School'
-                    ),
-                'show_ui'   => true,
-                'show_tagcloud'     => false,
-                'hierarchical'      => true,
-                'public'                     => true,
-                'show_ui'                    => true,
-                'show_admin_column'          => true,
-                'show_in_nav_menus'          => true,
-                'show_tagcloud'              => true,
-                'rewrite'                    => true
-                )
-        );
-} 
 
 ?>

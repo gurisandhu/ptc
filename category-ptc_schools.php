@@ -8,6 +8,7 @@ get_header();
   ?>
 
 
+
 <section class="section-2">
     <div class="container">
         <div class="full-width">
@@ -19,7 +20,7 @@ get_header();
             </div>
         
         <?php if ( have_posts() ) : ?>
-
+        <h1>Schoool Taxonmy</h1>
         <h2><?php single_term_title(); ?></h2>
 
             <?php while ( have_posts() ) : the_post(); ?>

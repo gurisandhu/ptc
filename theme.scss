@@ -303,7 +303,7 @@ nav{
 	max-width: 63%;
 	position: absolute;
 	bottom: 20px;
-	left: 0;
+	left: 15px;
 }
 h1{
 	font-size: 42px;
@@ -1611,7 +1611,34 @@ h6{
 	background-position: center;
 }
 
-
+.schools{
+	position: relative;
+	.section-2-link{
+		position: absolute;
+		left: 0;
+		bottom: -59px;
+		background-color: white;
+	}
+	h4{
+		background-color: white;
+	}
+	&:hover{
+		.school-content{
+			-webkit-transform: translate3d(0, -59px, 0);
+			   -moz-transform: translate3d(0, -59px, 0);
+			    -ms-transform: translate3d(0, -59px, 0);
+			     -o-transform: translate3d(0, -59px, 0);
+			        transform: translate3d(0, -59px, 0);
+		    padding-top: 20px;
+		    border-top: 1px dotted #ccc;
+		    margin-bottom: -20px;
+		}
+	}
+}
+.school-content{
+	@include transition(.3);
+	background-color: white;
+}
 //This file link includes resonsive style and it MUST always stays at the bottom of this file. If you need to type code, please type above to this link. Don't type below of responsive file link.
 @import 'responsive';
 

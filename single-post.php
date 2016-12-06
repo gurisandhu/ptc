@@ -9,7 +9,7 @@ get_header();
 		<div class="full-width">
 			<ul class="full-width bread-crumb">
 				<li><a href="<?php echo esc_url( home_url( '/' ) ); ?>">PTC</a></li>
-				<li><a href="<?php echo "{esc_url( home_url( '/' )} {$cat[0]->slug}"; ?>"><?php echo $cat[0]->name; ?></a></li>
+				<li><a href="<?php echo esc_url( home_url( '/' ) ); ?>category/<?php echo $cat[0]->slug; ?>"><?php echo $cat[0]->name; ?></a></li>
 				<li><?php the_title(); ?></li>
 			</ul>
 		</div>
