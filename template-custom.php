@@ -14,8 +14,6 @@ get_header();
 					<li><?php the_title(); ?></li>
 				</ul>
 			</div>
-			
-
 			<div class="with-sidebar"> <!-- full or side -->
 				<div class="full-width">
 					<h1><?php the_title(); ?></h1>

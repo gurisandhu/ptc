@@ -75,7 +75,7 @@ if (function_exists('acf_add_options_page')){
             'view_item'             =>  'View Event',
             'search_items'          =>  'Search Events',
             'not_found'             =>  'No Events Found',
-            'not_found_in_trash'    =>    'No Events found in Trash',
+            'not_found_in_trash'    =>  'No Events found in Trash',
             'parent'                =>  'Parent Event'
         ),
             // 'public'            =>  true,
@@ -104,6 +104,7 @@ if (function_exists('acf_add_options_page')){
         'capability_type'       => 'post',
         )
       );
+
   }
 
   add_action( 'init', 'create_my_taxonomies', 0);
@@ -296,9 +297,11 @@ function create_my_taxonomies() {
                 'show_admin_column'          => true,
                 'show_in_nav_menus'          => true,
                 'show_tagcloud'              => true,
-                'rewrite'                    => true
+                'exclude_from_search'        => true,
+                'query_var'                  => false
                 )
         );
+
  }
 
 

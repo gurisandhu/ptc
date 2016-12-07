@@ -1586,6 +1586,11 @@ h6{
 		text-align: center;
 		&:hover{
 			text-decoration: none;
+			.external-link{
+				&:after{
+					opacity: 1;
+				}
+			}
 		}
 		button{
 			background-color: inherit;
@@ -1610,7 +1615,21 @@ h6{
 	        background-size: 110px;
 	background-position: center;
 }
-
+.external-link{
+	position: relative;
+	&:after{
+		@include transition(.3);
+		opacity: 0;
+		content: "\f08e";
+		font-family: FontAwesome;
+		display: block;
+		position: absolute;
+		bottom: -27px;
+		left: 42%;
+		font-size: 18px;
+		color: $grey;
+	}
+}
 .schools{
 	position: relative;
 	.section-2-link{
@@ -1638,6 +1657,10 @@ h6{
 .school-content{
 	@include transition(.3);
 	background-color: white;
+}
+.error-input{
+	border: 2px solid red;
+	display: block;
 }
 //This file link includes resonsive style and it MUST always stays at the bottom of this file. If you need to type code, please type above to this link. Don't type below of responsive file link.
 @import 'responsive';

@@ -29,12 +29,19 @@ get_header();
                 if ( !empty($association)){
                     $term = array_pop($association);
                     $asso_image = get_field('association_images', $term);
+                } else {
+                    $term = '';
+                    $asso_image = '';
                 }
                 $subjects   = get_the_terms( get_the_ID(), 'ptc_subjects');
                 if ( !empty($subjects)){
                     $sub_term = array_pop($subjects);
                     $sub_icon = get_field('subject_kla_icon', $sub_term);
                     $sub_bg_color = get_field('subject_background_color', $sub_term);
+                } else {
+                    $sub_term = '';
+                    $sub_icon = '';
+                    $sub_bg_color = '';
                 }
                 $date = get_field('events_start_date');
                 $suburb = get_field('events_location_suburb');

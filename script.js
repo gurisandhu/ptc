@@ -92,5 +92,8 @@ $('h2.button').click(function(){
             scrollTop: $("body").offset().top - 100
         }, 1000);
   });
+
+
+  // $('.school-events').remove('.full-width');
 });//end of document ready
 
