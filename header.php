@@ -1,3 +1,5 @@
+<?php session_start(); 
+?>      
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
@@ -18,6 +20,7 @@
 	<![endif]-->
 	<link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/images/fevicon.ico" type="image/x-icon">
 	<link rel="icon" href="<?php echo get_template_directory_uri(); ?>/images/fevicon.ico" type="image/x-icon">
+	
 	<?php wp_head(); ?>
 </head>
 <!-- <body class="show-loader"> -->

@@ -1,3 +1,4 @@
+
 <div class="full-width">
 	<form class="row school-login" name="school-login" method="POST" action="<?php $_SERVER["PHP_SELF"]; ?>">
 		<div id="form-validation" class="form-validation"></div>
@@ -18,6 +19,7 @@
 if (isset($_POST['school-pw-entered'])) {
 	
 	$pwEntered=$_POST['school-pw-entered'];
+	$_SESSION['school_pw'] = $_POST['school-pw-entered'];
 	
 } else {
 	
@@ -25,6 +27,7 @@ if (isset($_POST['school-pw-entered'])) {
 
 }
 
+ 
 if (isset($_POST['validate_url'])){
 	
 	$validate_url=$_POST['validate_url'];
@@ -35,7 +38,7 @@ if (isset($_POST['validate_url'])){
 
 }
 
-if ($pwEntered == $school_pw){
+if (($pwEntered == $school_pw) || ($_SESSION['school_pw'] == $school_pw)){
 	$school_login = True;
 
 } else {
@@ -44,4 +47,6 @@ if ($pwEntered == $school_pw){
 
 }
  ?>
+
+
 

@@ -56,6 +56,7 @@ if ($event_contact_details == "Use Custom"){
 	$contact_number_2 = $asso_contact_2;
 }
 $school_login = False;
+
  ?>
 
  <?php if($school_term): ?>
@@ -65,14 +66,13 @@ $school_login = False;
  			</div>
  		</section>
 
-		<?php if(!$school_login): ?>
+		<?php if($school_login): ?>
 			<?php include(TEMPLATEPATH . '/single_school.php'); ?>
 		<?php else: ?>
 			<?php echo 'error'; ?>
 		<?php endif; ?>
 		
 	<?php else: ?>
-		<h1>No School</h1>
 		<?php include(TEMPLATEPATH . '/single_no_school.php'); ?>
 <?php endif; ?>
 
