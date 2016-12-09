@@ -24,11 +24,13 @@ get_header();
                     <li><?php single_term_title(); ?></li>
                 </ul>
             </div>
-
+        
+        
         <?php include(TEMPLATEPATH . '/ptc-plus-form.php'); ?>
+        
 
         <?php if (!$school_login): ?>
-            <div class="login-status">Incorrect Password</div>
+            <div class="login-status">ERROR STATUS</div>
         <?php else: ?>
                 <?php if ( have_posts() ) : ?>
                     <div class="full-width school-events">

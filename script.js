@@ -92,8 +92,18 @@ $('h2.button').click(function(){
             scrollTop: $("body").offset().top - 100
         }, 1000);
   });
-
-
   // $('.school-events').remove('.full-width');
 });//end of document ready
+
+// ++++++++++++++++++++
+// Validate School Login
+// ++++++++++++++++++++
+
+function validateSchoolLogin(){
+  var school_login_form     = document.forms["school-login-form"];
+  var school_login_form_pw   = school_login_form["school-pw-entered"];
+  alert('test');
+
+
+} //validateSchoolLogin
 

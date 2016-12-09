@@ -1,15 +1,12 @@
 
-<div class="full-width">
-	<form class="row school-login" name="school-login" method="POST" action="<?php $_SERVER["PHP_SELF"]; ?>">
+<div class="full-width search-form school-login-form-wrapper">
+	<form class="row school-login" name="school-login-form" method="POST" onsubmit="return validateSchoolLogin()">
 		<div id="form-validation" class="form-validation"></div>
-		
-		<input id="school-pw-input" name="school-pw-entered" onkeyup="validateSchoolLogin()" class="row" type="text" placeholder="Please enter password to see school Events">
-		
-		<input type="hidden" name="school_term" value="<?php $school_term; ?>">
+		<input id="school-pw-input" name="school-pw-entered" class="row" type="text" placeholder="Please enter password to see school Events">
 		
 		<input type="hidden" name="validate_url" value="<?php $_SERVER["PHP_SELF"]; ?>">
+		<summary><button type="submit">Press Enter</button></summary>
 		
-		<input type="submit" value="Login" name="submit">
 	</form>
 </div>
 
@@ -47,6 +44,3 @@ if (($pwEntered == $school_pw) || ($_SESSION['school_pw'] == $school_pw)){
 
 }
  ?>
-
-
-
