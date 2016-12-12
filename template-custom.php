@@ -467,11 +467,11 @@ get_header();
 						<?php endwhile; ?>
 					<?php endif; ?>
 				</div>
-			</div> <!-- full-side-bar -->
 
+			</div> <!-- with-side-bar -->
 			<?php include (TEMPLATEPATH . '/sidebar.php'); ?>
-			
 		</div><!-- container -->
+
 	</section>
 
 

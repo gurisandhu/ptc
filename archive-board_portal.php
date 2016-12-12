@@ -7,11 +7,11 @@ get_header();
 		<div class="full-width">
 			<ul class="full-width bread-crumb">
 				<li><a href="<?php echo esc_url( home_url( '/' ) ); ?>">PTC</a></li>
-				<li>News</li>
+				<li>Board Portal</li>
 			</ul>
 		</div>
 		<div class="row">
-			<h2>News</h2>
+			<h2>Board Portal</h2>
 		</div>
 		<div class="with-sidebar">
 			<div class="full-width">
@@ -21,9 +21,7 @@ get_header();
 						<?php $content_to_trim = get_the_content(); ?>
 						<?php $trimedContent = trimText($content_to_trim, "...", 400);
 						 ?>
-						 <div class="post-image">
-						 	<?php the_post_thumbnail(); ?>
-						 </div>
+						 
 					 	<p><?php echo $trimedContent; ?></p>
 						<div class="full-width">
 							<button class="row but-left more">Read more</button>
@@ -32,7 +30,7 @@ get_header();
 				<?php endwhile; endif; ?>
 			</div>
 		</div> <!-- with-sidebar -->
-			<?php include (TEMPLATEPATH . '/sidebar.php'); ?>
+			<?php include (TEMPLATEPATH . '/sidebar-board-portal.php'); ?>
 	</div><!-- container -->
 </section>
 

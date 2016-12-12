@@ -57,19 +57,20 @@ if ($event_contact_details == "Use Custom"){
 }
 $school_login = False;
 
+
  ?>
 
  <?php if($school_term): ?>
- 		<section>
+ 		<section class="light-bg">
  			<div class="container">
  				<?php include(TEMPLATEPATH . '/ptc-plus-form.php'); ?>
  			</div>
  		</section>
-
-		<?php if($school_login): ?>
-			<?php include(TEMPLATEPATH . '/single_school.php'); ?>
+		
+		<?php if(!$school_login): ?>
+			<!--  -->
 		<?php else: ?>
-			<?php echo 'error'; ?>
+			<?php include(TEMPLATEPATH . '/single_school.php'); ?>
 		<?php endif; ?>
 		
 	<?php else: ?>

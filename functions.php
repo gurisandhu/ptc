@@ -304,10 +304,6 @@ function create_my_taxonomies() {
 
  }
 
-
-
-
-
 function trimText($string, $repl, $limit){
     if(strlen($string) > $limit){
         return substr($string, 0, $limit) . $repl;
@@ -323,16 +319,16 @@ add_theme_support('post-thumbnails');
 // It creates radio buttons in categories
 // ++++++++++++++++++
 
-// add_action('add_meta_boxes','mysite_add_meta_boxes',10,2);
-// function mysite_add_meta_boxes($post_type, $post) {
-//   ob_start();
-// }
-// add_action('dbx_post_sidebar','mysite_dbx_post_sidebar');
-// function mysite_dbx_post_sidebar() {
-//   $html = ob_get_clean();
-//   $html = str_replace('"checkbox"','"radio"',$html);
-//   echo $html;
-// }
+add_action('add_meta_boxes','mysite_add_meta_boxes',10,2);
+function mysite_add_meta_boxes($post_type, $post) {
+  ob_start();
+}
+add_action('dbx_post_sidebar','mysite_dbx_post_sidebar');
+function mysite_dbx_post_sidebar() {
+  $html = ob_get_clean();
+  $html = str_replace('"checkbox"','"radio"',$html);
+  echo $html;
+}
 
 
 /**
@@ -342,8 +338,17 @@ add_theme_support('post-thumbnails');
 function arphabet_widgets_init() {
 
     register_sidebar( array(
-        'name'          => '1. PTC Sidebar',
+        'name'          => 'PTC Sidebar',
         'id'            => '1_ptc_sidebar',
+        'before_widget' => '<div class="row">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h5>',
+        'after_title'   => '</h5>'
+    ) );
+
+    register_sidebar( array(
+        'name'          => 'Board Portal Sidebar',
+        'id'            => 'board_portal_sidebar',
         'before_widget' => '<div class="row">',
         'after_widget'  => '</div>',
         'before_title'  => '<h5>',
@@ -399,4 +404,89 @@ function cf_search_distinct( $where ) {
 }
 add_filter( 'posts_distinct', 'cf_search_distinct' );
 
+
+
+// *************************
+// Board Members Login
+// *************************
+  add_action( 'init', 'create_board_portal');
+
+  function create_board_portal() {
+    register_post_type( 'board_portal',
+
+      array(
+        'labels'    => array(
+            'name'                  =>  'Board Portal', 'post type general name',
+            'singular_name'         =>  'Portal', 'post type singular name',
+            'add_new'               =>  'Add Portal',
+            'add_new_item'          =>  'Add New Portal',
+            'edit'                  =>  'Edit',
+            'edit_item'             =>  'Edit Portal',
+            'new_item'              =>  'New Portal',
+            'view'                  =>  'View',
+            'view_item'             =>  'View Portal',
+            'search_items'          =>  'Search Portals',
+            'not_found'             =>  'No Portals Found',
+            'not_found_in_trash'    =>  'No Portals found in Trash',
+            'parent'                =>  'Parent Portal'
+        ),
+            // 'public'            =>  true,
+            'menu_position'     =>  21,
+            // 'supports'          =>  array( 'title', 'editor', 'comments', 'thumbnail'),
+            'taxonomies'        =>  array( 'create_board_portal_categories'),
+            'menu_icon'         =>  'dashicons-admin-multisite',
+            'update_count_callback' => '_update_post_term_count',
+            'query_var'             => true,
+            // 'has_archive'       => true,
+            // 'hierarchical'      => true,
+            'supports'              => array( 'title', 'editor', 'thumbnail', 'revisions', 'page-attributes', 'comments'),
+
+        // 'taxonomies'            => array('hire_taxonomies'),
+        'hierarchical'          => true,
+        'public'                => true,
+        'show_ui'               => true,
+        'show_in_menu'          => true,
+        // 'menu_position'         => 5,
+        'show_in_admin_bar'     => true,
+        'show_in_nav_menus'     => true,
+        'can_export'            => true,
+        'has_archive'           => true,        
+        'exclude_from_search'   => false,
+        'publicly_queryable'    => true,
+        'capability_type'       => 'post',
+        )
+      );
+
+  }
+
+add_action( 'init', 'create_board_portal_categories', 0);  
+function create_board_portal_categories() {
+    register_taxonomy(
+            'board_portal_categories',
+            'board_portal',
+            array(
+                'labels'   => array(
+                    'name'  => 'Portal Categories',
+                    'add_new_item' =>   'Add New Category',
+                    'edit_item'    =>  'Edit Category',
+                    'new_item_name' =>  'New Category',
+                    'new_item'              =>  'New Category',
+                    'view'                  =>  'View',
+                    'view_item'             =>  'View Category',
+                    'search_items'          =>  'Search Portal Category',
+                    'not_found'             =>  'No Portal Category Found',
+                    'not_found_in_trash'    =>    'No Portal Category found in Trash',
+                    ),
+                'show_ui'   => true,
+                'show_tagcloud'     => false,
+                'hierarchical'      => true,
+                'public'                     => true,
+                'show_ui'                    => true,
+                'show_admin_column'          => true,
+                'show_in_nav_menus'          => true,
+                'show_tagcloud'              => true,
+                'rewrite'                    => true
+                )
+        );
+}
 ?>

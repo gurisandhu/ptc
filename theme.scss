@@ -1624,10 +1624,10 @@ h6{
 		font-family: FontAwesome;
 		display: block;
 		position: absolute;
-		bottom: -27px;
-		left: 42%;
-		font-size: 18px;
-		color: $grey;
+		bottom: 3px;
+		right: -13px;
+		font-size: 13px;
+		color: $light-grey;
 	}
 }
 .schools{
@@ -1658,10 +1658,151 @@ h6{
 	@include transition(.3);
 	background-color: white;
 }
-.error-input{
+.school-events{
+	margin-top: 35px;
+}
+.error{
 	border: 2px solid red;
 	display: block;
 }
+.board_portal_resources{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	li{
+		float: left;
+		width: 100%;
+		&:first-of-type{
+			border-top: 2px solid $light-grey;
+		}
+		border-bottom: 2px solid $light-grey;
+	}
+	a{
+		text-decoration: none;
+	    text-transform: capitalize;
+	    font-size: 16px;
+	    color: $dark-blue;
+	    display: inline-block;
+	    width: 100%;
+	    padding-top: 25px;
+	    padding-bottom: 25px;
+	    position: relative;
+	    cursor: pointer;
+	    float: left;
+	    width: 100%;
+	    z-index: 2;
+	    @include transition(.3);
+	    &:before, &:after{
+	    	@include transition(.3);
+	    	z-index: 1;
+	    }
+	    &:before{
+	    	position: absolute;
+		    content: "";
+		    display: block;
+		    width: 33px;
+		    height: 33px;
+		    right: 0;
+		    top: 18px;
+		    background-color: $sky;
+		    color: white;
+		    -webkit-border-radius: 100%;
+		    border-radius: 100%;
+	    }
+	    &:after{
+    	    content: "\f107";
+		    text-align: center;
+		    font-family: FontAwesome;
+		    position: absolute;
+		    // font-weight: bold;
+		    font-size: 29px;
+		    right: 7.9px;
+		    top: 18px;
+		    color: white;
+		    height: 23px;
+		    width: 18px;
+		    border-bottom: 2.4px solid white;
+	    }
+	    &:hover{
+	    	background-color: #f5f5f5;
+	    	padding-left: 10px;
+	    	&:before{
+	    		right: 10px;
+	    	}
+	    	&:after{
+	    		right: 17.9px;
+	    	}
+	    }
+	}
+}
+.commentlist{
+	li{
+		margin-bottom: 35px;
+		&:last-child{
+			margin-bottom: 0;
+		}
+		img{
+			margin-right: 15px;
+		}
+	}
+}
+.comment-author{
+	margin-bottom: 10px;
+}
+.comment-form-comment{
+	label{
+		width: 100%;
+		float: left;
+		font-weight: bold;
+	}
+	textarea{
+		float: left;
+		width: 100%;
+		border: 1px solid $border;
+		-webkit-border-radius: 3px;
+		        border-radius: 3px;
+	}
+}
+.comment-reply-link{
+    background-color: $dark-blue;
+    color: white;
+    text-transform: capitalize;
+    font-weight: bold;
+    padding: 5px 8px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    min-width: 100px;
+    display: inline-block;
+    font-size: 14px;
+    text-align: center; 
+    @include transition(.3);
+    &:hover{
+    	text-decoration: none;
+    	background-color: lighten($dark-blue, 10%);
+    }
+}
+.form-submit{
+	.submit{
+		background-color: $dark-grey;
+	    color: white;
+	    text-transform: capitalize;
+	    font-weight: bold;
+	    padding: 5px 8px;
+	    border: none;
+	    margin-top: 15px;
+	    font-size: 14px;
+	    -webkit-border-radius: 3px;
+	    border-radius: 3px;	
+	    min-width: 100px;
+	    @include transition(.3);
+	    display: inline-block;
+	    text-align: center;
+	    &:hover{
+	    	background-color: lighten($dark-grey, 10%);
+	    }	
+	}
+}
+
 //This file link includes resonsive style and it MUST always stays at the bottom of this file. If you need to type code, please type above to this link. Don't type below of responsive file link.
 @import 'responsive';
 

@@ -21,12 +21,10 @@ $asso_page_terms = get_terms( array(
 						$asso_url = get_field('association_website', $asso_page_term);
 				?>
 					<a href="http://<?php echo $asso_url; ?>" target="_blank" class="col-3 bg-shadow">
-						<div class="external-link asso-image" style="background-image: url('<?php echo $asso_img; ?>');">
-							
+						<div class="asso-image" style="background-image: url('<?php echo $asso_img; ?>');">
 						</div>
 						<h4><?php echo $asso_page_term->name; ?></h4>
-						<button><h3><?php echo $asso_url; ?></h3></button>
-
+						<button class="external-link"><h3><?php echo $asso_url; ?></h3></button>
 					</a>
 				<?php endforeach; ?>
 			</div>

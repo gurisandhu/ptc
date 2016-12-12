@@ -128,7 +128,7 @@ Related posts
 
  	$current_post_type     =   array( 'post_type' => 'ptc_events');
     $repeat_events  =   new WP_Query( $current_post_type );
-    $current_post_subject_obj = get_the_terms( $post->ID, 'ptc_subjects', '');
+    $current_post_subject_obj = get_the_terms( $post->ID, 'ptc_schools', '');
     $current_post_subject = $current_post_subject_obj[0]->name; ?>
 
  <section class="section-2 light-bg">
@@ -137,7 +137,7 @@ Related posts
 
  		<?php	while ( $repeat_events->have_posts() ) : 
  			$repeat_events->the_post(); 
-			$terms_object = get_the_terms( $repeat_events->the_ID(), 'ptc_subjects', '');
+			$terms_object = get_the_terms( $repeat_events->the_ID(), 'ptc_schools', '');
 			$related_terms = $terms_object[0]->name;
 			$related_association = get_the_terms( $repeat_events->the_ID(), 'ptc_associations');
 			$related_term = array_pop($related_association);
@@ -151,7 +151,6 @@ Related posts
 			$format_in 	= '';
 			$related_date_short = date("j M", strtotime($related_date));
 			$schools = get_the_terms( get_the_ID(), 'ptc_schools');
-            if ( empty($schools)) :
 	 	?>
 
 			<a href="<?php echo get_permalink(); ?>" class="col-3" style="background-color:<?php echo $sub_bg_color; ?>;">
@@ -159,13 +158,15 @@ Related posts
 					<span class="date"><?php echo $related_date_short; ?></span>
 				</div>
 				<div class="section-2-content">
-					<div class="provider">
-						<div class="provider-logo" style="background-image: url('<?php echo $related_asso_image; ?>');">
+					<?php if($related_term): ?>
+						<div class="provider">
+							<div class="provider-logo" style="background-image: url('<?php echo $related_asso_image; ?>');">
+							</div>
+							<div class="provider-title">
+								<h3><?php echo get_the_terms( $repeat_events->the_ID(), 'ptc_associations', '')[0]->name; ?></h3>
+							</div>
 						</div>
-						<div class="provider-title">
-							<h3><?php echo get_the_terms( $repeat_events->the_ID(), 'ptc_associations', '')[0]->name; ?></h3>
-						</div>
-					</div>
+					<?php endif; ?>	
 					<div class="section-2-title">
 						<h4><?php the_title(); ?></h4>
 						<p><?php echo $realted_suburb; ?></p>
@@ -175,9 +176,9 @@ Related posts
 					</div>
 				</div>
 			</a>
-	<?php endif; endif; endwhile; ?>
+	<?php endif; endwhile; ?>
 			<div class="row">
-				<a href="<?php echo esc_url( home_url( '/' ) ); ?>/ptc_events" class="more but-col-3">See All events</a>
+				<a href="<?php echo esc_url( home_url( '' ) ); ?>/ptc_schools/<?php echo $current_post_subject_obj[0]->slug; ?>" class="more but-col-3">See All events</a>
 			</div>
 		</div>
 	</section><!-- section-2 related events-->

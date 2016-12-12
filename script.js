@@ -93,17 +93,18 @@ $('h2.button').click(function(){
         }, 1000);
   });
   // $('.school-events').remove('.full-width');
+
 });//end of document ready
 
+function schoolValidation(){
+  $('.school-login-form-wrapper').slideUp();
+  $('.school-login-form-wrapper').remove();
+}
+
+
 // ++++++++++++++++++++
-// Validate School Login
+// Hp Filterations
 // ++++++++++++++++++++
-
-function validateSchoolLogin(){
-  var school_login_form     = document.forms["school-login-form"];
-  var school_login_form_pw   = school_login_form["school-pw-entered"];
-  alert('test');
-
-
-} //validateSchoolLogin
-
+function filterHpEvents(event){
+  alert(this.options[this.selectedIndex].text);
+}

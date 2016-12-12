@@ -59,13 +59,18 @@ get_header();
 			</ul>
 		</div>
 	</section>
-
+	<?php $filter_association = get_the_terms( get_the_ID(), 'ptc_associations'); 
+			if (!empty($filter_association)){
+                $filter_ass_term = array_pop($filter_association);
+            }
+		var_dump($filter_association);			                
+						?>
 	<section class="section-2">
 		<div class="container">
 			<form action="" class="row">
 				<ul class="filters row">
 					<li>
-						<select name="association" id="">
+						<select name="association" id="" onchange="filterHpEvents.call(this, event)">
 							<option value="">Association</option>
 							<option value="company-1">Company 1</option>
 							<option value="company-2">Company 2</option>
@@ -73,7 +78,7 @@ get_header();
 						</select>
 					</li>
 					<li>
-						<select name="subject" id="">
+						<select name="subject" id="" onchange="filterHpEvents.call(this, event)">
 							<option value="">Subject</option>
 							<option value="company-1">Subject 1</option>
 							<option value="company-2">Subject 2</option>
@@ -81,7 +86,7 @@ get_header();
 						</select>
 					</li>
 					<li>
-						<select name="level" id="">
+						<select name="level" id="" onchange="filterHpEvents.call(this, event)">
 							<option value="">Level</option>
 							<option value="company-1">Level 1</option>
 							<option value="company-2">Level 2</option>
@@ -89,7 +94,7 @@ get_header();
 						</select>
 					</li>
 					<li>
-						<select name="region" id="">
+						<select name="region" id="" onchange="filterHpEvents.call(this, event)">
 							<option value="">Region</option>
 							<option value="company-1">Region 1</option>
 							<option value="company-2">Region 2</option>
@@ -130,6 +135,7 @@ get_header();
 
 				<a href="<?php echo get_permalink(); ?>" class="col-3" style="background-color:<?php echo $sub_bg_color; ?>;">
 					<div class="section-2-image" style="background-image: url('<?php echo $sub_icon; ?>');">
+						<?php var_dump($term); ?>
                         <span class="date"><?php echo $date_short; ?></span>
                     </div>
                      <div class="section-2-content">
