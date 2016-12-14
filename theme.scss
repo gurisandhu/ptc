@@ -366,18 +366,18 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00c0f3', end
 				.menu-icon{
 					img{
 						&:nth-of-type(1){
-							-webkit-transform: translate3d(0,-60px,0);
-							   -moz-transform: translate3d(0,-60px,0);
-							    -ms-transform: translate3d(0,-60px,0);
-							     -o-transform: translate3d(0,-60px,0);
-							        transform: translate3d(0,-60px,0);
+							-webkit-transform: translate3d(0,-100%,0);
+							   -moz-transform: translate3d(0,-100%,0);
+							    -ms-transform: translate3d(0,-100%,0);
+							     -o-transform: translate3d(0,-100%,0);
+							        transform: translate3d(0,-100%,0);
 						}
 						&:nth-of-type(2){
-							-webkit-transform: translate3d(0,-60px,0);
-							-moz-transform: translate3d(0,-60px,0);
-							-ms-transform: translate3d(0,-60px,0);
-							-o-transform: translate3d(0,-60px,0);
-							transform: translate3d(0,-60px,0);
+							-webkit-transform: translate3d(0,-100%,0);
+							   -moz-transform: translate3d(0,-100%,0);
+							    -ms-transform: translate3d(0,-100%,0);
+							     -o-transform: translate3d(0,-100%,0);
+							        transform: translate3d(0,-100%,0);
 						}
 					}
 				}
@@ -1664,6 +1664,13 @@ h6{
 .error{
 	border: 2px solid red;
 	display: block;
+    float: left;
+    width: 100%;
+    margin-bottom: 15px;
+    text-align: center;
+    padding: 4px 11px;
+    background-color: #f35757;
+    color: white;
 }
 .board_portal_resources{
 	list-style: none;
@@ -1802,6 +1809,229 @@ h6{
 	    }	
 	}
 }
+.alar-login-form{
+    max-width: 400px;
+    margin: auto;
+    font-family: $open!important;
+    background-color: white;
+    border: 1px solid $border!important;
+    -webkit-border-radius: 3px;
+	        border-radius: 3px;
+}
+#loginform{
+	.button{
+		@extend .more;
+		cursor: pointer;
+	}
+}
+.alar-login-heading{
+	font-size: 22px!important;
+	color: $dark-blue;
+	text-transform: inherit!important;
+	font-family: $open!important;
+}
+.ftxt{
+	> input{
+		border: 1px solid $border!important;
+		-webkit-border-radius: 3px;
+		        border-radius: 3px;
+	}
+}
+.menu-button{
+    position: relative;
+    color: $dark-blue;
+    cursor: pointer;
+    font-family: $open;
+    font-size: 20px;
+    float: left;
+    width: 35px;
+    font-weight: 700;
+    text-align: right;
+    z-index: 99;
+    height: 45px;
+    top:11px;
+    @include transition(.1);
+    &:after, &:before {
+	    position: absolute;
+	    content: "";
+	    display: block;
+	    width: 100%;
+	    left: 0;
+	    @include transition(.3);
+	}
+	&:before {
+	    top: 26px;
+	    height: 3.4px;
+	    background-color: $dark-blue;
+	}
+	&:after {
+	    top: 0;
+	    height: 10px;
+	    border-top: 3.5px solid $dark-blue;
+	    border-bottom: 3.5px solid $dark-blue;
+	}
+	&.show{
+		&:before {
+		    top: 12px;
+		    @include transform(-45);
+		}
+		&:after {
+		    top: 12px;
+		    border: 0;
+		    height: 3.4px;
+		    background: $dark-blue;
+		    @include transform(45);
+		}
+	}
+}
+
+.responsive-menu{
+	@include transition(.2);
+	background-color: $border;
+	position: fixed;
+	right: -255px;
+	top: 0;
+	bottom: 0;
+	z-index: 9;
+	width: 255px;
+	padding: 104px 15px 15px 15px;
+	&.show{
+		right: 0;
+	}
+	nav{
+		.menu-header-container{
+			> ul{
+				padding: 0;
+				margin: 0;
+				ul{
+					padding-top: 10px;
+				}
+				>li{
+				
+				}
+			}
+
+
+		}	
+	}
+	ul{
+		list-style: none;
+	}
+	li{
+		margin-bottom: 15px;
+		@extend .fade-in;
+		&:last-of-type{
+			margin-bottom: 0;
+		}
+		&.current-menu-item{
+			a{
+				text-decoration: underline;
+			}
+		}
+	}
+	a{
+		
+	}
+	button{
+		margin-top: 15px;
+		display: inline-block;
+		padding: 10px 15px;
+		min-width: 100px;			
+		text-align: center;
+	}
+	.login-wrapper{
+		margin-top: 30px;
+		a{
+			-webkit-border-radius: 3px;
+			        border-radius: 3px;
+			display: inline-block;
+			padding: 10px 15px;
+			min-width: 100px;			
+			text-align: center;
+		}
+	}
+}//responsive-menu
+.responsive-form{
+	float: left;
+	width: 100%;
+	margin-top: 30px;
+	@include placeholder($dark-blue);
+	input{
+		border: 1px solid $dark-blue;
+		padding: 10px 15px;
+		font-size: 16px;
+		-webkit-border-radius: 3px;
+		        border-radius: 3px;
+	}
+}
+
+.fade-in{
+	opacity: 0;
+	-webkit-transform: translate3d(50px,0,0);
+	   -moz-transform: translate3d(50px,0,0);
+	    -ms-transform: translate3d(50px,0,0);
+	     -o-transform: translate3d(50px,0,0);
+	        transform: translate3d(50px,0,0);
+	    &.show{
+	    	-webkit-transform: translate3d(0px,0,0);
+			   -moz-transform: translate3d(0px,0,0);
+			    -ms-transform: translate3d(0px,0,0);
+			     -o-transform: translate3d(0px,0,0);
+			        transform: translate3d(0px,0,0);
+		            opacity: 1;
+	    }
+	    &:nth-of-type(2n+1){
+	    	-webkit-transition-duration: 300ms;
+	    	   -moz-transition-duration: 300ms;
+	    	    -ms-transition-duration: 300ms;
+	    	     -o-transition-duration: 300ms;
+	    	        transition-duration: 300ms;
+	    }
+	    &:nth-of-type(2n+2){
+	    	-webkit-transition-duration: 400ms;
+		       -moz-transition-duration: 400ms;
+		        -ms-transition-duration: 400ms;
+		         -o-transition-duration: 400ms;
+		            transition-duration: 400ms;
+	    }
+	    &:nth-of-type(2n+3){
+	    	-webkit-transition-duration: 500ms;
+		       -moz-transition-duration: 500ms;
+		        -ms-transition-duration: 500ms;
+		         -o-transition-duration: 500ms;
+		            transition-duration: 500ms;
+	    }
+	    &:nth-of-type(2n+4){
+	    	-webkit-transition-duration: 600ms;
+		       -moz-transition-duration: 600ms;
+		        -ms-transition-duration: 600ms;
+		         -o-transition-duration: 600ms;
+		            transition-duration: 600ms;
+	    }
+	    &:nth-of-type(2n+5){
+	    	-webkit-transition-duration: 700ms;
+		       -moz-transition-duration: 700ms;
+		        -ms-transition-duration: 700ms;
+		         -o-transition-duration: 700ms;
+		            transition-duration: 700ms;
+	    }
+	    &:nth-of-type(2n+6){
+	    	-webkit-transition-duration: 800ms;
+		       -moz-transition-duration: 800ms;
+		        -ms-transition-duration: 800ms;
+		         -o-transition-duration: 800ms;
+		            transition-duration: 800ms;
+	    }
+	    &:nth-of-type(2n+7){
+	    	-webkit-transition-duration: 900ms;
+		       -moz-transition-duration: 900ms;
+		        -ms-transition-duration: 900ms;
+		         -o-transition-duration: 900ms;
+		            transition-duration: 900ms;
+	    }
+}
+
+
 
 //This file link includes resonsive style and it MUST always stays at the bottom of this file. If you need to type code, please type above to this link. Don't type below of responsive file link.
 @import 'responsive';

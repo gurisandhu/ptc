@@ -31,8 +31,8 @@
 				<div class="logo">
 					<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo get_template_directory_uri(); ?>/images/logo.png" alt="PTC Logo" title="Professional Teachers' Council NSW"></a>
 				</div>
-				<div class="desktop-menu desktop">
-					<nav>
+				<div class="desktop-menu">
+					<nav class="desktop">
 						<?php wp_nav_menu( array( 'theme_location' => 'header-menu' ) ); ?>
 					</nav>
 					<div class="login">
@@ -41,17 +41,23 @@
 					<div class="search show-search">
 						<i class="fa fa-search"></i>
 					</div>
+					<div class="menu-button responsive">
+						<!-- <span>Menu</span> -->
+					</div>
 				</div>
 				<div class="responsive-menu responsive">
 					<nav>
 						<?php wp_nav_menu( array( 'theme_location' => 'header-menu' ) ); ?>
 					</nav>
-					<div class="login">
-						<a href="<?php echo esc_url( home_url( '' ) ); ?>/schools/">PTC Plus</a>
-					</div>
-					<div class="search">
-						<i class="fa fa-search"></i>
-					</div>
+					<!-- <div class="login-wrapper row">
+						<a class="more" href="<?php echo esc_url( home_url( '' ) ); ?>/schools/">PTC Plus</a>
+					</div> -->
+					<!-- <section class="responsive responsive-form">						
+						<form class="row" role="search" method="get" id="searchform" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+							<input class="row" type="text" value="" name="s" id="s" placeholder="Search here ..." />
+							<button type="submit" class="more sky">Search</button>
+						</form>
+					</section> -->
 				</div>
 			</div>
 		</header>

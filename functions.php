@@ -5,7 +5,7 @@
 // *************************
 
 function my_styles_scripts(){
-  wp_enqueue_style('ptc-font-awesome', 'http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css?ver=4.7.0');
+    wp_enqueue_style('ptc-font-awesome', 'http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css?ver=4.7.0');
 
     wp_enqueue_style('ptc-fonts-open', 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700');
 
@@ -70,6 +70,7 @@ if (function_exists('acf_add_options_page')){
             'add_new_item'          =>  'Add New Event',
             'edit'                  =>  'Edit',
             'edit_item'             =>  'Edit Event',
+            'all_items'             =>  'All Events',
             'new_item'              =>  'New Event',
             'view'                  =>  'View',
             'view_item'             =>  'View Event',
@@ -418,6 +419,7 @@ add_filter( 'posts_distinct', 'cf_search_distinct' );
         'labels'    => array(
             'name'                  =>  'Board Portal', 'post type general name',
             'singular_name'         =>  'Portal', 'post type singular name',
+            'all_items'              =>  'All Portals',
             'add_new'               =>  'Add Portal',
             'add_new_item'          =>  'Add New Portal',
             'edit'                  =>  'Edit',

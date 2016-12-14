@@ -59,46 +59,45 @@ get_header();
 			</ul>
 		</div>
 	</section>
-	<?php $filter_association = get_the_terms( get_the_ID(), 'ptc_associations'); 
-			if (!empty($filter_association)){
-                $filter_ass_term = array_pop($filter_association);
-            }
-		var_dump($filter_association);			                
-						?>
+		
 	<section class="section-2">
 		<div class="container">
-			<form action="" class="row">
+			<form class="event-filter" method="post" class="row" action="<?php $_SERVER["PHP_SELF"]; ?>">
 				<ul class="filters row">
 					<li>
-						<select name="association" id="" onchange="filterHpEvents.call(this, event)">
+						<?php $filter_assos = get_terms('ptc_associations'); ?>
+						<select name="filter-association" id="">
 							<option value="">Association</option>
-							<option value="company-1">Company 1</option>
-							<option value="company-2">Company 2</option>
-							<option value="company-3">Company 3</option>
+							<?php foreach($filter_assos as $filter_asso): ?>
+								<option value="<?php echo $filter_asso->slug; ?>"><?php echo $filter_asso->name; ?></option>
+							<?php endforeach; ?>	
 						</select>
 					</li>
 					<li>
-						<select name="subject" id="" onchange="filterHpEvents.call(this, event)">
+						<?php $filter_subjects = get_terms('ptc_subjects'); ?>
+						<select name="filter-subject" id="">
 							<option value="">Subject</option>
-							<option value="company-1">Subject 1</option>
-							<option value="company-2">Subject 2</option>
-							<option value="company-3">Subject 3</option>
+							<?php foreach($filter_subjects as $filter_subject): ?>
+								<option value="<?php echo $filter_subject->slug; ?>"><?php echo $filter_subject->name; ?></option>
+							<?php endforeach; ?>	
 						</select>
 					</li>
 					<li>
-						<select name="level" id="" onchange="filterHpEvents.call(this, event)">
+						<?php $filter_levels = get_terms('ptc_levels'); ?>
+						<select name="filter-level" id="">
 							<option value="">Level</option>
-							<option value="company-1">Level 1</option>
-							<option value="company-2">Level 2</option>
-							<option value="company-3">Level 3</option>
+							<?php foreach($filter_levels as $filter_level): ?>
+								<option value="<?php echo $filter_level->slug; ?>"><?php echo $filter_level->name; ?></option>
+							<?php endforeach; ?>	
 						</select>
 					</li>
 					<li>
-						<select name="region" id="" onchange="filterHpEvents.call(this, event)">
+						<?php $filter_regions = get_terms('ptc_regions'); ?>
+						<select name="filter-region" id="">
 							<option value="">Region</option>
-							<option value="company-1">Region 1</option>
-							<option value="company-2">Region 2</option>
-							<option value="company-3">Region 3</option>
+							<?php foreach($filter_regions as $filter_region): ?>
+								<option value="<?php echo $filter_region->slug; ?>"><?php echo $filter_region->name; ?></option>
+							<?php endforeach; ?>	
 						</select>
 					</li>
 					<li>
@@ -106,6 +105,13 @@ get_header();
 					</li>
 				</ul>
 			</form>
+<?php wp_reset_query(); ?>
+
+<?php if (isset($_POST['filter-association'])): $form_filter_asso=$_POST['filter-association']; else: $form_filter_asso =''; endif; ?>	
+<?php if (isset($_POST['filter-subject'])): $form_filter_subject=$_POST['filter-subject']; else: $form_filter_subject =''; endif; ?>	
+<?php if (isset($_POST['filter-level'])): $form_filter_level=$_POST['filter-level']; else: $form_filter_level =''; endif; ?>	
+<?php if (isset($_POST['filter-region'])): $form_filter_region=$_POST['filter-region']; else: $form_filter_region =''; endif; ?>	
+
 			<h2>Events</h2>
 			<?php 
 				$args = array(
@@ -130,12 +136,11 @@ get_header();
                 $suburb = get_field('events_location_suburb');
                 $date_short = date("j M", strtotime($date));	
                 $schools = get_the_terms( get_the_ID(), 'ptc_schools');
-            	if ( empty($schools)) :
+            	if (empty($schools)) :
 			?>
 
 				<a href="<?php echo get_permalink(); ?>" class="col-3" style="background-color:<?php echo $sub_bg_color; ?>;">
 					<div class="section-2-image" style="background-image: url('<?php echo $sub_icon; ?>');">
-						<?php var_dump($term); ?>
                         <span class="date"><?php echo $date_short; ?></span>
                     </div>
                      <div class="section-2-content">

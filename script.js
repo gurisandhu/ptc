@@ -92,7 +92,20 @@ $('h2.button').click(function(){
             scrollTop: $("body").offset().top - 100
         }, 1000);
   });
-  // $('.school-events').remove('.full-width');
+  // ++++++++++++++++++++
+  // Menu Button
+  // ++++++++++++++++++++
+  $('.menu-button').click(function(){
+    $(this).toggleClass('show');
+    $('.responsive-menu').toggleClass('show');
+    $('.responsive-menu li').toggleClass('show');
+    $('.hide-body').toggleClass('show');
+  });
+  $('.hide-body').click(function(){
+    $('.menu-button').removeClass('show');
+    $('.responsive-menu').removeClass('show');
+    $('.responsive-menu li').removeClass('show');
+  });
 
 });//end of document ready
 
@@ -101,10 +114,3 @@ function schoolValidation(){
   $('.school-login-form-wrapper').remove();
 }
 
-
-// ++++++++++++++++++++
-// Hp Filterations
-// ++++++++++++++++++++
-function filterHpEvents(event){
-  alert(this.options[this.selectedIndex].text);
-}
