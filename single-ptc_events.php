@@ -39,6 +39,7 @@ if ( !empty($schools)){
 $bostes_approved = get_field_object('events_approved_by')["value"][0];
 if ($bostes_approved == "Yes"){
 	$show_bostes_image = get_template_directory_uri() . '/images/event-logo.png';	
+	$bostes_wrapper = "bostes-wrapper";
 }
 // If contact detials is from Association or in event (custom)
 $event_contact_details 	= get_field('association_contact_details');

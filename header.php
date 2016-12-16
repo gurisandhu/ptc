@@ -49,9 +49,9 @@
 					<nav>
 						<?php wp_nav_menu( array( 'theme_location' => 'header-menu' ) ); ?>
 					</nav>
-					<!-- <div class="login-wrapper row">
+					<div class="login-wrapper row">
 						<a class="more" href="<?php echo esc_url( home_url( '' ) ); ?>/schools/">PTC Plus</a>
-					</div> -->
+					</div>
 					<!-- <section class="responsive responsive-form">						
 						<form class="row" role="search" method="get" id="searchform" action="<?php echo esc_url( home_url( '/' ) ); ?>">
 							<input class="row" type="text" value="" name="s" id="s" placeholder="Search here ..." />

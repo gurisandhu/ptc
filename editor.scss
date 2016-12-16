@@ -162,7 +162,7 @@ header, section, footer, aside, nav{
 
 @mixin col-2($margin){
 	float: left;
-	width: (100%-($margin*2))/2;
+	width: (100%-($margin))/2;
 	margin-right: $margin;
 	margin-bottom: $margin;
 	&:first-child{
@@ -180,6 +180,28 @@ header, section, footer, aside, nav{
 		}
 	}
 }
+@mixin reset-col-2($margin){
+	width: 100%;
+	float: none;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	&:nth-of-type(2n+2){
+		margin-right: $margin;
+	}
+	&:nth-of-type(2n+3), &:nth-of-type(3n+4){
+		float: none;
+		clear: none;
+	}
+	&:nth-of-type(3n+3){
+		margin-right: auto;
+	}
+	&:after{
+		content: "";
+		display: block;
+		clear: both;
+	}
+}
 @mixin col-3($margin){
 	float: left;
 	width: (100%-($margin*2))/3;
@@ -193,6 +215,15 @@ header, section, footer, aside, nav{
 	}
 	&:nth-of-type(3n+4){
 		clear: left;
+	}
+}
+@mixin reset-col-3($margin){
+	&:nth-of-type(3n+3){
+		margin-right: $margin;
+	}
+	&:nth-of-type(3n+4){
+		float: left;
+		clear: none;
 	}
 }
 
@@ -222,7 +253,16 @@ header, section, footer, aside, nav{
 			}
 	}
 }
-
+@mixin reset-one-twoThird($margin){
+	.one-third{
+		width: 100%;
+		margin-right: 0;
+		margin-bottom: $margin;
+			& + .two-third{
+				width: 100%;
+			}
+	}
+}
 @mixin two-oneThird($one-third, $margin-right){
 	.two-third{
 		width: 100% - $margin-right - $one-third;
@@ -231,6 +271,16 @@ header, section, footer, aside, nav{
 			& + .one-third{
 				width: $one-third;
 				float: left;
+			}
+	}
+}
+@mixin reset-two-oneThird($margin){
+	.two-third{
+		width: 100%;
+		margin-right: 0;
+		margin-bottom: $margin;
+			& + .one-third{
+				width: 100%;
 			}
 	}
 }
@@ -299,6 +349,7 @@ p{
 	padding-right: 15px;
 	width: 100%;
 	margin: auto;
+	min-width: 290px;
 	&:after{
 		content: "";
 		display: block;

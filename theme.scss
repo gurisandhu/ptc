@@ -585,11 +585,13 @@ h4{
 .but-col-3{
 	max-width: 31.73%;
 	margin: auto;
+	min-width: 150px;
 	padding: 8px;
 }
 .but-2-col-3{
 	width: 31.73%;
 	margin: auto;
+	min-width: 150px;
 	padding: 8px;
 }
 .but-full{
@@ -962,7 +964,7 @@ footer{
 	li{
 		float: left;
 		width: 20.1%;	
-		margin-right: 20px;
+		margin-right: 1.9%;
 		text-align: center;
 		-webkit-border-radius: 3px;
 		        border-radius: 3px;
@@ -1054,7 +1056,7 @@ footer{
 }
 ul.bread-crumb{
 	list-style: none;
-	margin: 0;
+	margin: 0 0 28px;
 	padding: 0!important;
 	color: $light-grey-2;
 	li{
@@ -1149,7 +1151,7 @@ ul.bread-crumb{
 }
 .with-sidebar{
 	width: 66%;
-	padding-right: 60px;
+	padding-right: 5%;
 	float: left;
 }
 .sidebar{
@@ -1627,7 +1629,7 @@ h6{
 		bottom: 3px;
 		right: -13px;
 		font-size: 13px;
-		color: $light-grey;
+		color: $sky;
 	}
 }
 .schools{

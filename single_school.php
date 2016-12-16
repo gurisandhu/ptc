@@ -2,7 +2,7 @@
 		<div class="container rect-bg">
 
 			<div class="full-width">
-				<ul class="full-width bread-crumb">
+				<ul class="full-width bread-crumb single-event">
 					<li><a href="<?php echo esc_url( home_url( '/' ) ); ?>">PTC</a></li>
 					<?php if ($school_term): ?>
 					<li><a href="<?php echo esc_url( home_url( '/' ) ); ?>schools">Schools</a></li>
@@ -46,7 +46,7 @@
 					</ul>
 					<div class="full-width single-padding">
 							<div class="full-width contact-title">Event contacts:</div>
-							<ul class="event-contacts full-width" style="background-image: url('<?php echo $show_bostes_image; ?>');">
+							<ul class="event-contacts full-width <?php echo $bostes_wrapper; ?>" style="background-image: url('<?php echo $show_bostes_image; ?>');">
 								<?php if ($contact_person): ?>
 									<li><i class="fa fa-user"></i><p><?php echo $contact_person; ?></p></li>
 								<?php endif; ?>

@@ -81,6 +81,8 @@ get_header();
                             </a>
                         <?php endwhile; ?>
                         </div>
+                    <?php else: ?>    
+                    <h1>No Event Found</h1>
                     <?php endif; ?>
                 <?php endif; ?> 
     </div>

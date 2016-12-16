@@ -341,7 +341,7 @@ function arphabet_widgets_init() {
     register_sidebar( array(
         'name'          => 'PTC Sidebar',
         'id'            => '1_ptc_sidebar',
-        'before_widget' => '<div class="row">',
+        'before_widget' => '<div class="row widget">',
         'after_widget'  => '</div>',
         'before_title'  => '<h5>',
         'after_title'   => '</h5>'
@@ -350,7 +350,7 @@ function arphabet_widgets_init() {
     register_sidebar( array(
         'name'          => 'Board Portal Sidebar',
         'id'            => 'board_portal_sidebar',
-        'before_widget' => '<div class="row">',
+        'before_widget' => '<div class="row widget">',
         'after_widget'  => '</div>',
         'before_title'  => '<h5>',
         'after_title'   => '</h5>'

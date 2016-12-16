@@ -1,7 +1,7 @@
 <div class="sidebar">
 
 	<?php $children = get_pages('child_of='.$post->ID); if(count( $children ) !== 0 ) : ?>
-		<div class="row">
+		<div class="row widget">
 			<h5><?php the_title(); ?> Plus</h5>
 			<ul class="page-menu">
 				<?php
@@ -19,9 +19,7 @@
 	<?php endif; ?>
 
 	<?php if ( is_active_sidebar( '1_ptc_sidebar' ) ) : ?>
-		<div class="row">
-			<?php dynamic_sidebar( '1_ptc_sidebar' ); ?>
-		</div><!-- #primary-sidebar -->
+		<?php dynamic_sidebar( '1_ptc_sidebar' ); ?>
 	<?php endif; ?>
 
 </div> <!-- sidebar -->

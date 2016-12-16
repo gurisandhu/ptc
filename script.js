@@ -17,7 +17,7 @@ $(document).ready(function(){
         nextButton: '.swiper-button-next',
         prevButton: '.swiper-button-prev',
         spaceBetween: 30,
-        autoplay: 1500,
+        autoplay: 2400,
         loop: true,
         effect: 'fade'
     });

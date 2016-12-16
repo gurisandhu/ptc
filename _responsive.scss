@@ -11,7 +11,6 @@
 	}
 	.desktop-menu{
 		width: auto;
-		padding-right: 15px;
 	}
 	.search{
 		padding-right: 40px;
@@ -27,13 +26,36 @@
 		}
 	}
 }
-@media screen and (max-width: 600px){
-	body.customize-support{
-		.header{
-		    // top: 0;
+@media screen and (max-width: 500px){
+	.login{
+	// 	width: auto;
+	// 	margin-top: 8px;
+		display: none;
+	}
+	.on-scrolled{
+		// .logo{
+		// 		width: 53px;
+		// }
+		header{
+			height: auto;
+		}
+		// .login{
+		// 	margin-top: 7px;
+		// }
+		.search{
+			margin-top: 15px;
 		}
 	}
-}
+	body{
+		&:before{
+			height: 78px;
+		}
+		header{
+			height: auto;
+		}
+	}
+}//500px
+
 // //////////////
 // Top Banner
 // //////////////
@@ -88,4 +110,301 @@
 			}
 		}
 	}
+
+	// //////////////
+	// Event filters
+	// //////////////
+	.event-filter{
+		display: none;
+	}
 }//1080
+@media screen and (max-width:675px){
+	.home-banner{
+		.swiper-slide{
+			height: 310px;
+			background-position: center;
+			-webkit-background-size: cover;
+			     -o-background-size: cover;
+			        background-size: cover;
+		}
+	}
+	.slider-content{
+		max-width: 100%;
+		text-align: center;
+		.but-left{
+			float: none;
+			margin: auto;
+			background-color: $sky;
+			&:hover{
+				background-color: darken($sky,10%);
+			}
+		}
+	}
+	h1{
+		font-size: 32px;
+	}
+	.blue-shadow{
+		/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#3d4663+1,001764+100&0+0,0.63+100 */
+background: -moz-linear-gradient(top,  rgba(61,70,99,0) 0%, rgba(61,70,99,0.01) 1%, rgba(0,23,100,0.63) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  rgba(61,70,99,0) 0%,rgba(61,70,99,0.01) 1%,rgba(0,23,100,0.63) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  rgba(61,70,99,0) 0%,rgba(61,70,99,0.01) 1%,rgba(0,23,100,0.63) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#003d4663', endColorstr='#a1001764',GradientType=0 ); /* IE6-9 */
+	}
+}//675
+@media screen and (max-width:540px){
+	.home-page-menu{
+		ul{
+			li{
+				a{
+					padding: 15px 10px;  
+				}
+				span{
+					font-size: 15px;
+				}
+			}
+		}
+	}
+}//500
+@media screen and (max-width:400px){
+	.home-page-menu{
+		ul{
+			li{
+				span{
+					font-size: 11px;
+				}
+				a{
+					height: 178px;
+				}
+			}
+		}
+	}
+}//400
+
+// //////////////
+// Events
+// //////////////
+@media screen and (max-width:1165px){
+	.col-3{
+		@include col-2(2.5%);
+		@include reset-col-3(2.5%);
+	}
+}
+@media screen and (max-width:765px){
+	.col-3{
+		@include reset-col-2(auto);
+		max-width: 500px;
+	}
+	.but-col-3{
+		max-width: 500px;
+		width: 100%;
+	}
+
+// //////////////
+// Events
+// //////////////	
+	footer{
+		text-align: center;
+		.col-3{
+			text-align: center;
+		}
+		@include reset-two-oneThird(50px);
+		li{
+			margin-bottom: 8px;
+		}
+	}
+	.social, .site-map{
+		float: none;
+		width: auto;
+		margin: auto auto 35px auto;
+		display: inline-block;
+		&:after{
+			content: "";
+			display: block;
+			clear: both;
+		}
+	}
+}
+
+// //////////////
+// Section 3: Lastest news
+// //////////////
+@media screen and (max-width:850px){
+	h2{
+		font-size: 29px;
+	}
+}
+@media screen and (max-width:700px){
+	.section-3{
+		text-align: center;
+		@include reset-two-oneThird(50px);
+	}
+	.news-content{
+		text-align: left;
+	}
+}
+
+// //////////////
+// Custom page
+// //////////////
+
+@media screen and (max-width: 1065px){
+	.custom-page{
+		.with-sidebar{
+			.two-onethird{
+				@include reset-two-oneThird(50px);
+			}
+			.one-twothird{
+				@include reset-one-twoThird(50px);
+			}
+		}
+		.col-4{
+			@include col-2(4.5%);
+		}
+		.col-3{
+			@include col-2(4.5%);
+			@include reset-col-3(4.5%);	
+		}
+	}
+}//1065
+@media screen and (max-width: 900px){
+	.custom-page{
+		.with-sidebar{
+			.col-4, .col-3, .col-2{
+				@include reset-col-2(auto);
+			}
+		}
+	}
+}
+// //////////////
+// Custom page Sidebar
+// //////////////
+@media screen and (max-width: 550px){
+	.with-sidebar{
+		width: 100%;
+		padding-right: 0;
+		margin-bottom: 50px;
+	}	
+	.sidebar{
+		width: 100%;
+		border-left: none;
+		padding-left: 0;
+		.widget{
+			@include col-2(5%);
+			margin-top: 0;
+		}
+	}
+
+}//550
+@media screen and (max-width: 370px){
+	.sidebar{
+		.widget{
+			@include reset-col-2(auto);
+			margin-top: 50px;
+			&:first-of-type{
+				margin-top: 0;
+			}
+		}
+	}
+}//370
+
+// //////////////
+// Post
+// //////////////
+@media screen and (max-width: 400px){
+	.post-image{
+		width: 100%;
+		margin-right: 0;
+		text-align: center;
+		img{
+			float: none;
+		}
+	}
+	h1{
+		text-align: center;
+	}
+	.but-left{
+		float: none;
+		margin: auto;
+	}
+}
+
+// //////////////
+// Single Event | Course
+// //////////////
+
+@media screen and (max-width: 900px){
+	.single-page{
+		@include reset-two-oneThird(30px);
+	}
+	.single-title{
+		margin-top: 0;
+		padding: 0;
+		h1{
+			font-size: 20px;
+		}
+		li{
+			&:first-of-type{
+				min-height: 111px;
+				padding-left: 111px;
+			}
+			&:nth-of-type(2){
+				// margin-left: -107px;
+			}
+		}
+	}
+}
+@media screen and (max-width: 700px){
+	.bostes-wrapper{
+		padding-bottom: 100px;
+		background-position: center 100%;
+	}
+	.event-contacts{
+		padding-right: 0;
+	}
+}
+@media screen and (max-width: 600px){
+	.single-event {
+		li:nth-of-type(3){
+			display: none;
+		}
+	}
+	.tags{
+		li{
+			width: 48%;
+			margin-top: 25px;
+			&:nth-of-type(2n+2){
+				margin-right: 0;
+				padding-left: 10px;
+			}
+			&:first-child{
+				margin-top: 0;
+			}
+			&:nth-of-type(2){
+				margin-top: 0;
+			}
+		}
+	}
+}
+
+// //////////////
+// Show loader
+// //////////////
+@media screen and (max-width: 1000px){
+	.show-loader{
+		&:after{
+			left: 40%;
+			width: 100px;
+			height: 100px;
+		}
+	}
+}
+@media screen and (max-width: 400px){
+	.show-loader{
+		&:after{
+			left: 43%;
+			width: 50px;
+			height: 50px;
+			top: 55%;
+		}
+	}
+}

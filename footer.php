@@ -78,12 +78,14 @@
 					<?php $footer_widget_4_menu = get_field('footer_widget_4_footer_menu', 'option') ; ?>
 
 					<?php if ($footer_widget_4_menu) : ?>
+					<div class="row">
 						<ul class="site-map">
 							<?php foreach ( $footer_widget_4_menu as $post): setup_postdata($post); ?>
 								<li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
 							<?php endforeach; ?>
 							<li><a href="http://www.sailorstudio.com.au" target="_blank">Website by Sailor Studio</a></li>
 						</ul>
+					</div>	
 					<?php endif; ?>
 					<span>Copyright &copy; <?php date_default_timezone_set("Australia/Sydney"); echo date("Y"); ?> PTC NSW. All Rights Reserved.</span>
 				</div>
