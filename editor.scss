@@ -175,7 +175,7 @@ header, section, footer, aside, nav{
 		clear: left;
 	}
 	&:nth-of-type(2){
-		img{
+		> img{
 			float: right;
 		}
 	}

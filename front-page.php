@@ -35,21 +35,21 @@ get_header();
 					</div>
 					<span>Member Associations</span>
 				</a></li>
-				<li><a href="#">
+				<li><a href="<?php echo esc_url( home_url( '' ) ); ?>/ptc_events/">
 					<div class="menu-icon">
 						<img src="<?php echo get_template_directory_uri(); ?>/images/icons/course-off.svg" alt="">
 						<img src="<?php echo get_template_directory_uri(); ?>/images/icons/course-on.svg" alt="">
 					</div>
 					<span>Full course List</span>
 				</a></li>
-				<li><a href="#">
+				<li><a href="<?php echo esc_url( home_url( '' ) ); ?>/shop/">
 					<div class="menu-icon">
 						<img src="<?php echo get_template_directory_uri(); ?>/images/icons/resources-off.svg" alt="">
 						<img src="<?php echo get_template_directory_uri(); ?>/images/icons/resources-on.svg" alt="">
 					</div>
 					<span>Teaching Resources</span>
 				</a></li>
-				<li><a href="#">
+				<li><a href="<?php echo esc_url( home_url( '' ) ); ?>/awards/">
 					<div class="menu-icon">
 						<img src="<?php echo get_template_directory_uri(); ?>/images/icons/awards-off.svg" alt="">
 						<img src="<?php echo get_template_directory_uri(); ?>/images/icons/awards-on.svg" alt="">

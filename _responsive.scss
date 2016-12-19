@@ -408,3 +408,19 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#003d4663', e
 		}
 	}
 }
+
+// //////////////
+// Single product
+// //////////////
+@media screen and (max-width: 450px){
+	.summary, .images{
+		width: 100%;
+	}
+	.summary{
+		margin-top: 30px;
+		padding-left: 0;
+	}
+	.images{
+		text-align: center;
+	}
+}

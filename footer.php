@@ -94,6 +94,7 @@
 	</div>
 </footer>
 <div class="hide-body show-loader"></div>
+<?php var_dump(get_page_template()); ?>
 </body>
 </html>
 

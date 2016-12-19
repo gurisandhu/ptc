@@ -14,12 +14,12 @@
 $schools = get_the_terms( get_the_ID(), 'ptc_schools');
 $school_login_error = 0;
 $school_login_error_text = '';
+$_SESSION['school_pw'];
 if ( !empty($schools)):?>
     <?php $school_term = array_pop($schools); 
     	$school_pw = get_field('school_password', $school_term);
     ?>
 <?php endif; ?>
-    
 
 <?php 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -29,12 +29,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	} elseif ($_POST['school-pw-entered'] !== $school_pw) {
 		$school_login_error_text = "You enter incorrect password, please check again";
 		$school_login_error ++;
-	} elseif (($_POST['school-pw-entered'] == $school_pw) || ($_SESSION['school_pw'] == $school_pw)){
+	} elseif ($_POST['school-pw-entered'] == $school_pw){
 		 $school_login = True;
+		 $_SESSION['school_pw'] = $school_pw;
 	 echo "<script>schoolValidation();</script>";
 	}
 }	  ?>
-	
+
+<?php if ($_SESSION['school_pw'] == $school_pw): ?>
+	<?php $school_login = True; 
+		echo "<script>schoolValidation();</script>";
+	?>
+
+<?php endif; ?>	
+
 <?php if ($school_login_error !== 0): ?>
 <div class='row error'><?php echo $school_login_error_text; ?></div>
 <?php endif; ?>
