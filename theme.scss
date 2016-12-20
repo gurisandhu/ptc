@@ -1837,6 +1837,7 @@ h6{
 }
 .ftxt{
 	> input{
+		width: 100%!important;
 		border: 1px solid $border!important;
 		-webkit-border-radius: 3px;
 		        border-radius: 3px;
